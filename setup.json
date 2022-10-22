@@ -1,0 +1,272 @@
+{
+  "guild_url": "",
+  "terminalId": 1010358897057476708,
+  "categories": {
+    "Welcome": {
+      "arriving": "Welcoming New Members",
+      "departing": "Departing Current Members",
+      "rules": "What every member should know and follow",
+      "announcements": "Things going on in the community",
+      "role_selection": "Decide if you want to be apart of the Programming, Gaming, and Artistry Communities",
+      "promotions": "See who just got upgraded"
+    },
+    "General": {
+      "chat": "Where everyone is welcome to talk about anything they like that is PG-13 appropriate",
+      "dank_humor": "Any and all memes, or other, that you find ridiculously hilarious that is PG-13 appropriate",
+      "introductions": "Introduce Yourself! Tell us about you, your goals, your dreams, or whatever you feel appropriate",
+      "music_commands": "A channel just for commanding the music bot",
+      "lobby_voice": "A general voice chat for everyone to use",
+      "music_voice": "A music channel just for vibing",
+      "afk_voice": "A channel to go when you're away from your computer"
+    },
+    "Programming": {
+      "announcements": "Things going on in the programming community",
+      "updates": "Any updates made to the programming community",
+      "role_selection": "Know any languages? Then select to be apart of those roles and their communitites",
+      "python-general": "Anything Python Related",
+      "javascript-general": "Anything JS Related",
+      "java-general": "Anything Java Related",
+      "rust-general": "Anything Rust Related",
+      "c-lang-general": "Anything C Related",
+      "go-general": "Anything Go Related",
+      "html-css-general": "Anything HTML/CSS Related",
+      "python-support-threads": "Discord UI Handled Forum Channel",
+      "javascript-support-threads": "",
+      "java-support-threads": "",
+      "rust-support-threads": "",
+      "c-lang-support-threads": "",
+      "go-support-threads": "",
+      "html-css-support-threads": "Discord UI Handled Forum Channel",
+      "python-voice": 0,
+      "javascript-voice": 0,
+      "java-voice": 0,
+      "rust-voice": 0,
+      "c-voice": 0,
+      "go-voice": 0,
+      "html-css-voice": 0
+    },
+    "Gaming-Lobby": {
+      "announcements": "Things going on in the gaming community",
+      "updates": "Any updates made to the gaming community",
+      "role_selection": "Select which game community you'd like to be apart of",
+      "general_one_voice": 0,
+      "general_two_voice": 0
+    },
+    "Minecraft": {
+      "chat": "Chat about any and all things Minecraft",
+      "announcements": "Any and all announcements about the Minecraft community",
+      "updates": "Any and all updates made to the Minecraft community here in Gawther",
+      "support": "Get support with the Minecraft game",
+      "showcase": "Proud of a build?",
+      "game_one_voice": 0,
+      "game_two_voice": 0,
+      "game_three_voice": 0
+    },
+    "Chess": {
+      "chat": "Chat about any and all things Chess",
+      "announcements": "Any and all announcements about the Chess community",
+      "updates": "Any and all updates made to the Chess community here in discord",
+      "support": "Get support with your chess games",
+      "showcase": "Proud of a game?",
+      "game_one_voice": 0,
+      "game_two_voice": 0,
+      "game_three_voice": 0
+    },
+    "Staff": {
+      "chat": "Staff Chat about anyt general conversation",
+      "announcements": "Any and all announcements for staff members",
+      "updates": "Any and all updates staff needs to be aware of",
+      "support": "Get support from higher level staff",
+      "acknowledgements": "Say something good about your co-staff member",
+      "appeals": "Members who appeal their mutes, kicks, or bans will show up here",
+      "reported_members": "Members who report other members will show up here",
+      "reported_staff": "Members who report staff members will show up here",
+      "staff_general_voice": 0,
+      "staff_with_member": 0
+    },
+    "Bot-Logs": {
+      "error-logs": "Any Left Over Error Messages - commands: /server, /user, /rules, /ping, /purge, /promote, /help_(member, [r.name for r in guild.roles if r.name in ['Owner', 'Developers', 'etc']) <- questions, ask me",
+      "member-join-logs": "Any Error Messages On New Members Joining",
+      "member-leave-logs": "Any Error Messages On Members Leaving",
+      "role-selection-logs": "Any Error Messages On Role Selections, /role_selection, /prog_role_selection, /game_role_selection, /art_role_selection, ",
+      "appeal-logs": "Any Errors On Members Appealing Bans - commands: /appeal, ",
+      "database-logs": "Any Database Error Logs Here - commands: /reset_db, /pay, /request, /adj_bal, ",
+      "rules-logs": "Any Error Messages When Working With The Rules - commands: /create_rule, /edit_rule, /del_rule, ",
+      "mute-logs": "Any Error Messages When Using The Mute, Kick, Ban commands - commands: /mute, /kick, /ban, ",
+      "member-commands-executed": "Any Commands Executed By Any Member At Any Time. YES ALL COMMANDS",
+      "staff-member-commands-executed": "Any Staff Commands Executed By Any Staff Member At Any Time. YES ALL COMMANDS"
+    }
+  },
+  "rules": {
+    "one": {
+      "name": "Be Respectful",
+      "desc": "No matter what, respect is a must. It does not matter who has been what degree of rude with you, or disrespectful, do not take the situation into your own hands, but instead, report it."
+    },
+    "two": {
+      "name": "No Nudity or Pornography!",
+      "desc": "At NO given time shall any nudity be shown, or portrayed, in any of the Gawther Platforms. This is a community for ages 13+. Anyone caught sharing/displaying any types of nudity will be permenantly removed from ALL platforms immediately. This also includes being visible on camera."
+    },
+    "three": {
+      "name": "Channel Topics Exist",
+      "desc": "As the name states, channel topics exist. When you go to a text channel, look at the top of the channel. There is a description that states the purpose of the channel. The members of the community will typically relay this information to members who ask their questions in the wrong channels to keep the channels clean and organized."
+    },
+    "four": {
+      "name": "Respect All Staff Members and Their Decisions!",
+      "desc": "It does not matter if you agree or disagree with a staff member during a currently happening situation. Respect their decision on how they handled the situation. If you do NOT agree with how a situation was handled, please get in touch with staff for further assistance."
+    },
+    "five": {
+      "name": "Do Not Ping Higher-Level Staff Unless Necessary!",
+      "desc": "We are consistently working and striving to improve the community as a whole. We DO NOT get paid to do this job, thus do not rush us. Everyone's opinions and concerns that are reported are reviewed each week, one-by-one, and discussed in a private channel for further evaluation."
+    },
+    "six": {
+      "name": "Need To Speak With Upper Staff?",
+      "desc": "If you need to open a support ticket to speak with upper-level staff, then do understand that the immediate response staff team will as you questions first regarding the situation to ensure that they cannot help you without needing to ping upper-level staff."
+    },
+    "seven": {
+      "name": "Doxxing Is Not Allowed!",
+      "desc": "Giving away, or selling anyones publicly, or non-publicly, identifiable information anywhere in DM's, or in any part or sub-part of any Gawther Platform is prohibited and will result in an immediate ban ith no appeal. See Federal Laws on Doxxing and Their Repercussions."
+    },
+    "eight": {
+      "name": "Private Threads Are Not Allowed!",
+      "desc": "We are a community comprised of individuals of ALL ages 13+. If there is something that you need to tell someone privately, then utilize Direct Messages, but do understand that all of these rules apply even when in Direct Messages between Gawther Members."
+    },
+    "nine": {
+      "name": "Do Not Create Your Own Invite Link!",
+      "desc": "The bot is setup with a command to invite your friends to the discord. Please do not create your own invite links. Use the /invite command!"
+    },
+    "ten": {
+      "name": "At-least 2 Staff Members Required!",
+      "desc": "When pulling a member into a voice channel to discuss a prolem, or other details, at least 2 staff members are required to be in the channel at all times. This is for the safety of the member, and staff."
+    },
+    "eleven": {
+      "name": "No Gaslighting!",
+      "desc": "A member may not attempt to psychologically manipulate or attempt to sow self-doubt and confusion towards another member."
+    },
+    "twelve": {
+      "name": "No Spamming!",
+      "desc": "At not time is a member allowed to spam any text/voice channels. This will result in an automatic 3 Day Mute."
+    },
+    "thirteen": {
+      "name": "No Drama!",
+      "desc": "Anyone attempting to create, or participating in, drama will be muted for 3 days immediately. Drama will not be tolerated within the Gawther Platform."
+    },
+    "fourteen": {
+      "name": "Further More",
+      "desc": "Staff Members have access to /warn_member, /mute_member, /kick_member. These commands replace the default discord version commands. These commands are setup to allow the staff member executing them to insert their own time frames. The time frames shown in the punishment table are suggestive time frames for staff to use."
+    },
+    "fifteen": {
+      "name": "Appealing A Decision",
+      "desc": "If at any time you are unhappy with a log on your record, then you're welcome to contact staff and discuss appealing/removing it. Only the Head Administrator and Owners have permissions to strike items from records."
+    },
+    "sixteen": {
+      "name": "exceptions",
+      "desc": "A Member May Not Appeal An Item On Their Record If: The Item Is Older Than 6 Months.\nThe Item Is Not At Least 7 Calendar Days Old.\nThe Member APpealed The Same Item More Than 3 Times In A Given 6 Months Period."
+    }
+  },
+  "punishmentTable": {
+    "one": {
+      "name": "Warnings",
+      "desc": "Warnings do not get tallied against you, but are recorded. These are only recorded for proof in the event the staff member is ever asked."
+    },
+    "two": {
+      "name": "Mutes",
+      "desc": "1st - 5 Minutes\n2nd - 15 Minutes\n3rd - 30 Minutes\n4th - 45 Minutes\n5th+ - 1 Hour or Change To Kicks"
+    },
+    "three": {
+      "name": "Kicks",
+      "desc": "1st - 1 Hour, 15 Minutes\n2nd - 1 Hour, 30 Minutes\n3rd - 1 Hour, 45 Minutes\n4th+ - 2 Hours or Change To Bans"
+    },
+    "four": {
+      "name": "Bans",
+      "desc": "1st - 1 Day\n2nd - 3 Days\n3rd - 5 Days\n4th - 1 Month\n5th+ - 6 Months"
+    }
+  },
+  "information": {
+    "one": {
+      "name": "Who Are We?",
+      "value": "We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment."
+    },
+    "two": {
+      "name": "What Do We Provide?",
+      "value": "We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a manner to ask you questions to get you the specific needed assistance you are looking for along with ample staff to help keep things running!"
+    },
+    "three": {
+      "name": "What Are Our Perks?",
+      "value": "Given that this is a community driven discord server, the GawtherPerks have not been setup yet as we are waiting patiently for you guys to start giving us your input and opinions on what you believe would make this platform better!"
+    }
+  },
+  "roles": {
+    "Owners": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Developers": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Head-Admins": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Admins": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Moderators": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Community-Helpers": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Programming": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Gaming": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Artistry": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Python": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "JavaScript": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Java": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Rust": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "CSharp": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "HTML-CSS": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Minecraft": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Summoners-War": {
+      "color": "#FFF",
+      "permissions": {}
+    },
+    "Chess": {
+      "color": "#FFF",
+      "permissions": {}
+    }
+  }
+}

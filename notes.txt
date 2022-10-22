@@ -1,0 +1,62 @@
+FOR SETUP.JSON & SERVER_TEMPLATE.PY
+
+    * When creating channel inside of the categories, please alphabetize the channels *
+
+    Permissions {
+      add_reactions - All
+      administrator - Owners, Developers, Head Admins
+      attach_files - All
+      ban_members - Owners
+      change_nickname - All
+      connect - All
+      create_forum_threads - All
+      create_instant_invite - Owners, False For All
+      create_private_threads - All
+      create_public_threads - All
+      deafen_members - Owners, Head Admin, Admins, Moderators
+      embed_links - All
+      external_emojis - All
+      external_stickers - All
+      kick_members - Owners
+      manage_channels - Owners, Developers
+      manage_emojis - Owners, Developers
+      manage_emojis_and_stickers - Owners, Developers
+      manage_events - Owners, Developers, Head Admins, Admins, Moderators
+      manage_guild - Owners, Developers
+      manage_messages - Owners, Staff Through Purge Command ONLY, False For Everyone Else
+      manage_nicknames - Owners, Developers, Head Admins, Admins, Moderators, Community Helpers
+      manage_permissions - Owners, Developers
+      manage_roles - Owners, Developers
+      manage_threads - Owners, Developers, Head Admins, Admins
+      manage_webhooks - Owners, Developers
+      mention_everyone - Owners, Staff Only Through Announcement Command
+      moderate_members - Owners, Head Admins, Admins, Moderators
+      move_members - Owners, Head Admins, Admins, Moderators
+      mute_members - Owners, Everyone Else Through Bot Command
+      priority_speaker - False For All
+      read_message_history - All
+      read_messages - All
+      request_to_speak - idk what this is. research. set appropriate
+      send_messages - All, Welcome Category, No One Sends Messages
+      send_messages_in_threads - All
+      send_tts_messages - All
+      speak - All, Music/AFK Channel Always Mute Mic
+      start_embedded_activites - All
+      stream - All, "Wake Timer" To Ensure Streamer Is Still Live. If Not, Bot Kill Stream. 3 Minute Response Timer
+      use_application_commands - All, Check Roles For Each Perm In Command Decorator
+      use_embedded_activities - All
+      use_external_emojis - All
+      use_external_stickers - All
+      use_slash_commands - All
+      use_voice_activation - All
+      value - idk what this is. research. set appropriate
+      view_audit_log - Owner, Bot, Developers, Head Admins, Admins
+      view_channel - All
+      view_guild_insights - All Staff For Promotion Reasons To Get Community Involved In Building Community Up
+    }
+
+
+FOR RULES.TXT
+
+  - Each Time The Rules Are Updated In Any Manor, The Rules Channel Needs To Delete The Existing Messages Containing The Rules Before Sending Messages With The Updated Rules Automatically
+  - After Messages Are Deleted, And Re-Sent, An Automatic Announcement Needs To Be Made @everyone Used.
