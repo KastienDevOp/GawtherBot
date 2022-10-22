@@ -1,0 +1,2 @@
+# GawtherBot
+ Gawther Discord Bot
