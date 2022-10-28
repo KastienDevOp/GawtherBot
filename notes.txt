@@ -60,3 +60,46 @@ FOR RULES.TXT
 
   - Each Time The Rules Are Updated In Any Manor, The Rules Channel Needs To Delete The Existing Messages Containing The Rules Before Sending Messages With The Updated Rules Automatically
   - After Messages Are Deleted, And Re-Sent, An Automatic Announcement Needs To Be Made @everyone Used.
+
+
+
+GENERAL NOTES
+
+  - in the createDb.py file, the schema has changed. id's are no longer primary keys as it throws errors with the code
+
+
+
+
+
+
+
+
+  ================== 10/26/2022 ====================
+
+  1) we need to create a language filter json file, and use it to filter messages on each on_message event, and we need to be sure
+     to check along with commands. What I mean is that the bot is already looking for messages each time we send a message no matter
+     what, but when we send a command, for example in the create custom embed function, the user depicts what they want their description
+     of the embed to be. Those use entries also need to be taken into account with the bots language filter so that when the language
+     filter goes to intervine and take the message away for inappropraite language, it can either put the current command on hold until
+     the user enters a message that meets the filters requirements, or cancels the current command being executed, otherwise, when the member
+     goes to respond to the bot with a message, and the language filter takes and deletes the message before the command can get access to it,
+     then the command is going to error out.
+
+
+
+  ================== 10/27/2022 ====================
+
+  - Write in DB logic for bank_commands.py line 149
+  - Run a triple check debug on all existing commands; fix what's broken
+  - create a plan for other commands to incorporate, generate list, split list if want
+  - plan a release date for version one
+  - plan out advertisement, if any else word of mouth
+
+
+
+  ================= 10/28/2022 =====================
+
+  - Kastien, read the commands.json file. At the top, the first key, value pair is for you.
+  - added more commands
+    - rules command for general.py
+    - adjust_balance command for bank.py

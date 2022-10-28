@@ -35,20 +35,26 @@ async def on_ready():
         if filename.endswith(".py"):
             all_cogs.append(f"cogs.{filename[:-3]}")
 
+    print("="*20)
+    print("Gawther Is Booting Up. . .")
     msg = await terminal.send("Gawther Is Booting Up. . .")
+    await asyncio.sleep(2)
     await msg.edit(f"Preparing To Load {len(all_cogs)} cog(s). . .")
+    print(f"Preparing To Load {len(all_cogs)} cog(s). . .")
+    await asyncio.sleep(2)
 
     for cog in all_cogs:
         bot.load_extension(cog)
         await msg.edit(f"Loaded {cog} (/)")
-        await asyncio.sleep(1)
+        print(f"Loaded {cog} (/)")
+        await asyncio.sleep(0.5)
 
     await msg.edit("Gawther Has Booted and Is Online. Enjoy!")
-    await asyncio.sleep(1)
-    await msg.delete()
+    print("Gawther Online")
+    print("="*20)
 
 @bot.command()
-@commands.is_owner()
+@commands.has_any_role("Owners","Developers","Head Administrators")
 async def update(ctx):
     async def start():
         await msg.delete()

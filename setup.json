@@ -1,6 +1,22 @@
 {
   "guild_url": "",
   "terminalId": 1010358897057476708,
+  "dbNotifications": 1033855023618203698,
+  "dev_notes": 1033884237255950426,
+  "information": {
+    "one": {
+      "name": "Who Are We?",
+      "value": "We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment."
+    },
+    "two": {
+      "name": "What Do We Provide?",
+      "value": "We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a Support Threads category to allow you to obtain the best help possible without having to search through a jumbled chat channel for your last question and best answer."
+    },
+    "three": {
+      "name": "What Are Our Perks?",
+      "value": "Given that this is a community driven discord server, the GawtherPerks and Reputations haven't been setup yet as we are patiently awaiting for you guys to tell us what you would like to see as perks and rewards within the community."
+    }
+  },
   "categories": {
     "Welcome": {
       "arriving": "Welcoming New Members",
@@ -74,7 +90,7 @@
     },
     "Staff": {
       "chat": "Staff Chat about anyt general conversation",
-      "announcements": "Any and all announcements for staff members",
+      "staff-announcements": "Any and all announcements for staff members",
       "updates": "Any and all updates staff needs to be aware of",
       "support": "Get support from higher level staff",
       "acknowledgements": "Say something good about your co-staff member",
@@ -95,104 +111,6 @@
       "mute-logs": "Any Error Messages When Using The Mute, Kick, Ban commands - commands: /mute, /kick, /ban, ",
       "member-commands-executed": "Any Commands Executed By Any Member At Any Time. YES ALL COMMANDS",
       "staff-member-commands-executed": "Any Staff Commands Executed By Any Staff Member At Any Time. YES ALL COMMANDS"
-    }
-  },
-  "rules": {
-    "one": {
-      "name": "Be Respectful",
-      "desc": "No matter what, respect is a must. It does not matter who has been what degree of rude with you, or disrespectful, do not take the situation into your own hands, but instead, report it."
-    },
-    "two": {
-      "name": "No Nudity or Pornography!",
-      "desc": "At NO given time shall any nudity be shown, or portrayed, in any of the Gawther Platforms. This is a community for ages 13+. Anyone caught sharing/displaying any types of nudity will be permenantly removed from ALL platforms immediately. This also includes being visible on camera."
-    },
-    "three": {
-      "name": "Channel Topics Exist",
-      "desc": "As the name states, channel topics exist. When you go to a text channel, look at the top of the channel. There is a description that states the purpose of the channel. The members of the community will typically relay this information to members who ask their questions in the wrong channels to keep the channels clean and organized."
-    },
-    "four": {
-      "name": "Respect All Staff Members and Their Decisions!",
-      "desc": "It does not matter if you agree or disagree with a staff member during a currently happening situation. Respect their decision on how they handled the situation. If you do NOT agree with how a situation was handled, please get in touch with staff for further assistance."
-    },
-    "five": {
-      "name": "Do Not Ping Higher-Level Staff Unless Necessary!",
-      "desc": "We are consistently working and striving to improve the community as a whole. We DO NOT get paid to do this job, thus do not rush us. Everyone's opinions and concerns that are reported are reviewed each week, one-by-one, and discussed in a private channel for further evaluation."
-    },
-    "six": {
-      "name": "Need To Speak With Upper Staff?",
-      "desc": "If you need to open a support ticket to speak with upper-level staff, then do understand that the immediate response staff team will as you questions first regarding the situation to ensure that they cannot help you without needing to ping upper-level staff."
-    },
-    "seven": {
-      "name": "Doxxing Is Not Allowed!",
-      "desc": "Giving away, or selling anyones publicly, or non-publicly, identifiable information anywhere in DM's, or in any part or sub-part of any Gawther Platform is prohibited and will result in an immediate ban ith no appeal. See Federal Laws on Doxxing and Their Repercussions."
-    },
-    "eight": {
-      "name": "Private Threads Are Not Allowed!",
-      "desc": "We are a community comprised of individuals of ALL ages 13+. If there is something that you need to tell someone privately, then utilize Direct Messages, but do understand that all of these rules apply even when in Direct Messages between Gawther Members."
-    },
-    "nine": {
-      "name": "Do Not Create Your Own Invite Link!",
-      "desc": "The bot is setup with a command to invite your friends to the discord. Please do not create your own invite links. Use the /invite command!"
-    },
-    "ten": {
-      "name": "At-least 2 Staff Members Required!",
-      "desc": "When pulling a member into a voice channel to discuss a prolem, or other details, at least 2 staff members are required to be in the channel at all times. This is for the safety of the member, and staff."
-    },
-    "eleven": {
-      "name": "No Gaslighting!",
-      "desc": "A member may not attempt to psychologically manipulate or attempt to sow self-doubt and confusion towards another member."
-    },
-    "twelve": {
-      "name": "No Spamming!",
-      "desc": "At not time is a member allowed to spam any text/voice channels. This will result in an automatic 3 Day Mute."
-    },
-    "thirteen": {
-      "name": "No Drama!",
-      "desc": "Anyone attempting to create, or participating in, drama will be muted for 3 days immediately. Drama will not be tolerated within the Gawther Platform."
-    },
-    "fourteen": {
-      "name": "Further More",
-      "desc": "Staff Members have access to /warn_member, /mute_member, /kick_member. These commands replace the default discord version commands. These commands are setup to allow the staff member executing them to insert their own time frames. The time frames shown in the punishment table are suggestive time frames for staff to use."
-    },
-    "fifteen": {
-      "name": "Appealing A Decision",
-      "desc": "If at any time you are unhappy with a log on your record, then you're welcome to contact staff and discuss appealing/removing it. Only the Head Administrator and Owners have permissions to strike items from records."
-    },
-    "sixteen": {
-      "name": "exceptions",
-      "desc": "A Member May Not Appeal An Item On Their Record If: The Item Is Older Than 6 Months.\nThe Item Is Not At Least 7 Calendar Days Old.\nThe Member APpealed The Same Item More Than 3 Times In A Given 6 Months Period."
-    }
-  },
-  "punishmentTable": {
-    "one": {
-      "name": "Warnings",
-      "desc": "Warnings do not get tallied against you, but are recorded. These are only recorded for proof in the event the staff member is ever asked."
-    },
-    "two": {
-      "name": "Mutes",
-      "desc": "1st - 5 Minutes\n2nd - 15 Minutes\n3rd - 30 Minutes\n4th - 45 Minutes\n5th+ - 1 Hour or Change To Kicks"
-    },
-    "three": {
-      "name": "Kicks",
-      "desc": "1st - 1 Hour, 15 Minutes\n2nd - 1 Hour, 30 Minutes\n3rd - 1 Hour, 45 Minutes\n4th+ - 2 Hours or Change To Bans"
-    },
-    "four": {
-      "name": "Bans",
-      "desc": "1st - 1 Day\n2nd - 3 Days\n3rd - 5 Days\n4th - 1 Month\n5th+ - 6 Months"
-    }
-  },
-  "information": {
-    "one": {
-      "name": "Who Are We?",
-      "value": "We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment."
-    },
-    "two": {
-      "name": "What Do We Provide?",
-      "value": "We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a manner to ask you questions to get you the specific needed assistance you are looking for along with ample staff to help keep things running!"
-    },
-    "three": {
-      "name": "What Are Our Perks?",
-      "value": "Given that this is a community driven discord server, the GawtherPerks have not been setup yet as we are waiting patiently for you guys to start giving us your input and opinions on what you believe would make this platform better!"
     }
   },
   "roles": {
@@ -268,5 +186,42 @@
       "color": "#FFF",
       "permissions": {}
     }
+  },
+  "discord_embed_colors": {
+    "blue": "disnake.Colour.blue",
+    "blurple": "disnake.Colour.blurple",
+    "brand_green": "disnake.Colour.brand_green",
+    "brand_red": "disnake.Colour.brand_red",
+    "dark_blue": "disanke.Colour.dark_blue",
+    "dark_gold": "disnake.Colour.dark_gold",
+    "dark_gray": "disnake.Colour.dark_gray",
+    "dark_green": "disnake.Colour.dark_green",
+    "dark_grey": "disnake.Colour.dark_grey",
+    "dark_magenta": "disnake.Colour.dark_magenta",
+    "dark_orange": "disnake.Colour.dark_orange",
+    "dark_purple": "disnake.Colour.dark_purple",
+    "dark_red": "disnake.Colour.dark_red",
+    "dark_teal": "disnake.Colour.dark_teal",
+    "dark_theme": "disnake.Colour.dark_theme",
+    "darker_gray": "disnake.Colour.darker_gray",
+    "darker_grey": "disnake.Colour.darker_grey",
+    "default": "disnake.Colour.default",
+    "fuchsia": "disanke.Colour.fuchsia",
+    "gold": "disnake.Colour.gold",
+    "green": "disnake.Colour.green",
+    "greyple": "disnake.Colour.greyple",
+    "light_gray": "disnake.Colour.light_gray",
+    "light_grey": "disnake.Colour.light_grey",
+    "lighter_gray": "disnake.Colour.lighter_gray",
+    "lighter_grey": "disnake.Colour.lighter_gray",
+    "magenta": "disnake.Colour.magenta",
+    "og_blurple": "disnake.Colour.og_blurple",
+    "old_blurple": "disnake.Colour.old_blurple",
+    "orange": "disanke.Colour.orange",
+    "purple": "disnake.Colour.purple",
+    "random": "disnake.Colour.random",
+    "red": "disnake.Colour.red",
+    "teal": "disnake.Colour.teal",
+    "yellow": "disnake.Colour.yellow"
   }
 }

@@ -5,12 +5,13 @@ def create_db():
         cur = mdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS members(
-            id INTEGER PRIMARY KEY,
-            bank INTEGER
+            id INTEGER,
+            bank INTEGER,
+            quote TEXT
         )''')
 
         cur.execute('''CREATE TABLE IF NOT EXISTS reports(
-            id INTEGER PRIMARY KEY,
+            id INTEGER,
             member TEXT,
             author TEXT,
             date TEXT,
@@ -18,16 +19,33 @@ def create_db():
         )''')
 
         cur.execute('''CREATE TABLE IF NOT EXISTS suggestions(
-            id INTEGER PRIMARY KEY,
+            id INTEGER,
             member TEXT,
             date TEXT,
             description TEXT
         )''')
 
         cur.execute('''CREATE TABLE IF NOT EXISTS appeals(
-            id INTEGER PRIMARY KEY,
+            id INTEGER,
             member TEXT,
             staff TEXT,
             date TEXT,
             notes TEXT
+        )''')
+
+        cur.execute('''CREATE TABLE IF NOT EXISTS rules(
+            id INTEGER,
+            author TEXT,
+            editor TEXT,
+            rule TEXT,
+            date_last_edited TEXT
+        )''')
+
+        cur.execute('''CREATE TABLE IF NOT EXISTS bank_transactions(
+            id INTEGER,
+            payer INTEGER,
+            payee INTEGER,
+            date TEXT,
+            amount TEXT,
+            reason TEXT
         )''')
