@@ -71,7 +71,7 @@ class DevCommands(commands.Cog):
                 description = f"{inter.author.name} Has Created A New Category."
             ).add_field(
                 name = "Information",
-                value = f"Category Name: {category_name}\nPosition: {position}",
+                value = f"Category Name: {new_category.name}\nPosition: {position}",
                 inline = False
             ).set_thumbnail(
                 url = self.bot.user.avatar

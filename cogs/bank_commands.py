@@ -37,6 +37,7 @@ class BankCommands(commands.Cog):
 
     async def pay_to_member(self,inter):
         await inter.response.send_message("Enter The Members ID.",ephemeral=True)
+        
         member_to_pay = disnake.utils.get(inter.guild.members, id=int((await self.bot.wait_for('message')).content))
 
         if member_to_pay:
@@ -146,7 +147,7 @@ class BankCommands(commands.Cog):
                 if all(i.isprintable() for i in reason):
                     today = date.today()
 
-                    if await self.update_db(member_to_adjust, amount_to_adjust_by, reason, date) == True:
+                    if await self.increase_db(member_to_adjust, amount_to_adjust_by, reason, date) == True:
                         member_bal, member_new_bal = [] # pull from database, or return as separate list from update command. Ex: return True, list
 
                         if await self.send_adjustment_notification(inter, inter.author, member_to_adjust, amount_to_adjust_by, reason) == True:
@@ -231,9 +232,14 @@ class BankCommands(commands.Cog):
             url = self.bot.user.avatar
         )
 
-        await payer.send(embed=payer_embed)
-        await payee.send(embed=payee_embed)
-        await (disnake.utils.get(inter.guild.text_channels, name="bank_notifications")).send(embed=noti_embed)
+        try:
+            await payer.send(embed=payer_embed)
+            await payee.send(embed=payee_embed)
+            await (disnake.utils.get(inter.guild.text_channels, name="bank_notifications")).send(embed=noti_embed)
+
+            return True
+        except:
+            return False
 
     async def increase_db(self, payer, payee, amount, reason, date):
         with sql.connect('main.db') as mdb:
