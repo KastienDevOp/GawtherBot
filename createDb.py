@@ -46,6 +46,26 @@ def create_db():
             payer INTEGER,
             payee INTEGER,
             date TEXT,
-            amount TEXT,
+            amount INTEGER,
             reason TEXT
+        )''')
+
+        cur.execute('''CREATE TABLE IF NOT EXISTS bank_requests(
+            id INTEGER,
+            payer INTEGER,
+            payee INTEGER,
+            amount INTEGER,
+            date TEXT,
+            reason TEXT,
+            paid TEXT
+        )''')
+
+        cur.execute('''CREATE TABLE IF NOT EXISTS bank_adjustment_logs(
+            id INTEGER,
+            staff INTEGER,
+            member INTEGER,
+            amount INTEGER,
+            method TEXT,
+            reason TEXT,
+            date TEXT
         )''')

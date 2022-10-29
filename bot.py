@@ -63,7 +63,7 @@ async def update(ctx):
 
     msg = await ctx.send("Gawther Is Restarting. . .")
     print("Restarting Gawther. . .")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     await start()
 
 

@@ -20,7 +20,7 @@ class DevCommands(commands.Cog):
         guild_ids=guild_ids
     )
     @commands.has_any_role("Owners", "Developers")
-    async def developers(self, inter, operation: str = commands.Param(choices=["send_dev_note","create_category","create_channel"])):
+    async def developers(self, inter, operation: str = commands.Param(choices=["send_dev_note","create_category","create_channel","delete_category","delete_channel"])):
         if operation == "send_dev_note":
             await self.send_dev_note(inter)
         elif operation == "create_category":
@@ -39,9 +39,8 @@ class DevCommands(commands.Cog):
         await inter.response.send_message("Enter Note To Send:", ephemeral=True)
         note = await self.bot.wait_for('message')
 
-        await note.delete()
-
         if all(i.isprintable() for i in note.content):
+            await note.delete()
             await noti_chan.send(f"{role_to_mention.mention}\n{note.content}")
         else:
             sentence_parts = [
@@ -58,12 +57,9 @@ class DevCommands(commands.Cog):
         category_name = (await self.bot.wait_for('message')).content
 
         if all(i.isprintable() for i in category_name):
-            await inter.edit_original_message("Enter Position Of Channel. Remember: The Very Top Category Is Index ZERO!")
-            position = int((await self.bot.wait_for('message')).content)
+            await inter.channel.purge(limit=1)
 
-            await inter.channel.purge(limit=2)
-
-            new_category = await inter.guild.create_category(name=category_name, position=position)
+            new_category = await inter.guild.create_category(name=category_name)
 
             embed = disnake.Embed(
                 color = disnake.Colour.random(),
@@ -71,7 +67,7 @@ class DevCommands(commands.Cog):
                 description = f"{inter.author.name} Has Created A New Category."
             ).add_field(
                 name = "Information",
-                value = f"Category Name: {new_category.name}\nPosition: {position}",
+                value = f"Category Name: {new_category.name}",
                 inline = False
             ).set_thumbnail(
                 url = self.bot.user.avatar

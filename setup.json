@@ -1,227 +1,228 @@
-{
-  "guild_url": "",
-  "terminalId": 1010358897057476708,
-  "dbNotifications": 1033855023618203698,
-  "dev_notes": 1033884237255950426,
-  "information": {
-    "one": {
-      "name": "Who Are We?",
-      "value": "We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment."
+﻿{
+    "guild_bank": 99999550,
+    "bank_gone_empty_count": 0,
+    "terminalId": 1010358897057476708,
+    "dbNotifications": 1033855023618203698,
+    "dev_notes": 1033884237255950426,
+    "information": {
+        "one": {
+            "name": "Who Are We?",
+            "value": "We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment."
+        },
+        "two": {
+            "name": "What Do We Provide?",
+            "value": "We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a Support Threads category to allow you to obtain the best help possible without having to search through a jumbled chat channel for your last question and best answer."
+        },
+        "three": {
+            "name": "What Are Our Perks?",
+            "value": "Given that this is a community driven discord server, the GawtherPerks and Reputations haven't been setup yet as we are patiently awaiting for you guys to tell us what you would like to see as perks and rewards within the community."
+        }
     },
-    "two": {
-      "name": "What Do We Provide?",
-      "value": "We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a Support Threads category to allow you to obtain the best help possible without having to search through a jumbled chat channel for your last question and best answer."
+    "categories": {
+        "Welcome": {
+            "arriving": "Welcoming New Members",
+            "departing": "Departing Current Members",
+            "rules": "What every member should know and follow",
+            "announcements": "Things going on in the community",
+            "role_selection": "Decide if you want to be apart of the Programming, Gaming, and Artistry Communities",
+            "promotions": "See who just got upgraded"
+        },
+        "General": {
+            "chat": "Where everyone is welcome to talk about anything they like that is PG-13 appropriate",
+            "dank_humor": "Any and all memes, or other, that you find ridiculously hilarious that is PG-13 appropriate",
+            "introductions": "Introduce Yourself! Tell us about you, your goals, your dreams, or whatever you feel appropriate",
+            "music_commands": "A channel just for commanding the music bot",
+            "lobby_voice": "A general voice chat for everyone to use",
+            "music_voice": "A music channel just for vibing",
+            "afk_voice": "A channel to go when you're away from your computer"
+        },
+        "Programming": {
+            "announcements": "Things going on in the programming community",
+            "updates": "Any updates made to the programming community",
+            "role_selection": "Know any languages? Then select to be apart of those roles and their communitites",
+            "python-general": "Anything Python Related",
+            "javascript-general": "Anything JS Related",
+            "java-general": "Anything Java Related",
+            "rust-general": "Anything Rust Related",
+            "c-lang-general": "Anything C Related",
+            "go-general": "Anything Go Related",
+            "html-css-general": "Anything HTML/CSS Related",
+            "python-support-threads": "Discord UI Handled Forum Channel",
+            "javascript-support-threads": "",
+            "java-support-threads": "",
+            "rust-support-threads": "",
+            "c-lang-support-threads": "",
+            "go-support-threads": "",
+            "html-css-support-threads": "Discord UI Handled Forum Channel",
+            "python-voice": 0,
+            "javascript-voice": 0,
+            "java-voice": 0,
+            "rust-voice": 0,
+            "c-voice": 0,
+            "go-voice": 0,
+            "html-css-voice": 0
+        },
+        "Gaming-Lobby": {
+            "announcements": "Things going on in the gaming community",
+            "updates": "Any updates made to the gaming community",
+            "role_selection": "Select which game community you'd like to be apart of",
+            "general_one_voice": 0,
+            "general_two_voice": 0
+        },
+        "Minecraft": {
+            "chat": "Chat about any and all things Minecraft",
+            "announcements": "Any and all announcements about the Minecraft community",
+            "updates": "Any and all updates made to the Minecraft community here in Gawther",
+            "support": "Get support with the Minecraft game",
+            "showcase": "Proud of a build?",
+            "game_one_voice": 0,
+            "game_two_voice": 0,
+            "game_three_voice": 0
+        },
+        "Chess": {
+            "chat": "Chat about any and all things Chess",
+            "announcements": "Any and all announcements about the Chess community",
+            "updates": "Any and all updates made to the Chess community here in discord",
+            "support": "Get support with your chess games",
+            "showcase": "Proud of a game?",
+            "game_one_voice": 0,
+            "game_two_voice": 0,
+            "game_three_voice": 0
+        },
+        "Staff": {
+            "chat": "Staff Chat about anyt general conversation",
+            "staff-announcements": "Any and all announcements for staff members",
+            "updates": "Any and all updates staff needs to be aware of",
+            "support": "Get support from higher level staff",
+            "acknowledgements": "Say something good about your co-staff member",
+            "appeals": "Members who appeal their mutes, kicks, or bans will show up here",
+            "reported_members": "Members who report other members will show up here",
+            "reported_staff": "Members who report staff members will show up here",
+            "staff_general_voice": 0,
+            "staff_with_member": 0
+        },
+        "Bot-Logs": {
+            "error-logs": "Any Left Over Error Messages - commands: /server, /user, /rules, /ping, /purge, /promote, /help_(member, [r.name for r in guild.roles if r.name in ['Owner', 'Developers', 'etc']) <- questions, ask me",
+            "member-join-logs": "Any Error Messages On New Members Joining",
+            "member-leave-logs": "Any Error Messages On Members Leaving",
+            "role-selection-logs": "Any Error Messages On Role Selections, /role_selection, /prog_role_selection, /game_role_selection, /art_role_selection, ",
+            "appeal-logs": "Any Errors On Members Appealing Bans - commands: /appeal, ",
+            "database-logs": "Any Database Error Logs Here - commands: /reset_db, /pay, /request, /adj_bal, ",
+            "rules-logs": "Any Error Messages When Working With The Rules - commands: /create_rule, /edit_rule, /del_rule, ",
+            "mute-logs": "Any Error Messages When Using The Mute, Kick, Ban commands - commands: /mute, /kick, /ban, ",
+            "member-commands-executed": "Any Commands Executed By Any Member At Any Time. YES ALL COMMANDS",
+            "staff-member-commands-executed": "Any Staff Commands Executed By Any Staff Member At Any Time. YES ALL COMMANDS"
+        }
     },
-    "three": {
-      "name": "What Are Our Perks?",
-      "value": "Given that this is a community driven discord server, the GawtherPerks and Reputations haven't been setup yet as we are patiently awaiting for you guys to tell us what you would like to see as perks and rewards within the community."
+    "roles": {
+        "Owners": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Developers": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Head-Admins": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Admins": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Moderators": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Community-Helpers": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Programming": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Gaming": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Artistry": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Python": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "JavaScript": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Java": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Rust": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "CSharp": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "HTML-CSS": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Minecraft": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Summoners-War": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Chess": {
+            "color": "#FFF",
+            "permissions": {}
+        }
+    },
+    "discord_embed_colors": {
+        "blue": "disnake.Colour.blue",
+        "blurple": "disnake.Colour.blurple",
+        "brand_green": "disnake.Colour.brand_green",
+        "brand_red": "disnake.Colour.brand_red",
+        "dark_blue": "disanke.Colour.dark_blue",
+        "dark_gold": "disnake.Colour.dark_gold",
+        "dark_gray": "disnake.Colour.dark_gray",
+        "dark_green": "disnake.Colour.dark_green",
+        "dark_grey": "disnake.Colour.dark_grey",
+        "dark_magenta": "disnake.Colour.dark_magenta",
+        "dark_orange": "disnake.Colour.dark_orange",
+        "dark_purple": "disnake.Colour.dark_purple",
+        "dark_red": "disnake.Colour.dark_red",
+        "dark_teal": "disnake.Colour.dark_teal",
+        "dark_theme": "disnake.Colour.dark_theme",
+        "darker_gray": "disnake.Colour.darker_gray",
+        "darker_grey": "disnake.Colour.darker_grey",
+        "default": "disnake.Colour.default",
+        "fuchsia": "disanke.Colour.fuchsia",
+        "gold": "disnake.Colour.gold",
+        "green": "disnake.Colour.green",
+        "greyple": "disnake.Colour.greyple",
+        "light_gray": "disnake.Colour.light_gray",
+        "light_grey": "disnake.Colour.light_grey",
+        "lighter_gray": "disnake.Colour.lighter_gray",
+        "lighter_grey": "disnake.Colour.lighter_gray",
+        "magenta": "disnake.Colour.magenta",
+        "og_blurple": "disnake.Colour.og_blurple",
+        "old_blurple": "disnake.Colour.old_blurple",
+        "orange": "disanke.Colour.orange",
+        "purple": "disnake.Colour.purple",
+        "random": "disnake.Colour.random",
+        "red": "disnake.Colour.red",
+        "teal": "disnake.Colour.teal",
+        "yellow": "disnake.Colour.yellow"
     }
-  },
-  "categories": {
-    "Welcome": {
-      "arriving": "Welcoming New Members",
-      "departing": "Departing Current Members",
-      "rules": "What every member should know and follow",
-      "announcements": "Things going on in the community",
-      "role_selection": "Decide if you want to be apart of the Programming, Gaming, and Artistry Communities",
-      "promotions": "See who just got upgraded"
-    },
-    "General": {
-      "chat": "Where everyone is welcome to talk about anything they like that is PG-13 appropriate",
-      "dank_humor": "Any and all memes, or other, that you find ridiculously hilarious that is PG-13 appropriate",
-      "introductions": "Introduce Yourself! Tell us about you, your goals, your dreams, or whatever you feel appropriate",
-      "music_commands": "A channel just for commanding the music bot",
-      "lobby_voice": "A general voice chat for everyone to use",
-      "music_voice": "A music channel just for vibing",
-      "afk_voice": "A channel to go when you're away from your computer"
-    },
-    "Programming": {
-      "announcements": "Things going on in the programming community",
-      "updates": "Any updates made to the programming community",
-      "role_selection": "Know any languages? Then select to be apart of those roles and their communitites",
-      "python-general": "Anything Python Related",
-      "javascript-general": "Anything JS Related",
-      "java-general": "Anything Java Related",
-      "rust-general": "Anything Rust Related",
-      "c-lang-general": "Anything C Related",
-      "go-general": "Anything Go Related",
-      "html-css-general": "Anything HTML/CSS Related",
-      "python-support-threads": "Discord UI Handled Forum Channel",
-      "javascript-support-threads": "",
-      "java-support-threads": "",
-      "rust-support-threads": "",
-      "c-lang-support-threads": "",
-      "go-support-threads": "",
-      "html-css-support-threads": "Discord UI Handled Forum Channel",
-      "python-voice": 0,
-      "javascript-voice": 0,
-      "java-voice": 0,
-      "rust-voice": 0,
-      "c-voice": 0,
-      "go-voice": 0,
-      "html-css-voice": 0
-    },
-    "Gaming-Lobby": {
-      "announcements": "Things going on in the gaming community",
-      "updates": "Any updates made to the gaming community",
-      "role_selection": "Select which game community you'd like to be apart of",
-      "general_one_voice": 0,
-      "general_two_voice": 0
-    },
-    "Minecraft": {
-      "chat": "Chat about any and all things Minecraft",
-      "announcements": "Any and all announcements about the Minecraft community",
-      "updates": "Any and all updates made to the Minecraft community here in Gawther",
-      "support": "Get support with the Minecraft game",
-      "showcase": "Proud of a build?",
-      "game_one_voice": 0,
-      "game_two_voice": 0,
-      "game_three_voice": 0
-    },
-    "Chess": {
-      "chat": "Chat about any and all things Chess",
-      "announcements": "Any and all announcements about the Chess community",
-      "updates": "Any and all updates made to the Chess community here in discord",
-      "support": "Get support with your chess games",
-      "showcase": "Proud of a game?",
-      "game_one_voice": 0,
-      "game_two_voice": 0,
-      "game_three_voice": 0
-    },
-    "Staff": {
-      "chat": "Staff Chat about anyt general conversation",
-      "staff-announcements": "Any and all announcements for staff members",
-      "updates": "Any and all updates staff needs to be aware of",
-      "support": "Get support from higher level staff",
-      "acknowledgements": "Say something good about your co-staff member",
-      "appeals": "Members who appeal their mutes, kicks, or bans will show up here",
-      "reported_members": "Members who report other members will show up here",
-      "reported_staff": "Members who report staff members will show up here",
-      "staff_general_voice": 0,
-      "staff_with_member": 0
-    },
-    "Bot-Logs": {
-      "error-logs": "Any Left Over Error Messages - commands: /server, /user, /rules, /ping, /purge, /promote, /help_(member, [r.name for r in guild.roles if r.name in ['Owner', 'Developers', 'etc']) <- questions, ask me",
-      "member-join-logs": "Any Error Messages On New Members Joining",
-      "member-leave-logs": "Any Error Messages On Members Leaving",
-      "role-selection-logs": "Any Error Messages On Role Selections, /role_selection, /prog_role_selection, /game_role_selection, /art_role_selection, ",
-      "appeal-logs": "Any Errors On Members Appealing Bans - commands: /appeal, ",
-      "database-logs": "Any Database Error Logs Here - commands: /reset_db, /pay, /request, /adj_bal, ",
-      "rules-logs": "Any Error Messages When Working With The Rules - commands: /create_rule, /edit_rule, /del_rule, ",
-      "mute-logs": "Any Error Messages When Using The Mute, Kick, Ban commands - commands: /mute, /kick, /ban, ",
-      "member-commands-executed": "Any Commands Executed By Any Member At Any Time. YES ALL COMMANDS",
-      "staff-member-commands-executed": "Any Staff Commands Executed By Any Staff Member At Any Time. YES ALL COMMANDS"
-    }
-  },
-  "roles": {
-    "Owners": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Developers": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Head-Admins": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Admins": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Moderators": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Community-Helpers": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Programming": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Gaming": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Artistry": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Python": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "JavaScript": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Java": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Rust": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "CSharp": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "HTML-CSS": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Minecraft": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Summoners-War": {
-      "color": "#FFF",
-      "permissions": {}
-    },
-    "Chess": {
-      "color": "#FFF",
-      "permissions": {}
-    }
-  },
-  "discord_embed_colors": {
-    "blue": "disnake.Colour.blue",
-    "blurple": "disnake.Colour.blurple",
-    "brand_green": "disnake.Colour.brand_green",
-    "brand_red": "disnake.Colour.brand_red",
-    "dark_blue": "disanke.Colour.dark_blue",
-    "dark_gold": "disnake.Colour.dark_gold",
-    "dark_gray": "disnake.Colour.dark_gray",
-    "dark_green": "disnake.Colour.dark_green",
-    "dark_grey": "disnake.Colour.dark_grey",
-    "dark_magenta": "disnake.Colour.dark_magenta",
-    "dark_orange": "disnake.Colour.dark_orange",
-    "dark_purple": "disnake.Colour.dark_purple",
-    "dark_red": "disnake.Colour.dark_red",
-    "dark_teal": "disnake.Colour.dark_teal",
-    "dark_theme": "disnake.Colour.dark_theme",
-    "darker_gray": "disnake.Colour.darker_gray",
-    "darker_grey": "disnake.Colour.darker_grey",
-    "default": "disnake.Colour.default",
-    "fuchsia": "disanke.Colour.fuchsia",
-    "gold": "disnake.Colour.gold",
-    "green": "disnake.Colour.green",
-    "greyple": "disnake.Colour.greyple",
-    "light_gray": "disnake.Colour.light_gray",
-    "light_grey": "disnake.Colour.light_grey",
-    "lighter_gray": "disnake.Colour.lighter_gray",
-    "lighter_grey": "disnake.Colour.lighter_gray",
-    "magenta": "disnake.Colour.magenta",
-    "og_blurple": "disnake.Colour.og_blurple",
-    "old_blurple": "disnake.Colour.old_blurple",
-    "orange": "disanke.Colour.orange",
-    "purple": "disnake.Colour.purple",
-    "random": "disnake.Colour.random",
-    "red": "disnake.Colour.red",
-    "teal": "disnake.Colour.teal",
-    "yellow": "disnake.Colour.yellow"
-  }
 }

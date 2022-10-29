@@ -200,19 +200,19 @@ class GeneralCommandsRewrite(commands.Cog):
                 description=f"{', '.join([g.name for g in member.mutual_guilds])}"
             ).set_thumbnail(url=member.avatar)
 
-            all_activities = [a for a in member.activities]
-            all_activs = ""
+            # all_activities = [a.BaseActivity for a in member.activities]
+            # all_activs = ""
 
-            if 0 < len(all_activities) < 2:
-                ', '.join(all_activities)
-            else:
-                all_activs = "None"
+            # if 0 < len(all_activities) < 2:
+            #     ', '.join(all_activities)
+            # else:
+            #     all_activs = "None"
 
-            user_embed4 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Activities",
-                description=f"{all_activs}"
-            ).set_thumbnail(url=member.avatar)
+            # user_embed4 = disnake.Embed(
+            #     color=disnake.Colour.random(),
+            #     title="Activities",
+            #     description=f"{all_activs}"
+            # ).set_thumbnail(url=member.avatar)
 
             user_embed5 = disnake.Embed(
                 color=disnake.Colour.random(),
