@@ -363,9 +363,11 @@ class GeneralCommandsRewrite(commands.Cog):
 
             member_commands = []
             staff_commands = []
+            dev_commands = []
 
             member_embeds = []
             staff_embeds = []
+            dev_embeds = []
 
             embeds = {}
 
@@ -438,10 +440,13 @@ class GeneralCommandsRewrite(commands.Cog):
             description=information["intro"]["desc"]
         ).set_thumbnail(url=self.bot.user.avatar)
 
-        if inter.author.top_role.name in ["Owners", "Developers", "Head Administrators", "Administrators", "Moderators", "Community Helpers"]:
+        if inter.author.top_role.name in ["Owners", "Head Administrators", "Administrators", "Moderators", "Community Helpers"]:
             list_of_embeds = embeds["member"] + embeds["staff"]
             list_of_embeds.insert(0, leading_embed)
             print(list_of_embeds)
+        elif inter.author.top_role.name in ["Owners", "Developers"]:
+            list_of_embeds = embeds["member"] + embeds["staff"] + embeds["developers"]
+            list_of_embeds.insert(0, leading_embed)
         else:
             list_of_embeds = embeds["member"]
             list_of_embeds.insert(0, leading_embed)

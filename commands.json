@@ -1,87 +1,85 @@
 {
-    "command_information": {
-        
-        "KASTIEN": "THERE HAS BEEN A THIRD SECTION OF COMMANDS ADDED TO THIS LIST FOR DEVELOPERS. PLEASE UPDATE YOUR LOOPS ACCORDINGLY AS I HAVE UPDATED THE CHECK SYSTEM",
+  "command_information": {
+    "KASTIEN": "THERE HAS BEEN A THIRD SECTION OF COMMANDS ADDED TO THIS LIST FOR DEVELOPERS. PLEASE UPDATE YOUR LOOPS ACCORDINGLY AS I HAVE UPDATED THE CHECK SYSTEM",
 
-
-        "intro": {
-          "title": "Gawther's Help Menu",
-          "desc": "Below Are The Commands and How They're Used. If you have any questions, please contact support."
-        },
-        "members": {
-          "Ping": {
-            "command": "/member ping",
-            "desc": "Shows the user the bots' current latency and asks if they wish to report it.",
-            "rests": "Latency Must Be Aboce 20ms In Order To Report It."
-          },
-          "Server": {
-            "command": "/member server",
-            "desc": "Shows the user information about the server.",
-            "rests": "None"
-          },
-          "Who Is": {
-            "command": "/member who_is",
-            "desc": "Shows information on the target user. If left empty, will return the author of the command.",
-            "rests": "The member_id must be an integer, or whole number. Right click the user's profile, and select Copy ID."
-          },
-          "Favorite Quote": {
-            "command": "/member fav_quote",
-            "desc": "Allows the user to change their favorite quote that is stored in the database and used as foot notes on embeds that don't have preset foot notes.",
-            "rests": {
-              "a": "The quote must be written using the 26-Letter English Alphabet, Number 0-9, or Special Characters Found On The 26-Letter English Keyboard or Al Codes.",
-              "b": "The quote the user saves in the database is only used on embeds that the bot have preset foot notes to use."
-            }
-          },
-          "Help": {
-            "command": "/member help",
-            "desc": "Shows the user a help menu based off their highest ranking role within the discord server.",
-            "rests": "Must Be Staff To Get Staff Help Menu."
-          },
-          "Pay": {
-            "command": "/bank pay",
-            "desc": "Allows the user to pay another member GB within the discord server.",
-            "rests": {
-              "a": "The member being paid must be a member of the Gawther Platform Discord Server.",
-              "b": "The amount being paid must be a whole number Example: 155, 123, 28. Do not include a decimal! There is no change when using GB."
-            }
-          },
-          "Request": {
-            "command": "/bank request",
-            "desc": "Allows the user to request money owed from another member within the Gawther Platform Discord Server.",
-            "rests": {
-              "a": "The member being paid must be a member of the Gawther Platform Discord Server.",
-              "b": "The amount being paid must be a whole number Example: 155, 123, 28. Do not include a decimal! There is no change when using GB."
-            }
-          }
-        },
-        "staff": {
-          "Purge": {
-            "command": "/staff purge",
-            "desc": "Removes _n_ messages from the channel the command is executed in and generates a text file in the given channel for storage. DO NOT USE FREELY!",
-            "rests": {
-              "a": "The number must be a whole number",
-              "b": "It must be a necessary situation to use this command. Do not just use because you feel the channel has too many messages.",
-              "c": "Restoring channels, and emptying data from channels will be dealt with by the Owners and Developers ONLY!"
-            }
-          },
-          "Adjust Balance": {
-            "command": "/bank adjust_balance",
-            "desc": "Allows a staff member to adjust a members balance given specific circumstances. DO NOT USE FREELY!",
-            "rests": {
-              "a": "The member being adjusted must be a member of the Gawther Plaform Discord Server.",
-              "b": "The method must be either withdrawl or deposit.",
-              "c": "The reason must be of valid reasoning."
-            }
-          }
-        },
-        "developers": {
-          "Dev Note": {
-            "command": "/developers dev_note",
-            "desc": "Allows a developer to leave a developer note that goes to the dev_notes channel for other developers to read.",
-            "rests": {
-              "a": "The note part of the command must be 1500 characters or less as some characters are used by the bot to notify the other developers."
-            }
-          }
+    "intro": {
+      "title": "Gawther's Help Menu",
+      "desc": "Below Are The Commands and How They're Used. If you have any questions, please contact support."
+    },
+    "members": {
+      "Ping": {
+        "command": "/member ping",
+        "desc": "Shows the user the bots' current latency and asks if they wish to report it.",
+        "rests": "Latency Must Be Aboce 20ms In Order To Report It."
+      },
+      "Server": {
+        "command": "/member server",
+        "desc": "Shows the user information about the server.",
+        "rests": "None"
+      },
+      "Who Is": {
+        "command": "/member who_is",
+        "desc": "Shows information on the target user. If left empty, will return the author of the command.",
+        "rests": "The member_id must be an integer, or whole number. Right click the user's profile, and select Copy ID."
+      },
+      "Favorite Quote": {
+        "command": "/member fav_quote",
+        "desc": "Allows the user to change their favorite quote that is stored in the database and used as foot notes on embeds that don't have preset foot notes.",
+        "rests": {
+          "a": "The quote must be written using the 26-Letter English Alphabet, Number 0-9, or Special Characters Found On The 26-Letter English Keyboard or Al Codes.",
+          "b": "The quote the user saves in the database is only used on embeds that the bot have preset foot notes to use."
+        }
+      },
+      "Help": {
+        "command": "/member help",
+        "desc": "Shows the user a help menu based off their highest ranking role within the discord server.",
+        "rests": "Must Be Staff To Get Staff Help Menu."
+      },
+      "Pay": {
+        "command": "/bank pay",
+        "desc": "Allows the user to pay another member GB within the discord server.",
+        "rests": {
+          "a": "The member being paid must be a member of the Gawther Platform Discord Server.",
+          "b": "The amount being paid must be a whole number Example: 155, 123, 28. Do not include a decimal! There is no change when using GB."
+        }
+      },
+      "Request": {
+        "command": "/bank request",
+        "desc": "Allows the user to request money owed from another member within the Gawther Platform Discord Server.",
+        "rests": {
+          "a": "The member being paid must be a member of the Gawther Platform Discord Server.",
+          "b": "The amount being paid must be a whole number Example: 155, 123, 28. Do not include a decimal! There is no change when using GB."
         }
       }
+    },
+    "staff": {
+      "Purge": {
+        "command": "/staff purge",
+        "desc": "Removes _n_ messages from the channel the command is executed in and generates a text file in the given channel for storage. DO NOT USE FREELY!",
+        "rests": {
+          "a": "The number must be a whole number",
+          "b": "It must be a necessary situation to use this command. Do not just use because you feel the channel has too many messages.",
+          "c": "Restoring channels, and emptying data from channels will be dealt with by the Owners and Developers ONLY!"
+        }
+      },
+      "Adjust Balance": {
+        "command": "/bank adjust_balance",
+        "desc": "Allows a staff member to adjust a members balance given specific circumstances. DO NOT USE FREELY!",
+        "rests": {
+          "a": "The member being adjusted must be a member of the Gawther Plaform Discord Server.",
+          "b": "The method must be either withdrawl or deposit.",
+          "c": "The reason must be of valid reasoning."
+        }
+      }
+    },
+    "developers": {
+      "Dev Note": {
+        "command": "/developers dev_note",
+        "desc": "Allows a developer to leave a developer note that goes to the dev_notes channel for other developers to read.",
+        "rests": {
+          "a": "The note part of the command must be 1500 characters or less as some characters are used by the bot to notify the other developers."
+        }
+      }
+    }
   }
+}

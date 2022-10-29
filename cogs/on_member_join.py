@@ -95,23 +95,23 @@ class OnMemberJoin(commands.Cog):
                     current_members = cur.execute(
                         'SELECT id FROM members').fetchall()
 
-                    if member.id in current_members:
-                        srch = 'UPDATE member SET bank=? WHERE id=?'
-                        val = (1500.00, member.id)
+                    # if member.id in current_members:
+                    #     srch = 'UPDATE member SET bank=? WHERE id=?'
+                    #     val = (1500.00, member.id)
 
-                        cur.execute(srch, val)
+                    #     cur.execute(srch, val)
 
-                        await member.send("Your Account Has Been Reset With A Fresh Bank Balance Of $1500.00. Welcome Back To Gawther!")
+                    #     await member.send("Your Account Has Been Reset With A Fresh Bank Balance Of $1500.00. Welcome Back To Gawther!")
 
-                        embed = disnake.Embed(
-                            color=disnake.Colour.green(),
-                            title=f"Welcome Back {member.display_name}",
-                            description="We Are Pleased To Have You Back! Please Enjoy Your Stay! Remember: If you have any problems, please get in touch with Support!"
-                        ).set_footer(text=quote).set_thumbnail(url=member.avatar)
+                    #     embed = disnake.Embed(
+                    #         color=disnake.Colour.green(),
+                    #         title=f"Welcome Back {member.display_name}",
+                    #         description="We Are Pleased To Have You Back! Please Enjoy Your Stay! Remember: If you have any problems, please get in touch with Support!"
+                    #     ).set_footer(text=quote).set_thumbnail(url=member.avatar)
 
-                        await welcome_channel.send(embed=embed)
+                    #     await welcome_channel.send(embed=embed)
 
-                    elif member.id not in current_members:
+                    if member.id not in current_members:
                         srch = 'INSERT INTO members(id, bank) VALUES (?,?)'
                         val = (member.id, 1500.00)
 
@@ -129,7 +129,13 @@ class OnMemberJoin(commands.Cog):
                     else:
                         await member.send("There was an issue with adding you to the database. Please get in touch with support!")
             else:
-                print("Denied")
+                await member.send("Are you sure you want to deny the rules? Y/N")
+                choice = await self.bot.wait_for('message')
+
+                if choice.content.lower() == "y":
+                    await member.guild.kick(member, "Denied Confirmation To Rules")
+                else:
+                    self.on_member_join(member)
 
 
 def setup(bot):

@@ -1,7 +1,6 @@
 import disnake
 import sqlite3 as sql
 import json
-import asyncio
 
 from disnake.ext import commands
 from datetime import date
@@ -37,243 +36,280 @@ class BankCommands(commands.Cog):
             return await inter.response.send_message("Error With Params")
 
     async def pay_to_member(self,inter):
-        await asyncio.sleep(0.5)
+        await inter.response.send_message("Enter The Members ID.",ephemeral=True)
+        member_to_pay = disnake.utils.get(inter.guild.members, id=int((await self.bot.wait_for('message')).content))
 
-        await inter.response.send_message("Enter The ID Of The Member You Wish To Pay.",ephemeral=True)
-        member_id = await self.bot.wait_for('message')
-        member_to_pay = disnake.utils.get(inter.guild.members, id=int(member_id.content))
+        if member_to_pay:
+            await inter.channel.purge(limit=1)
 
-        await asyncio.sleep(0.7)
+            await inter.edit_original_message("Enter The Amount To Pay.")
+            amount_to_pay = int((await self.bot.wait_for('message')).content)
 
-        await inter.edit_original_message("Enter The Amount To Pay.")
-        amount_to_pay = await self.bot.wait_for('message')
+            await inter.edit_original_message("Enter The Reason For The Payment.")
+            reason = (await self.bot.wait_for('message')).content
 
-        await asyncio.sleep(0.7)
+            if all(i.isprintable() for i in reason):
+                await inter.channel.purge(limit=2)
 
-        await inter.edit_original_message("Enter The Reason.")
-        reason = await self.bot.wait_for('message')
+                today = date.today()
 
-        await asyncio.sleep(0.7)
+                if await self.increase_db(inter.author, member_to_pay, amount_to_pay, reason, today) == True:
+                    payer_bal, payee_bal, payer_new_bal, payee_new_bal = [] # pull from database, or return as separate list from update command Ex: return True, list
 
-        payer = inter.author.id
-        payee = member_to_pay.id if member_to_pay.id else member_id.content
-        amount = int(amount_to_pay.content)
-        la_reason = reason.content
-
-        await member_id.delete()
-        await amount_to_pay.delete()
-        await reason.delete()
-
-        if payee:
-            now = date.today()
-
-            with sql.connect('main.db') as mdb:
-                cur = mdb.cursor()
-
-                srch = 'SELECT bank FROM members WHERE id=?'
-                srch2 = 'SELECT bank FROM members WHERE id=?'
-
-                val = (payer,)
-                val2 = (payee,)
-
-                payer_balance = cur.execute(srch, val).fetchone()[0]
-                payee_balance = cur.execute(srch2, val2).fetchone()[0]
-
-                if payer_balance >= amount: 
-                    payer_new_balance = payer_balance - amount
-                    payee_new_balance = payee_balance + amount
-
-                    srch3 = 'UPDATE members SET bank=? WHERE id=?'
-                    srch4 = 'UPDATE members SET bank=? WHERE id=?'
-
-                    val3 = (payer_new_balance,payer)
-                    val4 = (payee_new_balance,payee)
-
-                    cur.execute(srch3, val3)
-                    cur.execute(srch4, val4)
-
-                    all_transactions = cur.execute('SELECT * FROM bank_transactions').fetchall()
-                    new_number = len(all_transactions) + 1
-
-                    srch5 = 'INSERT INTO bank_transactions(id,payer,payee,date,amount,reason) VALUES (?,?,?,?,?,?,?,?)'
-                    val5 = (new_number,payer,payee,amount,la_reason,now,payer_new_balance,payee_new_balance)
-
-                    cur.execute(srch, val)
-
-                    await self.send_notification(inter, payer, payee, amount, la_reason, payer_balance, payee_balance, payer_new_balance, payee_new_balance)
+                    if await self.send_successful_notification(inter, inter.author, member_to_pay, amount_to_pay, reason, payer_bal, payee_bal, payer_new_bal, payee_new_bal) == True:
+                        return await inter.edit_original_message("Your Payment Has Been Successful. See DM's For Receipt.")
+                    else:
+                        return await inter.edit_original_message("The Notification Has Failed To Send. Contact Developers and Owners")
                 else:
-                    return await inter.edit_original_message(f"{inter.author.mention} You Do Not Have Enough Money For This Transaction! Your Balance Is Currently **${payer_balance}**.")
+                    return await inter.edit_original_message("The Database Failed To Update. Contact Developers and Owners")
+            else:
+                return await inter.edit_original_message("The Reason Must Be A Printable String! Please use the 26-Letter English Alphabet, Numeric Values 0-9, and Normal Special Characters.")
         else:
-            return await inter.edit_original_message(f"{inter.author.mention} the member's id must be made up of numbers 0-9")
+            return await inter.edit_original_message("The Member's ID Must Be That Of A Member Currently In This Discord! Try Again!")
 
     async def request_from_member(self, inter):
-        await asyncio.sleep(0.5)
+        await inter.response.send_message("Enter The Members ID.",ephemeral=True)
+        member_to_request_from = disnake.utils.get(inter.guild.members, id=int((await self.bot.wait_for('message')).content))
 
-        await inter.response.send_message("Enter The ID Of The Member You Wish To Pay.",ephemeral=True)
-        member_id = await self.bot.wait_for('message')
-        member_to_receive_from = disnake.utils.get(inter.guild.members, id=int(member_id.content))
+        if member_to_request_from:
+            await inter.channel.purge(limit=1)
 
-        await asyncio.sleep(0.7)
+            await inter.edit_original_message("Enter The Amount To Request.")
+            amount_to_pay = int((await self.bot.wait_for('message')).content)
 
-        await inter.edit_original_message("Enter The Amount To Pay.")
-        amount_to_pay = await self.bot.wait_for('message')
+            await inter.edit_original_message("Enter The Reason For The Request.")
+            reason = (await self.bot.wait_for('message')).content
 
-        await asyncio.sleep(0.7)
+            if all(i.isprintable() for i in reason):
+                await inter.channel.purge(limit=2)
+                
+                if await self.send_request_notification(inter, member_to_request_from, amount_to_pay, reason) == True:
+                    today = date.today()
 
-        await inter.edit_original_message("Enter The Reason.")
-        reason = await self.bot.wait_for('message')
+                    if await self.increase_db(inter.author, member_to_request_from, amount_to_pay, reason, today) == True:
+                        payer_bal, payee_bal, payer_new_bal, payee_new_bal = [] # pull from database, or return as separate list from update command. Ex: return True, list
 
-        await asyncio.sleep(0.7)
-        
-        payer = member_to_receive_from.id if member_to_receive_from.id else member_id.content
-        payee = inter.author.id 
-        amount = int(amount_to_pay.content)
-        la_reason = reason.content
+                        if await self.send_success_notification(inter, inter.author, member_to_request_from, amount_to_pay, reason, payer_bal, payee_bal, payer_new_bal, payee_new_bal) == True:
+                            return await inter.edit_original_message("Your Payment Has Been Successful. See DM's For Receipt.")
+                        else:
+                            return await inter.edit_original_message("The Notification Has Failed To Send. Contact Developers and Owners")
+                    else:
+                        return await inter.edit_original_message("The Database Failed To Update. Contact Developers and Owners")
+                else:
+                    return await inter.edit_original_message("The Request Notification Has Failed To Send. Contact Developers and Owners")
+            else:
+                return await inter.edit_original_message("The Reason Must Be A Printable String! Please use the 26-Letter English Alphabet, Numeric Values 0-9, and Normal Special Characters.")
+        else:
+            return await inter.edit_original_message("The Member's ID Must Be That Of A Member Currently In This Discord! Try Again!")
 
-        await member_id.delete()
-        await amount_to_pay.delete()
-        await reason.delete()
+    async def adjust_user_balance(self,inter):
+        await inter.response.send_message("Enter The Members ID:",ephemeral=True)
+        member_to_adjust = disnake.utils.get(inter.guild.members, id=int((await self.bot.wait_for('message')).content))
 
+        if member_to_adjust:
+            await inter.channel.purge(limit=1)
+
+            await inter.edit_original_message("Enter The Amount To Adjust By.")
+            amount_to_adjust_by = int((await self.bot.wait_for('message')).content)
+
+            await inter.edit_original_message("Enter If Withdrawl or Deposit")
+            method = (await self.bot.wait_for('message')).content.lower()
+
+            await inter.edit_original_message("Enter The Reason For The Adjustment.")
+            reason = (await self.bot.wait_for('message')).content
+
+            if method == "withdrawl":
+                await inter.channel.purge(limit=3)
+
+                staff_member = inter.author
+
+                if all(i.isprintable() for i in reason):
+                    today = date.today()
+
+                    if await self.decrease_db(staff_member,member_to_adjust, amount_to_adjust_by, reason, today) == True:
+                        member_bal, member_new_bal = [] # pull from database, or return as separate list from update command.Ex: return True, list
+
+                        if await self.send_adjustment_notification(inter, inter.author, member_to_adjust, amount_to_adjust_by, reason) == True:
+                            return await inter.edit_original_message("The Adjustment Has Been Made. Please See The Bank Logs Channel For The Receipt. The Member Has Also Received A Notification As Well.")
+                        else:
+                            return await inter.edit_original_message("The Notification Failed To Send. Contact Developers and Owners")
+                    else:
+                        return await inter.edit_original_message("The Database Failed To Update. Contact Developers and Owners")
+                else:
+                    return await inter.edit_original_message("The Reason Must Be A Printable String! Please use the 26-Letter English Alphabet, Numeric Values 0-9, and Normal Special Characters.")
+
+            elif method == "deposit":
+                await inter.channel.purge(limit=3)
+
+                staff_member = inter.author
+
+                if all(i.isprintable() for i in reason):
+                    today = date.today()
+
+                    if await self.update_db(member_to_adjust, amount_to_adjust_by, reason, date) == True:
+                        member_bal, member_new_bal = [] # pull from database, or return as separate list from update command. Ex: return True, list
+
+                        if await self.send_adjustment_notification(inter, inter.author, member_to_adjust, amount_to_adjust_by, reason) == True:
+                            return await inter.edit_original_message("The Adjustment Has Been Made. Please See The Bank Logs Channel For The Receipt. The Member Has Also Received A Notification As Well.")
+                        else:
+                            return await inter.edit_original_message("The Notification Failed To Send. Contact Developers and Owners.")
+                    else:
+                        return await inter.edit_original_message("The Database Failed To Update. Contact Developers and Owners")
+                else:
+                    return await inter.edit_original_message("The Reason Must Be A Printable String! Please use the 26-Letter English Alphabet, Numeric Values 0-9, and Normal Special Characters.")
+            
+            else:
+                await inter.channel.purge(limit=3)
+
+                return await inter.edit_original_message("The Method Must Be Either A Withdrawl or Deposit. Try Again!")
+
+    async def send_request_notification(self, inter, member, amount, reason):
         embed = disnake.Embed(
             color = disnake.Colour.random(),
             title = "Gawther's Bank Notification System",
-            description = f"{inter.author.name} Has Requested ${amount} From You. Please Accept or Deny By Entering Accept or Deny."
-        ).add_field(
-            name = "Other Information",
-            value = "You Have 20 Minutes To Respond To This Request. If You Do Not Respond, The Command Will Need To Be Ran Again.",
-            inline = False 
-        ).set_thumbnail(
-            url = self.bot.user.avatar
-        ).set_footer(
-            text = "If you feel this is an error, please contact support!"
-        )
-
-        await inter.edit_original_message("Your Request Has Been Sent.")
-        await payer.send(embed=embed)
-        confirmation = await self.bot.wait_for('message', timeout=1200)
-
-        if confirmation.content.lower() == "accept":
-            with sql.connect('main.db') as mdb:
-                cur = mdb.cursor()
-
-                srch = 'SELECT bank FROM members WHERE id=?'
-                srch2 = 'SELECT bank FROM members WHERE id=?'
-
-                val = (payer, )
-                val2 = (payee, )
-
-                payer_balance = cur.execute(srch, val).fetchone()[0]
-                payee_balance = cur.execute(srch2, val2).fetchone()[0]
-
-                new_payer_bal = payer_balance - amount
-                new_payee_bal = payee_balance + amount
-
-                srch3 = 'UPDATE members SET bank=? WHERE id=?'
-                srch4 = 'UPDATE members SET bank=? WHERE id=?'
-
-                val3 = (new_payer_bal, payer, )
-                val4 = (new_payee_bal, payee, )
-
-                cur.execute(srch3, val3)
-                cur.execute(srch4, val4)
-
-                await self.send_notification(inter, payer, payee, amount, la_reason, payer_balance, payee_balance, new_payer_bal, new_payee_bal)
-        else:
-            pass
-
-    async def adjust_user_balance(self,inter):
-        checks = ["Owners","Developers","Head Administrators","Administrators","Moderators"]
-
-        if inter.author.top_role.name in checks:
-            await inter.response.send_message("Enter The Members ID",ephemeral=True)
-            member_to_adjust = await self.bot.wait_for('message')
-            member_object = disnake.utils.get(inter.guild.members, id=int(member_to_adjust.content))
-
-            await inter.edit_original_message("Enter Amount To Fix.")
-            amount_to_adjust = await self.bot.wait_for('message')
-            amount = int(amount_to_adjust.content)
-
-            await inter.edit_original_message("Is This A Withdrawl (taking away) or Deposit (giving to)? Enter Withdrawl or Deposit")
-            adjustment_method = await self.bot.wait_for('message')
-            method = adjustment_method.content.lower()
-
-            await inter.edit_original_message("Enter The Reason For The Adjustment")
-            reason = await self.bot.wait_for('message')
-            la_reason = reason.content
-
-            await member_to_adjust.delete()
-            await amount_to_adjust.delete()
-            await adjustment_method.delete()
-            await reason.delete()
-
-            if member_object:
-                with sql.connect('main.db') as mdb:
-                    cur = mdb.cursor()
-
-                    srch = 'SELECT bank FROM members WHERE id=?'
-                    val = (member_object.id, )
-
-                    curr_mem_bal = cur.execute(srch, val).fetchone()[0]
-
-                    staff_member = inter.author.id
-
-                    if method == "withdrawl":
-                        new_mem_bal = curr_mem_bal - amount
-                    else:
-                        new_mem_bal = curr_mem_bal + amount
-
-                    srch2 = 'UPDATE members SET bank=? WHERE id=?'
-                    val2 = (new_mem_bal, member_object.id, )
-
-                    try:
-                        cur.execute(srch2, val2)
-                        await self.send_notification(inter, staff_member, member_object.id, amount, la_reason, 0, curr_mem_bal, 0, new_mem_bal)
-                    except:
-                        return await inter.edit_original_message("There was a problem with adjusting the members balance. Please report to the Owners and Developers. Thanks -Gawther")
-            else:
-                return await inter.edit_original_message("That ID Is Not A Member Of This Discord. Please Enter A Valid Member ID. If You Find This As An Error, Please Report To The Owners and Developers. Thanks - Gawther")
-
-    async def send_notification(self, inter, payer, payee, amount, reason, payer_bal, payee_bal, payer_new_bal, payee_new_bal):
-        embed = disnake.Embed(
-            color = disnake.Colour.green(),
-            title = "Gawther's Bank Notification System",
-            description = f"{payer.name} Has Paid {payee.name} The Amount Of ${amount}."
+            description = f"{inter.author.name} Has Requested ${amount}GB From You. Please Enter Accept or Deny."
         ).add_field(
             name = "Reason",
             value = f"{reason}",
             inline = False
         ).set_thumbnail(
             url = self.bot.user.avatar
-        ).set_footer(
-            text = "If you did not execute this command, please contact support!"
         )
 
-        payer_embed = embed
-        payee_embed = embed
+        await member.send(embed=embed)
+        
+        if (await self.bot.wait_for('message')).content.lower() == "accept":
+            return True
+        else:
+            return False
 
-        payer_embed.add_field(
-            name = "Receipt",
-            value = f"Previous Balance: ${payer_bal}\nWithdrawn: ${amount}\nNew Balance: ${payer_new_bal}",
+    async def send_success_notification(self, inter, payer, payee, amount, reason, payer_bal, payee_bal, payer_new_bal, payee_new_bal):
+        color = disnake.Colour.random()
+        title = "Gawther's Bank Notification System"
+
+        payer_embed = disnake.Embed(
+            color = color,
+            title = title,
+            description = f"You Paid {payee.name} ${amount}GB"
+        ).add_field(
+            name = "Reason",
+            value = f"{reason}",
             inline = False
-        )
-
-        payee_embed.add_field(
+        ).add_field(
             name = "Receipt",
-            value = f"Previous Balance: ${payee_bal}\nWithdrawn: ${amount}\nNew Balance: ${payee_new_bal}",
+            value = f"Previous Balance: ${payer_bal}GB\nAdjusted By: $({amount})GB\nNew Balance: ${payer_new_bal}GB",
             inline = False
+        ).set_thumbnail(
+            url = self.bot.user.avatar
         )
 
-        await inter.edit_original_message("Please See Your DM's For Your Receipt.")
+        payee_embed = disnake.Embed(
+            color = color,
+            title = title,
+            description = f"{payer.name} Paid You ${amount}GB"
+        ).add_field(
+            name = "Reason",
+            value = f"{reason}",
+            inline = False
+        ).add_field(
+            name = "Receipt",
+            value = f"Previous Balance: ${payee_bal}GB\nAdjusted By: ${amount}GB\nNew Balance: ${payee_new_bal}GB",
+            inline = False
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        )
+ 
+        noti_embed = disnake.Embed(
+            color = color,
+            title = title,
+            description = f"{payer.name} Paid {payee.name} The Amount Of ${amount}GB"
+        ).add_field(
+            name = "Reason",
+            value = f"{reason}",
+            inline = False
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        )
 
-        payee_object = disnake.utils.get(inter.guild.members, id=payee)
-        payer_object = disnake.utils.get(inter.guild.members, id=payer)
+        await payer.send(embed=payer_embed)
+        await payee.send(embed=payee_embed)
+        await (disnake.utils.get(inter.guild.text_channels, name="bank_notifications")).send(embed=noti_embed)
 
-        await payee_object.send(embed=payee_embed)
-        await payer_object.send(embed=payer_embed)
+    async def increase_db(self, payer, payee, amount, reason, date):
+        with sql.connect('main.db') as mdb:
+            cur = mdb.cursor()
 
-        noti_chan = disnake.utils.get(inter.guild.text_channels, name="bank_notifications")
-        await noti_chan.send(embed=embed)
+            srch = 'SELECT bank FROM members WHERE id=?'
+            srch2 = 'SELECT bank FROM members WHERE id=?'
 
+            val = (payer, )
+            val2 = (payee, )
+
+            payer_bal = cur.execute(srch, val).fetchone()[0]
+            payee_bal = cur.execute(srch2, val2).fetchone()[0]
+
+            if payer_bal >= amount:
+                payer_new_bal = payer_bal - amount
+                payee_new_bal = payee_bal + amount
+
+                srch3 = 'UPDATE members SET bank=? WHERE id=?'
+                srch4 = 'UPDATE members SET bank=? WHERE id=?'
+
+                val3 = (payer_new_bal, payer, )
+                val4 = (payee_new_bal, payee, )
+
+                try:
+                    cur.execute(srch3, val3)
+                    cur.execute(srch4, val4)
+
+                    all_transactions = cur.execute('SELECT * FROM bank_transactions').fetchall()
+
+                    srch5 = 'INSERT INTO bank_transactions(id, payer, payee, date, amount, reason) VALUES (?,?,?,?,?,?)'
+                    val5 = (len(all_transactions)+1,payer, payee, date, amount, reason)
+
+                    try:
+                        cur.execute(srch5, val5)
+
+                        list = [payer_bal, payee_bal, payer_new_bal, payee_new_bal]
+
+                        return True, list
+                    except:
+                        return False
+                except:
+                    return False
+    
+    async def decrease_db(self, staff, member, amount, reason, date):
+        with sql.connect('main.db') as mdb:
+            cur = mdb.cursor()
+
+            srch = 'SELECT bank FROM members WHERE id=?'
+            val = (member.id, )
+
+            member_bal = cur.execute(srch, val).fetchone()[0]
+
+            new_member_bal = member_bal - amount
+
+            srch2 = 'UPDATE members SET bank=? WHERE id=?'
+            val2 = (new_member_bal, member.id, )
+
+            try: 
+                cur.execute(srch2, val2)
+
+                all_transactions = cur.execute('SELECT * FROM bank_transactions').fetchall()
+
+                srch3 = 'INSERT INTO bank_transactions(id, payer, payee, date, amount, reason) VALUES (?,?,?,?,?,?)'
+                val3 = (len(all_transactions)+1, staff, member.id, date, amount, reason)
+
+                try:
+                    cur.execute(srch3, val3)
+
+                    list = [member_bal, new_member_bal]
+
+                    return True, list
+                except: 
+                    return False
+            except:
+                return False
 
 def setup(bot):
     bot.add_cog(BankCommands(bot))
