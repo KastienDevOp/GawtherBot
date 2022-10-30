@@ -1,22 +1,48 @@
-<h1>Welcome To The Gawther Platform Github Repository!</h1>
+<a name="back-to-top"></a>
 
-<h2>Who Are We?</h2>
-<h4>
-  We are Gawther! A community built by programmers for anyone to enjoy. We offer a diverse range of chat channels, available to all with appropriately selected roles, for their enjoyment.
-</h4>
+# ***Gawther's Platform***
+> **Built For The** ***People*** **By The** ***Programmers***
 
-<h2>What Do We Provide?</h2>
-<h4>
-  We provide a variety of games, bot commands, and profiles to further enhance the members visit. Being able to rob your friends on a 0-1 random.choice() chance, to being able to bid and own your friends! In addition, we have in-depth support that is setup in a Support Threads category to allow you to obtain the best help possible without having to search through a jumbled chat channel for your last question and best answer.
-</h4>
+## ***Gawther's Discord Extension***
 
-<h2>What Are Our Perks</h2>
-<h4>
-  Given that this is a community driven discord server, the GawtherPerks and Reputations haven't been setup yet as we are patiently awaiting for you guys to tell us what you would like to see as perks and rewards within the community.
-</h4>
+> Table Of Contents
+>
+> - [About The Community](#about-community)
+>   - [History](#community-history)
+>   - [Team Members](#team-members)
+> - [About The Bot](#about-bot)
+> - [Licensing](#license)
+> - [Getting Started With Gawther](#getting-started)
+>   - [Installation](#installation)
+>   - [Virtual Environment](#virt-env)
+> - [Commands](#bot-commands)
+>   - [General Commands](#general-commands)
+>   - [Staff Commands](#staff-commands)
+> - [TaskLoops](#task-loops)
+>   - [OnMemberJoin](#on-member-join)
+>   - [PendingVerification](#pending-verification)
 
+# ***<a name="about-community">About The Community</a>***
 
+## ***<a name="community-history">The History of the Community</a>***
 
-<iframe src="https://discord.com/widget?id=779290532622893057&theme=dark" width="350" height="500" allowtransparency="true" frameborder="3" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+#### Back in 2019, Mek moved to Philadelphia, where her best friend Kas was currently residing, for a fresh start on life. A few days after moving, Mek and Kas were hanging out and Mek saw Kas was programming. A year ago, Mek was attending college for accounting, and was also an avid [Minecraft](https://www.minecraft.net/en-us) player. Learning that Minecraft was built using [Java](https://docs.oracle.com/en/java/) and she wanted to give it a try. Trying to build her first calculator was one of the more difficult task which lead to her giving up. (If only she had known about [Python](https://docs.python.org/3/)!)
 
-<h1>**THIS READ ME WILL BE REGULARLY UPDATED AS THE REPOSITORY GROWS. VERSIONS WILL BE ADDED. UPDATE NOTES WILL ALSO BE INCLUDED, ETC.**</h1>
+> Python is a very easy to understand and learn language as it's written as if you're having a conversation with one of your friends. A brief difference between the two
+
+```
+Java
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+
+Python
+
+print("Hello, World!")
+
+```
+
+> Notice here that we did not need a class instantiated to be able to print "Hello, World!" to the console.
