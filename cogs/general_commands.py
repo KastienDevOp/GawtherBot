@@ -8,11 +8,7 @@ from disnake.ext import commands
 from Paginator import CreatePaginator
 from typing import List
 from datetime import datetime
-
-with open('config.json', 'r', encoding='utf-8-sig') as f:
-    data = json.load(f)
-
-guild_ids = [data["guild_id"], ]
+from helpers.helper_methods import get_guild_id
 
 
 class GeneralCommandsRewrite(commands.Cog):
@@ -22,7 +18,7 @@ class GeneralCommandsRewrite(commands.Cog):
     @commands.slash_command(
         name="member",
         description="A command that includes all general member commands and shows options",
-        guild_ids=guild_ids
+        guild_ids=[get_guild_id(), ]
     )
     @commands.has_any_role(
         "Owners", "Developers", "Head Admins", "Moderators", "Community Helpers",

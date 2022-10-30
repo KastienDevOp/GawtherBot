@@ -7,13 +7,7 @@ from disnake.ui import View, Button
 from disnake.ext import commands
 from datetime import datetime
 from typing import List
-
-from disnake.ext.commands.errors import MissingAnyRole
-
-with open('config.json', 'r', encoding='utf-8-sig') as f:
-    data = json.load(f)
-
-guild_ids = [data["guild_id"], ]
+from helpers.helper_methods import get_guild_id
 
 
 class StaffCommands(commands.Cog):
@@ -23,7 +17,7 @@ class StaffCommands(commands.Cog):
     @commands.slash_command(
         name="staff",
         description="Displays a list of sub-commands executable by staff members",
-        guild_ids=guild_ids
+        guild_ids=[get_guild_id(), ]
     )
     @commands.has_any_role("Owners", "Developers", "Head Administrators", "Administrators", "Moderators", "Community Helpers")
     async def staff(self, inter, operation: str = commands.Param(choices=["purge"])):

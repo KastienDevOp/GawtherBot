@@ -6,37 +6,16 @@ import asyncio
 from disnake.ext import commands
 from datetime import date
 from Paginator import CreatePaginator
-
-with open('config.json','r',encoding='utf-8-sig') as f:
-    data = json.load(f)
-
-guild_ids = [data["guild_id"],]
-
-"""
-    ANY DATABASE FUNCTIONS THAT CAN BE MOVED TO AN APPROPRIATE API
-    CALL ARE ALLOWED TO BE MOVED AND THIS CODE RE-WRITTEN
-
-    ANY RE-WRITES THAT YOU CAN SEE THAT WOULD MAKE THE CODE MORE EFFICIENT,
-    PLEASE WRITE EACH NEW LINE AS A COMMENTED LINE UNDERNEATH THE LINE IT BELONGS TO.
-
-    EXAMPLE:
-
-    for i in range(len(items)):
-        print(i)
-
-    # print([i for i in range(len(items))])
-"""
-
+from helpers.helper_methods import get_guild_id
 
 class BankCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.error_message = ""
 
     @commands.slash_command(
         name = "bank",
         description = "Allows a user to pay or request money to or from another member in the discord server.",
-        guild_ids = guild_ids
+        guild_ids = [get_guild_id(),]
     )
     @commands.has_any_role(
         "Owners", "Developers", "Head Admins", "Moderators", "Community Helpers",
@@ -57,7 +36,7 @@ class BankCommands(commands.Cog):
         else:
             return await inter.response.send_message("Error With Params")
 
-    async def pay_to_member(self,inter):                    
+    async def pay_to_member(self,inter):
         await inter.response.send_message("Enter The Member ID or Discord Tag", ephemeral=True)
 
         user_entry = (await self.bot.wait_for('message')).content

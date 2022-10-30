@@ -1,7 +1,7 @@
 import sqlite3 as sql
 
 def create_db():
-    with sql.connect('main.db') as mdb:
+    with sql.connect('members.db') as mdb:
         cur = mdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS members(
@@ -33,6 +33,9 @@ def create_db():
             notes TEXT
         )''')
 
+    with sql.connect('config.db') as cfdb:
+        cur = cfdb.cursor()
+
         cur.execute('''CREATE TABLE IF NOT EXISTS rules(
             id INTEGER,
             author TEXT,
@@ -40,6 +43,9 @@ def create_db():
             rule TEXT,
             date_last_edited TEXT
         )''')
+
+    with sql.connect('bank.db') as bdb:
+        cur = bdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS bank_transactions(
             id INTEGER,

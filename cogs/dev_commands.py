@@ -3,11 +3,7 @@ import json
 import re
 
 from disnake.ext import commands
-
-with open('config.json', 'r', encoding='utf-8-sig') as f:
-    data = json.load(f)
-
-guild_ids = [data["guild_id"], ]
+from helpers.helper_methods import get_guild_id
 
 
 class DevCommands(commands.Cog):
@@ -17,7 +13,7 @@ class DevCommands(commands.Cog):
     @commands.slash_command(
         name="developers",
         description="Shows a list of sub commands available to developers of the Gawther Platform.",
-        guild_ids=guild_ids
+        guild_ids=[get_guild_id(),]
     )
     @commands.has_any_role("Owners", "Developers")
     async def developers(self, inter, operation: str = commands.Param(choices=["send_dev_note","create_category","create_channel","delete_category","delete_channel"])):
@@ -81,6 +77,61 @@ class DevCommands(commands.Cog):
         else:
             return await inter.edit_original_message("Category Name Must Be A Valid String! Please use the 26-Letter English Alphabet, Numeric Values 0-9, and Normal Special Characters.")
 
+    async def create_channel(self,inter):
+        await inter.response.send_message("Enter New Channel Name",ephemeral=True)
+        name_of_channel = (await self.bot.wait_for('message')).content
+
+        await inter.edit_original_message("Enter Category Name")
+        name_of_category = (await self.bot.wait_for('message')).content
+        category = disnake.utils.get(inter.guild.categories, name=name_of_category)
+
+        await inter.edit_original_message("Enter Voice or Text For Channel Type")
+        type_of_channel = (await self.bot.wait_for('message')).content
+
+        if all(i.isprintable() for i in name_of_channel):
+            if all(i.isprintable() for i in name_of_category):
+                if type_of_channel.lower() == "text":
+                    await inter.edit_original_message("Enter Topic For New Channel")
+                    channel_topic = (await self.bot.wait_for('message')).content
+
+                    new_channel = await inter.guild.create_text_channel(category=category, name=name_of_channel)
+                    await new_channel.edit(topic=channel_topic)
+                    noti_channel = disnake.utils.get(inter.guild.text_channels, name="category_channel_editing")
+
+                    embed = disnake.Embed(
+                        color = disnake.Colour.random(),
+                        title = "Gawther's Category and Channel Editor Notification System",
+                        description = f"{inter.author.name} Has Created A New Text Channel {new_channel.mention} In Category {category.mention}"
+                    ).set_thumbnail(
+                        url = self.bot.user.avatar
+                    )
+
+                    await noti_channel.send(embed=embed)
+
+                    await inter.channel.purge(limit=4)
+                    return await inter.edit_original_message(f"{new_channel.mention} Has Been Created In {category.mention} Successfully.")
+                elif type_of_channel.lower() == "voice":
+                    new_channel = await inter.guild.create_voice_channel(category=category, name=name_of_channel)
+                    noti_channel = disnake.utils.get(inter.guild.text_channels, name="category_channel_editing")
+
+                    embed = disnake.Embed(
+                        color = disnake.Colour.random(),
+                        title = "Gawther's Category and Channel Editor Notification System",
+                        description = f"{inter.author.name} Has Created A New Voice Channel {new_channel.mention} In Category {category.mention}"
+                    ).set_thumbnail(
+                        url = self.bot.user_avatar
+                    )
+
+                    await noti_channel.send(embed=embed)
+
+                    await inter.channel.purge(limit=3)
+                    return await inter.edit_original_message(f"{new_channel.mention} Has Been Created In {category.mention} Successfully.")
+                else:
+                    return await inter.edit_original_message("The Channel Type Must Be Text or Voice")
+            else:
+                return await inter.edit_original_message("The Category Name Must Be A Printable String!")
+        else:
+            return await inter.edit_original_message("The Channel Name Must Be A Printable String!")
 
 def setup(bot):
     bot.add_cog(DevCommands(bot))
