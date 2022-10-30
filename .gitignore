@@ -1,4 +1,4 @@
-env/
+GawtherBot/
 config.json
 __pycache__/
 /cogs/__pycache__/
