@@ -16,7 +16,7 @@ class GeneralCommandsRewrite(commands.Cog):
         self.bot = bot
 
     @commands.slash_command(
-        name="member",
+        name="gawther",
         description="A command that includes all general member commands and shows options",
         guild_ids=[get_guild_id(), ]
     )
@@ -25,7 +25,7 @@ class GeneralCommandsRewrite(commands.Cog):
         "Programming", "Gaming", "Artistry", "Nitro", "Member", "Python", "JavaScript",
         "Java", "Rust", "HTML-CSS", "Minecraft", "Summoners-War", "Chess"
     )
-    async def member(self, inter, operation: str = commands.Param(
+    async def gawther(self, inter, operation: str = commands.Param(
             choices=["fav_quote", "help", "ping", "rules", "server", "solved", "subscribe", "who_is"])):
 
         if operation == "ping":
