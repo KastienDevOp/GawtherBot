@@ -118,19 +118,31 @@ class TaskChecks(commands.Cog):
                 guild.text_channels, id=noti_chan)
             all_guild_members = [
                 member for member in guild.members if not member.bot]
-            all_db_member_ids = [id[0] for id in cur.execute(
-                'SELECT id FROM members').fetchall()]
+            
+            try:
+                all_db_member_ids = [id[0] for id in cur.execute(
+                    'SELECT id FROM members').fetchall()]
+            except:
+                all_db_member_ids = []
 
             added_members = []
 
-            for member in all_guild_members:
-                if member.id in all_db_member_ids:
-                    pass
-                else:
+            if len(all_db_member_ids) > 0:
+                for member in all_guild_members:
+                    if member.id in all_db_member_ids:
+                        pass
+                    else:
+                        srch = 'INSERT INTO members(id,bank,quote) VALUES (?,?,?)'
+                        val = (member.id, 1500, "None")
+
+                        cur.execute(srch, val)
+                        added_members.append(member.name)
+            else:
+                for member in guild.members:
                     srch = 'INSERT INTO members(id,bank,quote) VALUES (?,?,?)'
                     val = (member.id, 1500, "None")
 
-                    cur.execute(srch, val)
+                    added_members.append(member.name)
 
             embed = disnake.Embed(
                 color=disnake.Colour.random(),
