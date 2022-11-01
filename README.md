@@ -1,3 +1,5 @@
+<a name="#top"></a>
+
 # **_The Gawther Platform_** - **_Discord Extension_**
 
 ## Table of Contents
@@ -14,11 +16,11 @@
 >   - [Check Database For Members](check-db-for-members)
 
 
-# About Gawther <a href="#about-gawther">📎</a>
+# About Gawther <a name="#about-gawther">📎</a>
 
 Gawther started back in 2019, originally named ButtlerBot. ButtlerBot was going to be the bot that could do anything every other bot can do and more. From bridging various game chats through different socket workings and https calls, to relaying information back and forth between it's website counter-partner and all of it's inclusions. This bot was going to be the brain behind everything, however, as progression continued, we started noticing how limited the [discord api](https://discordpy.readthedocs.io/en/stable/) was eventually ButtlerBot became a stagnant project that is now being converted into Gawther. Gawther's inspiration came from various components of my life. The first component being my immediate surroundings. Starting with my friends. What can discord help me automate for them? Well the major thing being notifications, automated messages for streaming and such, bridged game chats for interactions with discord members who aren't in the game, and a few other things. The second component was what can I create that no one else can. That's the main question every programmer asks themselves. What can I create that can blow the world away?! Well after a while of researching various bots, I noticed that there weren't really a lot of gaming bots. What I mean is bots that actually have games. Not your average Hangman, or CoinFlip, but I'm gearing more towards actual text-based [RPG's](https://www.techopedia.com/definition/27052/role-playing-game-rpg). Although there are other contributing components to the creation of Gawther, those are the two main driving points.
 
-# About The Team <a href="#about-team">📎</a>
+# About The Team <a name="#about-team">📎</a>
 
 The team is currently comprised of only Kas and myself. We have slots available for anyone who'd like to become one of Gawther's Developers, but for now it's just an interview-styled conversation with Kas and me. In the future, I do plan to build a web-based application along with a text-based application through Gawther.
 
@@ -57,7 +59,7 @@ As you can see, my new repository has drastically increased as with my progressi
 
 ## Kas
 
-# Bot Commands <a href="#bot-commands">📎</a>
+# Bot Commands <a name="#bot-commands">📎</a>
 
 How To Read Table Below:
 
@@ -70,7 +72,7 @@ How To Read Table Below:
 >
 > ```
 
-## General Commands <a href="#general-commands">📎</a>
+## General Commands <a name="#general-commands">📎</a>
 
 - **Favorite Quote**
   - /gawther fav_quote
@@ -106,7 +108,7 @@ How To Read Table Below:
   - Requests member input for a user's ID then returns a Paginator Embed showing various details on the target member.
   - The input from the member must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
 
-## Bank Commands <a href="#bank-commands">📎</a>
+## Bank Commands <a name="#bank-commands">📎</a>
 
 - **List Requests**
   - /bank list_requests
@@ -132,7 +134,7 @@ How To Read Table Below:
   - Amount must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
   - Reason must be a printable [string](https://docs.python.org/3/library/string.html).
 
-## Staff Commands <a href="#staff-commands">📎</a>
+## Staff Commands <a name="#staff-commands">📎</a>
 
 - **Adjust Balance**
   - /bank adjust_balance
@@ -146,7 +148,7 @@ How To Read Table Below:
   - Amount must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
   - Reason must be a printable [string](https://docs.python.org/3/library/string.html).
 
-## Developer Commands <a href="#dev-commands">📎</a>
+## Developer Commands <a name="#dev-commands">📎</a>
 
 - **Send Developer Note**
   - /developers send_dev_note
@@ -169,18 +171,21 @@ How To Read Table Below:
   - Allows developers to delete a specified channel within a specified category. It requests user input on creating a backup of the entire channel or not.
   - User inputs must be a printable [string](https://docs.python.org/3/library/string.html).
 
-# Gawther's Tasks <a href="#task-loops">📎</a>
+# Gawther's Tasks <a name="#task-loops">📎</a>
 
 Gawther is also comprised of a number of task loops that majorly assist in language filters, bridge chat re-connections, and more.
 
-## On Member Join <a href="#on-member-join">📎</a>
+## On Member Join <a name="#on-member-join">📎</a>
 
 This function activates when a member joins the discord by sending the user a welcome embed. Within this embed, we display our values, missions, rules, and punishment table. The embed may seem a bit overwhelming as we are currently debating on a proper approach for this welcome message, but it also selects a random quote to display on the welcome embed that is sent to the designated welcome channel within the discord server. In addition, it also writes the new member to the database (or picks back up where the member left off if it's a returning member) with a fresh bank amount of $1,000 GB. The GB stands for Gawther Bucks.
 
-## Check Pending <a href="#pending-verification">📎</a>
+## Check Pending <a name="#pending-verification">📎</a>
 
 This task loop runs every 24 hours and checks for any members who have created their accounts on the [discord main website](https://discord.com) but never verified their accounts through their email, or for whatever reason. If there are any members with a true pending status will be courtesly notified by the bot that their pending verification. Anyone who does not go and verify their account with 72 hours of receiving the first message, then they will be removed from the discord server as a safety precaution.
 
-## Check Database For Members <a href="#check-db-for-members">📎</a>
+## Check Database For Members <a name="#check-db-for-members">📎</a>
 
 This task loop runs every 12 hours and just runs a double check that any and all members who have joined Gawther within the last 12 hours are written to the database. It's a secondary check for just in case a member joins the channel and send Confirm to the bot when the bot DM's them, but it gives them an error message. The staff members will have a command that will write the new member to the database so that the member does not have to wait until the 12-hour mark for the bot to write them to the database.
+
+
+[Top](#top)
