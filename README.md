@@ -183,7 +183,7 @@ This function activates when a member joins the discord by sending the user a we
 
 This task loop runs every 24 hours and checks for any members who have created their accounts on the [discord main website](https://discord.com) but never verified their accounts through their email, or for whatever reason. If there are any members with a true pending status will be courtesly notified by the bot that their pending verification. Anyone who does not go and verify their account with 72 hours of receiving the first message, then they will be removed from the discord server as a safety precaution.
 
-## Check Database For Members <div id="#check-db-for-members">📎</div>
+## Check Database For Members <a name="#check-db-for-members">📎</a>
 
 This task loop runs every 12 hours and just runs a double check that any and all members who have joined Gawther within the last 12 hours are written to the database. It's a secondary check for just in case a member joins the channel and send Confirm to the bot when the bot DM's them, but it gives them an error message. The staff members will have a command that will write the new member to the database so that the member does not have to wait until the 12-hour mark for the bot to write them to the database.
 
