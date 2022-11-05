@@ -16,7 +16,7 @@ class DevCommands(commands.Cog):
         guild_ids=[get_guild_id(),]
     )
     @commands.has_any_role("Owners", "Developers")
-    async def developers(self, inter, operation: str = commands.Param(choices=["send_dev_note","create_category","create_channel","delete_category","delete_channel"])):
+    async def developers(self, inter, operation: str = commands.Param(choices=["create_category","create_channel","delete_category","delete_channel","send_dev_note"])):
         if operation == "send_dev_note":
             await self.send_dev_note(inter)
         elif operation == "create_category":
@@ -43,7 +43,11 @@ class DevCommands(commands.Cog):
                 "Your Message Must Be A Printable String. Please Use The ",
                 "26-Letter English Alphabet, 0-9 Numeric Values, or Special ",
                 "Characters Found On Your Number Row At The Top Of Your ",
-                "Keyboard. Thanks"
+                "Keyboard. If You Message Is A Printed String, and You Are ",
+                "Receiving This Error, Then Please Check The Character Count ",
+                "Of Your Message. This Includes Spaces. Your Note Is Returned Along ",
+                "With A Prefix OF Mentioning The Dev Role. Your Message Must Be 2000 ",
+                "Characters Minus @dev_note Which Totals To 1990 Characters."
             ]
 
             return await inter.edit_original_message(f"{''.join([p for p in sentence_parts])}")
@@ -132,6 +136,6 @@ class DevCommands(commands.Cog):
                 return await inter.edit_original_message("The Category Name Must Be A Printable String!")
         else:
             return await inter.edit_original_message("The Channel Name Must Be A Printable String!")
-
+            
 def setup(bot):
     bot.add_cog(DevCommands(bot))

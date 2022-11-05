@@ -110,7 +110,7 @@ class TaskChecks(commands.Cog):
     async def check_database_for_members(self):
         await self.bot.wait_until_ready()
 
-        with sql.connect('main.db') as mdb:
+        with sql.connect('members.db') as mdb:
             cur = mdb.cursor()
 
             guild = self.bot.get_guild(guild_id)
@@ -121,7 +121,7 @@ class TaskChecks(commands.Cog):
             
             try:
                 all_db_member_ids = [id[0] for id in cur.execute(
-                    'SELECT id FROM members').fetchall()]
+                    'SELECT id FROM profiles').fetchall()]
             except:
                 all_db_member_ids = []
 
@@ -132,14 +132,14 @@ class TaskChecks(commands.Cog):
                     if member.id in all_db_member_ids:
                         pass
                     else:
-                        srch = 'INSERT INTO members(id,bank,quote) VALUES (?,?,?)'
+                        srch = 'INSERT INTO profiles(member,bank,quote) VALUES (?,?,?)'
                         val = (member.id, 1500, "None")
 
                         cur.execute(srch, val)
                         added_members.append(member.name)
             else:
                 for member in guild.members:
-                    srch = 'INSERT INTO members(id,bank,quote) VALUES (?,?,?)'
+                    srch = 'INSERT INTO profiles(member,bank,quote) VALUES (?,?,?)'
                     val = (member.id, 1500, "None")
 
                     added_members.append(member.name)

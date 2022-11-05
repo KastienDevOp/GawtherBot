@@ -3,9 +3,9 @@ import json
 import io
 import sqlite3 as sql
 
-from disnake.ui import View, Button
 from disnake.ext import commands
-from datetime import datetime
+from disnake.ext.commands.errors import MemberNotFound
+from datetime import datetime, timedelta
 from typing import List
 from helpers.helper_methods import get_guild_id
 
@@ -20,7 +20,7 @@ class StaffCommands(commands.Cog):
         guild_ids=[get_guild_id(), ]
     )
     @commands.has_any_role("Owners", "Developers", "Head Administrators", "Administrators", "Moderators", "Community Helpers")
-    async def staff(self, inter, operation: str = commands.Param(choices=["purge"])):
+    async def staff(self, inter, operation: str = commands.Param(choices=["manage_member","purge"])):
         if operation == "purge":
             await inter.response.send_message("Please Enter The Number Of Messages To Purge", ephemeral=True)
             num = await self.bot.wait_for('message')
@@ -32,8 +32,49 @@ class StaffCommands(commands.Cog):
                 await self.purge(inter, num.content, reason.content)
             else:
                 return inter.edit_original_message("The Member's ID Must Be A Whole Number (no decimal), and Has To Be All Numbers 0-9")
+        elif operation == "manage_member":
+            await inter.response.send_message("Enter The Target Members ID",ephemeral=True)
+            member_id = (await self.bot.wait_for('message')).content
+
+            if int(member_id):
+                member = disnake.utils.get(inter.guild.members, id=int(member_id))
+            else:
+                await inter.channel.purge(limit=1)
+                return await inter.edit_original_message("The Member ID Must Be Of Numeric 0-9 Values")
+
+            await inter.edit_original_message("Enter The Type Of Action. Ban, Kick, Mute, Warn")
+            action = (await self.bot.wait_for('message')).content.lower()
+
+            if action in ["ban","kick","mute","warn"]:
+                action_type = action
+            else:
+                return await inter.edit_original_message("You Must Enter Ban, Kick, Mute, or Warn For The Action")
+
+            await inter.edit_original_message(f"Enter The Length Of Time For The {action_type} ***__IN SECONDS!!!__***")
+            length_of_time = (await self.bot.wait_for('message')).content
+
+            if int(length_of_time):
+                now = datetime.now()
+                end = now + timedelta(seconds=int(length_of_time))
+            else:
+                return await inter.edit_original_message("The Length Of Time Must Be In Seconds. Days Divided By 24 Hours Divided By 60 Minutes Per Hour Divided By 60 Seconds Per Hour = Total Seconds")
+            
+            await inter.edit_original_message(f"Enter The Reason For The {action_type}")
+            reason_content = (await self.bot.wait_for('message')).content
+
+            if reason_content:
+                reason = reason_content
+            else:
+                return await inter.edit_original_message("The Reason Must Be A Printable String")
+
+            confirmation = self.update_db(member,action_type,now,end,reason)
+
+            if confirmation:
+                self.send_notification()
+            else:
+                return await inter.edit_original_message("The Database Failed To Update. Please Contact Developers")
         else:
-            await inter.response.send_message("Error On Param Selection")
+            return await inter.response.send_message("Error On Param Selection")
 
     async def purge(self, inter, num, reason):
         """
@@ -85,17 +126,9 @@ class StaffCommands(commands.Cog):
         _file.seek(0)
         return disnake.File(_file, filename=f"Deleted_{datetime.now()}.txt")
 
-
-# view = disnake.ui.View()
-# item = disnake.ui.Button(style=disnake.ButtonStyle.blurple, label="Click Me", url="https://googlge.com")
-# view.add_item(item=item)
-# await ctx.send("This message has a button!",view=view)
-
-# class ViewWithButton(disnake.ui.View):
-#   @disnake.ui.button(style="", label="ClickMe")
-#   async def click_me_button(self, button: disnake.ui.Button, interaction: disnake.Interaction):
-#       print("Button was clicked!")
-#   await ctx.send("This message has a button!", view=ViewWithButton())
+    async def update_db(self,member,action_type,now,end,reason):
+        with sql.connect('bank.db') as mdb:
+            cur = mdb.cursor()
 
 def setup(bot):
     bot.add_cog(StaffCommands(bot))

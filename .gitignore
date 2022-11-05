@@ -2,7 +2,9 @@ GawtherBotEnv/
 config.json
 __pycache__/
 /cogs/__pycache__/
-main.db
+bank.db
+members.db
+rules.db
 test.py
 results.txt
 katas_files/
