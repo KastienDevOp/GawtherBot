@@ -2,6 +2,8 @@
 
 ## Table of Contents
 
+<details>
+
 > - [About Gawther](#about-gawther)
 > - [About The KasMek Team](#about-the-team)
 >   - [Mek](#mek)
@@ -14,6 +16,8 @@
 >   - [On Member Join](#on-member-join)
 >   - [Pending Verification](#pending-verification)
 >   - [Check Database For Members](check-db-for-members)
+
+</details>
 
 
 # About Gawther
