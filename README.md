@@ -1,11 +1,11 @@
-<a name="#top"></a>
-
-# **_The Gawther Platform_** - **_Discord Extension_**
+# **_The Gawther Platform_** - **_Discord Extension_** [# Top]
 
 ## Table of Contents
 
 > - [About Gawther](#about-gawther)
-> - [About The Team](#about-the-team)
+> - [About The KasMek Team](#about-the-team)
+>   - [Mek](#mek)
+>   - [Kas](#kas)
 > - [Gawther's Commands](#bot-commands)
 >   - [General Commands](#general-commands)
 >   - [Staff Commands](#staff-commands)
@@ -20,9 +20,9 @@
 
 Gawther started back in 2019, originally named ButtlerBot. ButtlerBot was going to be the bot that could do anything every other bot can do and more. From bridging various game chats through different socket workings and https calls, to relaying information back and forth between it's website counter-partner and all of it's inclusions. This bot was going to be the brain behind everything, however, as progression continued, we started noticing how limited the [discord api](https://discordpy.readthedocs.io/en/stable/) was eventually ButtlerBot became a stagnant project that is now being converted into Gawther. Gawther's inspiration came from various components of my life. The first component being my immediate surroundings. Starting with my friends. What can discord help me automate for them? Well the major thing being notifications, automated messages for streaming and such, bridged game chats for interactions with discord members who aren't in the game, and a few other things. The second component was what can I create that no one else can. That's the main question every programmer asks themselves. What can I create that can blow the world away?! Well after a while of researching various bots, I noticed that there weren't really a lot of gaming bots. What I mean is bots that actually have games. Not your average Hangman, or CoinFlip, but I'm gearing more towards actual text-based [RPG's](https://www.techopedia.com/definition/27052/role-playing-game-rpg). Although there are other contributing components to the creation of Gawther, those are the two main driving points.
 
-# About The Team
+# About The KasMek Team
 
-The team is currently comprised of only Kas and myself. We have slots available for anyone who'd like to become one of Gawther's Developers, but for now it's just an interview-styled conversation with Kas and me. In the future, I do plan to build a web-based application along with a text-based application through Gawther.
+The team is currently comprised of only Kas and myself. We have slots available for anyone who'd like to become one of Gawther's Developers. For now it's just an interview-styled conversation with Kas and me. In the future, I do plan to build a web-based application along with a text-based application through Gawther. KasMek is the team we've started that may one day turn into our own company. **The Discord Extension Will ALWAYS Be Free As Per [Discord ToS]("https://discord.com/terms")**
 
 ## Mek
 
@@ -30,30 +30,63 @@ With having such a wide-scaled scheme of what I wanted my bot to achieve, I real
 
 You can find my very first repository [here](https://github.com/shellbyy0124?tab=repositories) which contains all the projects I have started and never completed (or trashed). If you'd like more direct links, see below. As you digress through the repository, you'll see 1) numerous re-writes of the bot, and the incorporation of other projects as I started to branch out into other languages and projects. As you hover over each link, a hinting window will show up explaining each repo and a description of what the repository is about.
 
-> - [Main Repo](https://github.com/shellbyy0124?tab=repositories) - When I was working under the Shellbyy alias
->   - [python-speaks](https://github.com/shellbyy0124/python-speaks, "Learning To Make My Computer Talk")
->   - [random-project-generator](https://github.com/shellbyy0124/random-project-generator, "At this point I had become bored and was tired of trying to think of a project on my own thus I started looking to various difficulty leveled projects and built a program to generate a project for me based off inserted criteria.")
->   - [Gawther-Bot](https://github.com/shellbyy0124/Gawther-Bot, "This was going to be the first official version of Gawther, but I decided to turn it into a playground to see what I could come up with my own from scratch.")
->   - [gawther-discord-bot](https://github.com/shellbyy0124/gawther-discord-bot, "Another version of Gawther. Still tossing around ideas and trying to really get an idea of where I wanted to go with the bot.")
->   - [random-project-generator](https://github.com/shellbyy0124/random_project_generator, "A second version of the first random project generator. This one is a project generator that generates randomly without user input.")
->   - [meks_projects.github.io](https://github.com/shellbyy0124/meks_projects.github.io, "I was learning to build websites and was trying to create a website that would showcase all of my projects I had accomplished. This eventually became trash.")
->   - [create-react-app-in-python](https://github.com/shellbyy0124/create-react-app-in-python, "I honestly got tired of manually creating website workspace projects for each new project everytime I messed one up and had to start over, so I attempted to automize creating the workspace.")
->   - [calculator.github.io](https://github.com/shellbyy0124/calculator.github.io, "I had finally created my first calculator and added a few features for my cousin to use at work.")
->   - [shaans_jewelers](https://github.com/shellbyy0124/shaans_jewelers, "Thought I was good enough with building websites that I could build one for a local jewelery store in town, and then realized just how aggravating the backend work was going to be to learn and trashed the project.")
->   - [gawth3r_platform](https://github.com/shellbyy0124/gawth3r_platform, "The second renaming of the platform. Still trying to figure out a direction to go with the bot.")
->   - [mekasu0124.github.io](https://github.com/shellbyy0124/mekasu0124.github.io, "Second attempt at creating my own website...or my first attempt. Check the dates on which one is most recent. That's the second one :P")
->   - [Gother_discord](https://github.com/shellbyy0124/Gother_discord, "Either another renaming or another idea tossing version of the bot")
->   - [Gother_Discord_Js](https://github.com/shellbyy0124/Gother_Discord_Js, "Attempting to learn the Discord JS Documentation and seeing if I wanted to do the bot in JavaScript instead of Python as I was heavily enjoying JavaScript at the time")
->   - [Gother](https://github.com/shellbyy0124/Gother, "Attempting to bring the two extensions together as one working platform.")
->   - [ButtlerBotDiscord](https://github.com/shellbyy0124/ButtlerBotDiscord, "Another version of ButtlerBot that went more in depth")
->   - [new_bot_code](https://github.com/shellbyy0124/new_bot_code, "I had messed up the current working environment for the bot, and needed a place to host the files while I fixed the environment and switched operating systems.")
->   - [ButtlerBot](https://github.com/shellbyy0124/ButtlerBot, "This repo houses a new version of the bot. I had started working in versions instead of just re-writing the bot over and over.")
+### Under The Shellbyy Alias
 
-> - [Main Repo](https://github.com/mekasu0124?tab=repositories) - Under my new alias of Mekasu
->   - [GawtherBot](, "This is the current running project folder for the Gawther Platform Discord Extension.") Currently Private While In Development. Will Edit With A Link To The Public Version When Available.
+> <details>
+>
+> - [Main Repo](https://github.com/shellbyy0124?tab=repositories, "When I was working under the Shellbyy alias")
+>
+>   - [python-speaks](https://github.com/shellbyy0124/python-speaks, "Learning To Make My Computer Talk")
+>
+>   - [random-project-generator](https://github.com/shellbyy0124/random-project-generator, "At this point I had become bored and was tired of trying to think of a project on my own thus I started looking to various difficulty leveled projects and built a program to generate a project for me based off inserted criteria.")
+>
+>   - [Gawther-Bot](https://github.com/shellbyy0124/Gawther-Bot, "This was going to be the first official version of Gawther, but I decided to turn it into a playground to see what I could come up with my own from scratch.")
+>
+>   - [gawther-discord-bot](https://github.com/shellbyy0124/gawther-discord-bot, "Another version of Gawther. Still tossing around ideas and trying to really get an idea of where I wanted to go with the bot.")
+>
+>   - [random-project-generator](https://github.com/shellbyy0124/random_project_generator, "A second version of the first random project generator. This one is a project generator that generates randomly without user input.")
+>
+>   - [meks_projects.github.io](https://github.com/shellbyy0124/meks_projects.github.io, "I was learning to build websites and was trying to create a website that would showcase all of my projects I had accomplished. This eventually became trash.")
+>
+>   - [create-react-app-in-python](https://github.com/shellbyy0124/create-react-app-in-python, "I honestly got tired of manually creating website workspace projects for each new project everytime I messed one up and had to start over, so I attempted to automize creating the workspace.")
+>
+>   - [calculator.github.io](https://github.com/shellbyy0124/calculator.github.io, "I had finally created my first calculator and added a few features for my cousin to use at work.")
+>
+>   - [shaans_jewelers](https://github.com/shellbyy0124/shaans_jewelers, "Thought I was good enough with building websites that I could build one for a local jewelery store in town, and then realized just how aggravating the backend work was going to be to learn and trashed the project.")
+>
+>   - [gawth3r_platform](https://github.com/shellbyy0124/gawth3r_platform, "The second renaming of the platform. Still trying to figure out a direction to go with the bot.")
+>
+>   - [mekasu0124.github.io](https://github.com/shellbyy0124/mekasu0124.github.io, "Second attempt at creating my own website...or my first attempt. Check the dates on which one is most recent. That's the second one :P")
+>
+>   - [Gother_discord](https://github.com/shellbyy0124/Gother_discord, "Either another renaming or another idea tossing version of the bot")
+>
+>   - [Gother_Discord_Js](https://github.com/shellbyy0124/Gother_Discord_Js, "Attempting to learn the Discord JS Documentation and seeing if I wanted to do the bot in JavaScript instead of Python as I was heavily enjoying JavaScript at the time")
+>
+>   - [Gother](https://github.com/shellbyy0124/Gother, "Attempting to bring the two extensions together as one working platform.")
+>
+>   - [ButtlerBotDiscord](https://github.com/shellbyy0124/ButtlerBotDiscord, "Another version of ButtlerBot that went more in depth")
+>
+>   - [new_bot_code](https://github.com/shellbyy0124/new_bot_code, "I had messed up the current working environment for the bot, and needed a place to host the files while I fixed the environment and switched operating systems.")
+>
+>   - [ButtlerBot](https://github.com/shellbyy0124/ButtlerBot, "This repo houses a new version of the bot. I had started working in versions instead of just re-writing the bot over and over.")
+>
+> </details>
+
+### Under The Mek Alias Now
+
+> <details>
+>
+> - [Main Repo](https://github.com/mekasu0124?tab=repositories, "Under my new alias of Mekasu")
+>
+>   - [GawtherBot](, "This is the current running project folder for the Gawther Platform Discord Extension.") Currently Private While In Development. Will Edit With A Link To The Public Version When Available
+>.
 >   - [GawtherWebsite](, "This is the current running project folder for the Gawther Platform Website Extension.") Currently Private While In Developement. Will Edit With A Link To The Public Version When Available.
+>
 >   - [meks-todo-app](https://github.com/mekasu0124/meks-todo-app, "Started Learning Mobile App Development using the ReactNative framework.")
+>
 >   - [meks-address-book](https://github.com/mekasu0124/meks-address-book, "Learned how to create my own address book in Python. Decided to showcase it.")
+>
+ </details>
 
 As you can see, my new repository has drastically increased as with my progression into programming, I've learned more proper setups for various projects, better ways to write the same things. I've learned amazing things programmaticaly such as one-line if-statments, one-line for loops with list comprehension, and more. As someone who learned a couple of basics and then decided to take on the world, I ***highly*** recomment to each new programmer to please take the time to learn the basics. Learn the fundamentals over and over until you can do them in your sleep. Start a Learning folder for yourself where you house all of your tutorials and side projects. When you learn a new concept, go practice it or build a project with it.
 
@@ -73,6 +106,8 @@ How To Read Table Below:
 > ```
 
 ## General Commands
+
+<details>
 
 - **Favorite Quote**
   - /gawther fav_quote
@@ -108,7 +143,11 @@ How To Read Table Below:
   - Requests member input for a user's ID then returns a Paginator Embed showing various details on the target member.
   - The input from the member must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
 
+</details>
+
 ## Bank Commands
+
+<details>
 
 - **List Requests**
   - /bank list_requests
@@ -134,7 +173,11 @@ How To Read Table Below:
   - Amount must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
   - Reason must be a printable [string](https://docs.python.org/3/library/string.html).
 
+</details>
+
 ## Staff Commands
+
+<details>
 
 - **Adjust Balance**
   - /bank adjust_balance
@@ -148,7 +191,11 @@ How To Read Table Below:
   - Amount must be an [Integer](https://www.w3schools.com/python/python_numbers.asp#:~:text=Int%2C%20or%20integer%2C%20is%20a%20whole%20number%2C%20positive%20or%20negative%2C%20without%20decimals%2C%20of%20unlimited%20length.) or [Whole Number](https://www.google.com/search?q=definition+of+a+whole+number&client=opera&hs=DFN&sxsrf=ALiCzsZc6JQtSlKhacOplIMiRtX16IM5aQ%3A1667178124225&ei=jB5fY-qgDZSgqtsPhqmmuAs&ved=0ahUKEwjqlvy-oon7AhUUkGoFHYaUCbcQ4dUDCBA&uact=5&oq=definition+of+a+whole+number&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQgAQQRhD5ATIFCAAQgAQyBggAEBYQHjIGCAAQFhAeMggIABAWEB4QDzIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsAM6BwgAELADEEM6CQgjECcQRhD5AToECAAQQzoKCAAQgAQQhwIQFDoICAAQgAQQsQM6BAgjECc6BQgAEJECOg8IABCABBCHAhAUEEYQ-QE6BwgAEIAEEAo6CAgAEBYQHhAKSgQITRgBSgQIQRgASgQIRhgAUPQHWOQbYIgdaAFwAXgAgAGYAYgB9hKSAQQyLjE5mAEAoAEByAEKwAEB&sclient=gws-wiz-serp#:~:text=a%20number%20without%20fractions%3B%20an%20integer.).
   - Reason must be a printable [string](https://docs.python.org/3/library/string.html).
 
+</details>
+
 ## Developer Commands
+
+<details>
 
 - **Send Developer Note**
   - /developers send_dev_note
@@ -171,9 +218,13 @@ How To Read Table Below:
   - Allows developers to delete a specified channel within a specified category. It requests user input on creating a backup of the entire channel or not.
   - User inputs must be a printable [string](https://docs.python.org/3/library/string.html).
 
+</details>
+
 # Gawther's Tasks
 
 Gawther is also comprised of a number of task loops that majorly assist in language filters, bridge chat re-connections, and more.
+
+<details>
 
 ## On Member Join
 
@@ -186,6 +237,8 @@ This task loop runs every 24 hours and checks for any members who have created t
 ## Check Database For Members
 
 This task loop runs every 12 hours and just runs a double check that any and all members who have joined Gawther within the last 12 hours are written to the database. It's a secondary check for just in case a member joins the channel and send Confirm to the bot when the bot DM's them, but it gives them an error message. The staff members will have a command that will write the new member to the database so that the member does not have to wait until the 12-hour mark for the bot to write them to the database.
+
+</details>
 
 
 [Top](#top)
