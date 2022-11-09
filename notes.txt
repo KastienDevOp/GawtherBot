@@ -108,3 +108,4 @@ GENERAL NOTES
 
   - Re-wrote purge command to place the function for converting the removed messages into a temp memory file into the API folder
   - Re-writing all commands to incorporate buttons
+  - Started a basic API folder for simple api instructions

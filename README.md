@@ -16,7 +16,7 @@
 >   - [Check Database For Members](check-db-for-members)
 
 
-# About Gawther <a name="#about-gawther">📎</a>
+# About Gawther
 
 Gawther started back in 2019, originally named ButtlerBot. ButtlerBot was going to be the bot that could do anything every other bot can do and more. From bridging various game chats through different socket workings and https calls, to relaying information back and forth between it's website counter-partner and all of it's inclusions. This bot was going to be the brain behind everything, however, as progression continued, we started noticing how limited the [discord api](https://discordpy.readthedocs.io/en/stable/) was eventually ButtlerBot became a stagnant project that is now being converted into Gawther. Gawther's inspiration came from various components of my life. The first component being my immediate surroundings. Starting with my friends. What can discord help me automate for them? Well the major thing being notifications, automated messages for streaming and such, bridged game chats for interactions with discord members who aren't in the game, and a few other things. The second component was what can I create that no one else can. That's the main question every programmer asks themselves. What can I create that can blow the world away?! Well after a while of researching various bots, I noticed that there weren't really a lot of gaming bots. What I mean is bots that actually have games. Not your average Hangman, or CoinFlip, but I'm gearing more towards actual text-based [RPG's](https://www.techopedia.com/definition/27052/role-playing-game-rpg). Although there are other contributing components to the creation of Gawther, those are the two main driving points.
 
