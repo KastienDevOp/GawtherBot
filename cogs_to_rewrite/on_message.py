@@ -1,4 +1,5 @@
 import disnake
+import asyncio
 
 from disnake.ext import commands
 
@@ -24,11 +25,11 @@ class OnMessageEvents(commands.Cog):
         ]
 
         if message.channel.id in notification_channels:
-            await message.delete()
-            return await message.channel.send(
-                "Please Do Not Post Messages In This Channel As This Is A\
-                    Notification ONLY Channel! -Gawther & Staff"
-            )
+            if message.author.id == 925933044932702228:
+                pass
+            else:
+                await message.delete()
+                return await message.channel.send("This is a notification ONLY channel! Do NOT post messages here! -Gawther")
 
 def setup(bot):
     bot.add_cog(OnMessageEvents(bot))

@@ -103,3 +103,8 @@ GENERAL NOTES
   - added more commands
     - rules command for general.py
     - adjust_balance command for bank.py
+
+  ================= 10/28/2022 =====================
+
+  - Re-wrote purge command to place the function for converting the removed messages into a temp memory file into the API folder
+  - Re-writing all commands to incorporate buttons

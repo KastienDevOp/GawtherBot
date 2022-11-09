@@ -1,6 +1,5 @@
 import disnake
 import json
-import re
 
 from disnake.ext import commands
 from helpers.helper_methods import get_guild_id

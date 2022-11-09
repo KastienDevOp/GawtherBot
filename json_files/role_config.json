@@ -1,0 +1,76 @@
+{
+    "roles": {
+        "Owners": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Developers": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Head-Admins": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Admins": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Moderators": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Community-Helpers": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Programming": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Gaming": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Artistry": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Python": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "JavaScript": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Java": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Rust": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "CSharp": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "HTML-CSS": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Minecraft": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Summoners-War": {
+            "color": "#FFF",
+            "permissions": {}
+        },
+        "Chess": {
+            "color": "#FFF",
+            "permissions": {}
+        }
+    }
+}

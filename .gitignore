@@ -1,11 +1,4 @@
-GawtherBotEnv/
-config.json
-__pycache__/
-/cogs/__pycache__/
-bank.db
-members.db
-rules.db
+env/
 test.py
-results.txt
-katas_files/
-.vscode
+__pycache__/
+/cogs_to_rewrite/__pycache__/

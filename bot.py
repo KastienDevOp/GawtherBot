@@ -4,20 +4,19 @@ import os
 import asyncio
 
 from disnake.ext import commands
-from createDb import create_db
 
 
-with open('./config.json','r',encoding='utf-8-sig') as f:
+with open('./json_files/config.json','r',encoding='utf-8-sig') as f:
     data = json.load(f)
 
 token = data["token"]
 cp = data["cp"]
 guild_id = data["guild_id"]
 
-with open('./setup.json','r',encoding="utf-8-sig") as g:
+with open('./json_files/setup.json','r',encoding="utf-8-sig") as g:
     data = json.load(g)
     
-terminal_id = data["terminalId"] # gawthers terminal channel for the server
+terminal_id = data[str(guild_id)]["terminal"] # gawthers terminal channel for the server
 
 intent = disnake.Intents.all()
 
@@ -74,5 +73,4 @@ async def confirm(ctx):
     await msg.delete()
 
 if __name__ == '__main__':
-    create_db()
     bot.run(token)
