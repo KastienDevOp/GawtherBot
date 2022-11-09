@@ -5,12 +5,12 @@ import sqlite3 as sql
 from disnake.ext import commands
 from disnake.ext import tasks
 
-with open('config.json', 'r', encoding='utf-8-sig') as f:
+with open('./json_files/config.json', 'r', encoding='utf-8-sig') as f:
     data = json.load(f)
 
 guild_id = data["guild_id"]
 
-with open('setup.json', 'r', encoding='utf-8-sig') as g:
+with open('./json_files/setup.json', 'r', encoding='utf-8-sig') as g:
     data = json.load(g)
 
 noti_chan = data["dbNotifications"]

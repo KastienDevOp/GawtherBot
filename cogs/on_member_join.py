@@ -18,7 +18,7 @@ class OnMemberJoin(commands.Cog):
             description=f"Hi, {member.display_name}! Welcome to Gawther! Please Read Below To Find Out More About Us!"
         )
 
-        with open('setup.json', 'r', encoding='utf-8-sig') as f:
+        with open('./json_files/setup.json', 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
 
             for i in data["information"].keys():
