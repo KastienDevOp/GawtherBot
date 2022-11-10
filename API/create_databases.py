@@ -22,7 +22,7 @@ def brain():
     print("All Databi Have Been Created.")
 
 def create_members():
-    with sql.connect('../databases/members.db') as mdb:
+    with sql.connect('./databases/members.db') as mdb:
         cur = mdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS profile(
@@ -33,12 +33,12 @@ def create_members():
             warnings INTEGER,
             kicks INTEGER,
             dob TEXT,
-            color TEXT
+            color TEXT,
             bank INTEGER
         )''')
 
 def create_rules():
-    with sql.connect('../databases/rules.db') as rdb:
+    with sql.connect('./databases/rules.db') as rdb:
         cur = rdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS rules(
@@ -52,7 +52,7 @@ def create_rules():
         )''')
 
 def create_banks():
-    with sql.connect('../databases/bank.db') as bdb:
+    with sql.connect('./databases/bank.db') as bdb:
         cur = bdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions(
@@ -77,7 +77,7 @@ def create_banks():
         )''')
 
 def create_reports():
-    with sql.connect('../databases/reports.db') as redb:
+    with sql.connect('./databases/reports.db') as redb:
         cur = redb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS reports(
@@ -109,7 +109,7 @@ def create_reports():
         )''')
 
 def create_quotes():
-    with sql.connect('../databases/quotes.db') as qdb:
+    with sql.connect('./databases/quotes.db') as qdb:
         cur = qdb.cursor()
 
         cur.execute('''CREATE TABLE IF NOT EXISTS quotes(
@@ -117,5 +117,3 @@ def create_quotes():
             author TEXT,
             quote TEXT
         )''')
-
-create_quotes()

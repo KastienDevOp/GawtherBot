@@ -109,3 +109,14 @@ GENERAL NOTES
   - Re-wrote purge command to place the function for converting the removed messages into a temp memory file into the API folder
   - Re-writing all commands to incorporate buttons
   - Started a basic API folder for simple api instructions
+
+  ================= 11/09/2022 =====================
+
+  - fixed file paths in bot.py
+  - fixed table creation error in members.db
+  - fixed table creation error in create_database.py
+  - updated helpers.py to incorporate part of purge command, and obtaining restricted channels for on_message_event
+  - updated on_member_join.py to have correct file paths, database paths, and writing users to the database
+  - foxed task_loops to have correct file paths
+  - corrected setup.json to incorporate multiple guilds for our use to start with. Need an on_guild_join cog listener to handle that.
+    - I will likely (mek) be the one to write this as I have some ideas on channel setups and such.

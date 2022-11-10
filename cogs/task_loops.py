@@ -13,7 +13,7 @@ guild_id = data["guild_id"]
 with open('./json_files/setup.json', 'r', encoding='utf-8-sig') as g:
     data = json.load(g)
 
-noti_chan = data["dbNotifications"]
+noti_chan = data["guilds"][str(guild_id)]["restricted_channels"]["db_notifications"]
 
 
 class TaskChecks(commands.Cog):
@@ -110,7 +110,7 @@ class TaskChecks(commands.Cog):
     async def check_database_for_members(self):
         await self.bot.wait_until_ready()
 
-        with sql.connect('members.db') as mdb:
+        with sql.connect('./databases/members.db') as mdb:
             cur = mdb.cursor()
 
             guild = self.bot.get_guild(guild_id)
@@ -121,7 +121,7 @@ class TaskChecks(commands.Cog):
             
             try:
                 all_db_member_ids = [id[0] for id in cur.execute(
-                    'SELECT id FROM profiles').fetchall()]
+                    'SELECT id FROM profile').fetchall()]
             except:
                 all_db_member_ids = []
 
@@ -132,15 +132,15 @@ class TaskChecks(commands.Cog):
                     if member.id in all_db_member_ids:
                         pass
                     else:
-                        srch = 'INSERT INTO profiles(member,bank,quote) VALUES (?,?,?)'
-                        val = (member.id, 1500, "None")
+                        srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
+                        val = (member.id,"None",0,0,0,0,"None","None",1500)
 
                         cur.execute(srch, val)
                         added_members.append(member.name)
             else:
                 for member in guild.members:
-                    srch = 'INSERT INTO profiles(member,bank,quote) VALUES (?,?,?)'
-                    val = (member.id, 1500, "None")
+                    srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
+                    val = (member.id,"None",0,0,0,0,"None","None",1500)
 
                     added_members.append(member.name)
 

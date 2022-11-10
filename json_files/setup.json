@@ -1,6 +1,21 @@
 {
+  "guilds": {
     "989763916064260136": {
-        "bank": 1000000000,
-        "terminal": 1010358897057476708
+      "bank": 1000000000,
+      "terminal": 1010358897057476708,
+      "restricted_channels": {
+        "announcements": 1035682116429680682,
+        "db_notifications": 1033855023618203698,
+        "purge_file_logs": 1033877482987864124,
+        "pending_verification": 1033878532062990507,
+        "latency_reports": 1033879108230336542,
+        "fav-quote_logs": 1033889553930518610,
+        "bank_notifications": 1035398905392803890,
+        "category_channel_editing": 1035713979353399336,
+        "moderation_notifications": 1036871164838039624,
+        "gawther_rar_files": 1033922944600129567,
+        "staff_announcements": 1033355878562283582
+      }
     }
+  }
 }

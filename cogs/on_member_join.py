@@ -4,7 +4,7 @@ import json
 import random
 
 from disnake.ext import commands
-
+from API.helpers import get_guild_id
 
 class OnMemberJoin(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +18,7 @@ class OnMemberJoin(commands.Cog):
             description=f"Hi, {member.display_name}! Welcome to Gawther! Please Read Below To Find Out More About Us!"
         )
 
-        with open('./json_files/setup.json', 'r', encoding='utf-8-sig') as f:
+        with open('./json_files/new_member_info.json', 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
 
             for i in data["information"].keys():
@@ -37,9 +37,14 @@ class OnMemberJoin(commands.Cog):
                 inline=False
             )
 
-            for j in data["rules"].keys():
-                rule_name = data["rules"][j]["name"]
-                rule_desc = data["rules"][j]["desc"]
+        with sql.connect('./databases/rules.db') as rulesDb:
+            cur = rulesDb.cursor()
+
+            all_rules = cur.execute('SELECT name,details FROM rules').fetchall()
+
+            for line in all_rules:
+                rule_name = line[0]
+                rule_desc = line[1]
 
                 embed.add_field(
                     name=rule_name,
@@ -47,79 +52,78 @@ class OnMemberJoin(commands.Cog):
                     inline=False
                 )
 
-            embed.add_field(
-                name="Along With The Rules. . .",
-                value="Along With The Rules we also have a punishment chart. This is not written in stone, and the staff are allowed to enter their own custom time frames."
-            )
+        embed.add_field(
+            name = "What Do I Do Now?",
+            value = "If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
+        )
+        embed.set_footer(
+            text="If you cannot access the discord after you've responded with Confirm, please try running `>>reconfirm` in the direct messages with the bot. If that still doesn't work, then contact support.",
+        ).set_thumbnail(
+            url=member.guild.icon
+        )
 
-            for k in data["punishmentTable"].keys():
-                pTable_name = data["punishmentTable"][k]["name"]
-                pTable_desc = data["punishmentTable"][k]["desc"]
+        await member.send(embed=embed)
+        choice = await self.bot.wait_for('message')
 
-                embed.add_field(
-                    name=pTable_name,
-                    value=pTable_desc,
-                    inline=False
-                )
+        welcome_channel = disnake.utils.get(
+            member.guild.text_channels, name="welcome_members")
 
-            embed.set_footer(
-                text="Given that you have agreed and read the rules and statements above, please repond with Confirm or Deny to continue.",
-            ).set_thumbnail(
-                url=member.guild.icon
-            )
+        all_quotes = []
 
-            await member.send(embed=embed)
+        with sql.connect('./databases/quotes.db') as quotesDb:
+            cur = quotesDb.cursor()
+
+            all_items = cur.execute('SELECT quote, author FROM quotes').fetchall()
+
+        to_pick_from_randomly = []
+
+        for line in all_items:
+            to_pick_from_randomly.append(f"{line[0]} --{line[1]}")
+
+        quote = random.choice(to_pick_from_randomly)
+
+        if choice.content.lower() == "confirm":
+            member_role = disnake.utils.get(
+                member.guild.roles, name="Member")
+            await member.add_roles(member_role)
+
+            with sql.connect('./databases/members.db') as mdb:
+                cur = mdb.cursor()
+
+                current_members = cur.execute(
+                    'SELECT id FROM profile').fetchall()
+
+                if member.id not in current_members:
+                    srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
+                    val = (member.id,"None",0,0,0,0,"None","None",1500)
+
+                    cur.execute(srch, val)
+
+                    await member.send("You Have Been Successfully Made A Member! Please Enjoy Your $1500.00GB (Gawther Bucks) Welcome Bonus!")
+
+                    embed = disnake.Embed(
+                        color=disnake.Colour.green(),
+                        title=f"Welcome {member.display_name}",
+                        description="We're Pleased To Have You Aboard! Please Enjoy Your Stay! Remember: If you have any problems, please get in touch with Support!"
+                    ).set_footer(text=quote).set_thumbnail(url=member.avatar)
+
+                    await welcome_channel.send(embed=embed)
+                else:
+                    await member.send("There was an issue with adding you to the database. Please get in touch with support!")
+        else:
+            await member.send("Are you sure you want to deny the rules? Y/N")
             choice = await self.bot.wait_for('message')
 
-            welcome_channel = disnake.utils.get(
-                member.guild.text_channels, name="welcome_members")
-
-            all_quotes = []
-
-            with open('quotes.json', 'r', encoding='utf-8-sig') as f:
-                data = json.load(f)
-
-                for i in data.keys():
-                    all_quotes.append(data[i])
-
-            quote = random.choice(all_quotes)
-
-            if choice.content.lower() == "confirm":
-                member_role = disnake.utils.get(
-                    member.guild.roles, name="Member")
-                await member.add_roles(member_role)
-
-                with sql.connect('main.db') as mdb:
-                    cur = mdb.cursor()
-
-                    current_members = cur.execute(
-                        'SELECT id FROM members').fetchall()
-
-                    if member.id not in current_members:
-                        srch = 'INSERT INTO members(id, bank) VALUES (?,?)'
-                        val = (member.id, 1500.00)
-
-                        cur.execute(srch, val)
-
-                        await member.send("You Have Been Successfully Made A Member! Please Enjoy Your $1500.00GB (Gawther Bucks) Welcome Bonus!")
-
-                        embed = disnake.Embed(
-                            color=disnake.Colour.green(),
-                            title=f"Welcome {member.display_name}",
-                            description="We're Pleased To Have You Aboard! Please Enjoy Your Stay! Remember: If you have any problems, please get in touch with Support!"
-                        ).set_footer(text=quote).set_thumbnail(url=member.avatar)
-
-                        await welcome_channel.send(embed=embed)
-                    else:
-                        await member.send("There was an issue with adding you to the database. Please get in touch with support!")
+            if choice.content.lower() == "y":
+                await member.guild.kick(member, "Denied Confirmation To Rules")
             else:
-                await member.send("Are you sure you want to deny the rules? Y/N")
-                choice = await self.bot.wait_for('message')
+                await self.on_member_join(member)
 
-                if choice.content.lower() == "y":
-                    await member.guild.kick(member, "Denied Confirmation To Rules")
-                else:
-                    self.on_member_join(member)
+    @commands.command()
+    async def reconfirm(self,message):
+        guild = (message.guild).id
+        member = disnake.utils.get(guild.members, id=message.author.id)
+        await self.on_member_join(member)
 
 
 def setup(bot):
