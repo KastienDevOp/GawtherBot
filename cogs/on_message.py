@@ -16,12 +16,13 @@ class OnMessageEvents(commands.Cog):
         else:
             if message.channel.id in [int(channel) for channel in get_restricted_channels()]:
                 if message.author.id != self.bot.user.id:
-                    await message.reply(
-                        content = "This is a notification ONLY channel! Do NOT post messages here! -Gawther"
-                    )
-                    await message.delete()
-                    await asyncio.sleep(10)
-                    return await message.channel.purge(limit=1)
+                    if not message.webhook_id:
+                        await message.reply(
+                            content = "This is a notification ONLY channel! Do NOT post messages here! -Gawther"
+                        )
+                        await message.delete()
+                        await asyncio.sleep(10)
+                        return await message.channel.purge(limit=1)
 
 def setup(bot):
     bot.add_cog(OnMessageEvents(bot))

@@ -120,3 +120,4 @@ GENERAL NOTES
   - foxed task_loops to have correct file paths
   - corrected setup.json to incorporate multiple guilds for our use to start with. Need an on_guild_join cog listener to handle that.
     - I will likely (mek) be the one to write this as I have some ideas on channel setups and such.
+  - updated check system in on_message cog listener to ignore webhook messages from github.
