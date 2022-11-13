@@ -8,7 +8,7 @@ from disnake.ext import commands
 from Paginator import CreatePaginator
 from typing import List
 from datetime import datetime
-from helpers.helper_methods import get_guild_id
+from API.helpers import get_guild_id
 
 
 class GeneralCommandsRewrite(commands.Cog):
