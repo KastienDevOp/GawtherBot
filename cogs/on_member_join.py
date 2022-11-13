@@ -57,7 +57,7 @@ class OnMemberJoin(commands.Cog):
             value = "If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
         )
         embed.set_footer(
-            text="If you cannot access the discord after you've responded with Confirm, please try running `>>reconfirm` in the direct messages with the bot. If that still doesn't work, then contact support.",
+            text="If you cannot access the discord after you've responded with Confirm, please contact support.",
         ).set_thumbnail(
             url=member.guild.icon
         )
@@ -118,12 +118,6 @@ class OnMemberJoin(commands.Cog):
                 await member.guild.kick(member, "Denied Confirmation To Rules")
             else:
                 await self.on_member_join(member)
-
-    @commands.command()
-    async def reconfirm(self,message):
-        guild = (message.guild).id
-        member = disnake.utils.get(guild.members, id=message.author.id)
-        await self.on_member_join(member)
 
 
 def setup(bot):

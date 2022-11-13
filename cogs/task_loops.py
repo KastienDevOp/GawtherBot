@@ -20,7 +20,7 @@ class TaskChecks(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.check_pending.start()
-        self.check_database_for_members.start()
+        # self.check_database_for_members.start() - need to fix
 
     @tasks.loop(hours=24)
     async def check_pending(self):
@@ -106,59 +106,48 @@ class TaskChecks(commands.Cog):
 
             await staff_channel_announcements.send(embed=embed2)
 
-    @tasks.loop(hours=12)
-    async def check_database_for_members(self):
-        await self.bot.wait_until_ready()
+    # @tasks.loop(hours=12)
+    # async def check_database_for_members(self):
+    #     await self.bot.wait_until_ready()
+    #     guild = self.bot.get_guild(guild_id)
 
-        with sql.connect('./databases/members.db') as mdb:
-            cur = mdb.cursor()
+    #     with sql.connect('./databases/members.db') as membersDb:
+    #         cur = membersDb.cursor()
 
-            guild = self.bot.get_guild(guild_id)
-            notification_channel = disnake.utils.get(
-                guild.text_channels, id=noti_chan)
-            all_guild_members = [
-                member for member in guild.members if not member.bot]
-            
-            try:
-                all_db_member_ids = [id[0] for id in cur.execute(
-                    'SELECT id FROM profile').fetchall()]
-            except:
-                all_db_member_ids = []
+    #         all_member_ids = cur.execute('SELECT id FROM profile').fetchall()
 
-            added_members = []
+    #         added_members = []
 
-            if len(all_db_member_ids) > 0:
-                for member in all_guild_members:
-                    if member.id in all_db_member_ids:
-                        pass
-                    else:
-                        srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
-                        val = (member.id,"None",0,0,0,0,"None","None",1500)
+    #         for member in self.bot.get_guild(guild_id).members:
+    #             if member.id in all_member_ids:
+    #                 pass
+    #             else:
+    #                 srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
+    #                 val = (member.id,"None",0,0,0,0,"None","None","None")
 
-                        cur.execute(srch, val)
-                        added_members.append(member.name)
-            else:
-                for member in guild.members:
-                    srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
-                    val = (member.id,"None",0,0,0,0,"None","None",1500)
+    #                 try:
+    #                     cur.execute(srch, val)
+    #                     added_members.append(member.name)
+    #                 except:
+    #                     terminal_channel = disnake.utils.get(guild.text_channels, name="gawther_terminal")
+    #                     await terminal_channel.send("Failed To Update Database With New Members - Task Loop")
 
-                    added_members.append(member.name)
+    #         embed = disnake.Embed(
+    #             color=disnake.Colour.random(),
+    #             title="Gawther Database Notification System",
+    #             description="I have Successfully Updated The Members Table In The Database."
+    #         ).add_field(
+    #             name="Additional Information",
+    #             value=f"{len(added_members)} New Members Added To The Database",
+    #             inline=False
+    #         ).set_thumbnail(
+    #             url=self.bot.user.avatar
+    #         ).set_footer(
+    #             text="To See The Full List Of Members In The Database, Please Run /db_diag"
+    #         )
 
-            embed = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Gawther Database Notification System",
-                description="I have Successfully Updated The Members Table In The Database."
-            ).add_field(
-                name="Additional Information",
-                value=f"{len(added_members)} New Members Added To The Database",
-                inline=False
-            ).set_thumbnail(
-                url=self.bot.user.avatar
-            ).set_footer(
-                text="To See The Full List Of Members In The Database, Please Run /db_diag"
-            )
-
-            await notification_channel.send(embed=embed)
+    #         notification_channel = disnake.utils.get(guild.text_channels, name="db_notifications")
+    #         await notification_channel.send(embed=embed)
 
 
 def setup(bot):
