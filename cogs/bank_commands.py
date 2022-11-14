@@ -28,7 +28,7 @@ class BankCommands(commands.Cog):
             pass
         elif cmd == "Request":
             pass
-        elif cmd == "Show All Request":0
+        elif cmd == "Show All Request":
             pass
         elif cmd == "Pay Open Request":
             pass

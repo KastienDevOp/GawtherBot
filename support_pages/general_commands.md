@@ -65,8 +65,9 @@ Below you will find the list of available commands that any member of the discor
 - ## ***/gawther solved***
   - Allows a user who is in the Support category threads to mark their support thread as closed once they have received adequate support for their problem.
 
-- ## ***/gawther help***
+- ## ***/gawther help*** or ***@ghelp***
   - Returns an embed containing a link to this readme file displaying each command, what it does, how to use it, etc.
+  - @ghelp also gives a user a way to get the help menu's if they cant remember the help command.
 
 - ## ***/gawther subscribe***
   - ***Currently Being Setup*** This will return information useful to a Gawther Member looking to subscribe to the Gawther Platform
@@ -85,3 +86,4 @@ Below you will find the list of available commands that any member of the discor
 
 - ## ***/bank pay_open_request***
   - Allows a member to pay off an open request.
+
