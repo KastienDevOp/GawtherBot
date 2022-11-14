@@ -47,4 +47,3 @@ def create_db():
             date TEXT,
             author INTEGER
         )''')
-create_db()

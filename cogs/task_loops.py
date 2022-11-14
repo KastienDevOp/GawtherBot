@@ -1,6 +1,7 @@
 import disnake
 import json
 import sqlite3 as sql
+import random
 
 from disnake.ext import commands
 from disnake.ext import tasks
@@ -21,6 +22,7 @@ class TaskChecks(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.check_pending.start()
+        self.change_presence.start()
         # self.update_db.start()
 
     @tasks.loop(hours=24)
@@ -107,7 +109,38 @@ class TaskChecks(commands.Cog):
 
             await staff_channel_announcements.send(embed=embed2)
 
+    """
+    Setting `Playing` Status
+    await bot.change_presence(activity=disnake.Game(name="a game"))
+
+    Setting `Streaming` Status
+    await bot.change_presence(activity=disnake.Streaming(name="My Stream", url=my_twitch_url))
+
+    Setting `Listening` Status
+    await bot.change_presence(activity=disnake.Activity(type=discord.ActivityType.listening, name="a song"))
+
+    Setting `Watching` Status
+    await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="a movie"))
+    """
+
+    @tasks.loop(seconds=15)
+    async def change_presence(self):
+        await self.bot.wait_until_ready()
+
+        activities = [
+            disnake.Game(name="Minecraft ⚒️"),
+            disnake.Activity(type=disnake.ActivityType.listening, name="2 Ur Txts 📱"),
+            disnake.Streaming(name="Need Help?",url=""),
+            disnake.Game(name=" and Burble Flurpin Around 🏃")
+        ]
+
+        await self.bot.change_presence(
+            status = disnake.Status.online,
+            activity = random.choice(activities)
+        )
+
     # @tasks.loop(hours=12)
+    # @tasks.loop(seconds=15)
     # async def update_db(self):
     #     await self.bot.wait_until_ready()
 
@@ -118,20 +151,20 @@ class TaskChecks(commands.Cog):
     #         cur = mdb.cursor()
 
     #         all_member_ids = cur.execute('SELECT id FROM members').fetchall()
-    #         added_members = []
+    #         check = 0
+    #         members_written = []
 
     #         for member in guild.members:
-    #             if member.id in all_member_ids:
-    #                 pass
-    #             else:
-    #                 srch = 'INSERT INTO members(id,quote,mutes,bans,warnings,kicks,bank) VALUES (?,?,?,?,?,?,?)'
-    #                 val = (member.id,"None",0,0,0,0,1500)
+    #             for iden in all_member_ids:
+    #                 if member.id != all_member_ids[all_member_ids.index(iden)][0]:
+    #                     srch = 'INSERT INTO members(id,quote,mutes,bans,warnings,kicks,bank) VALUES (?,?,?,?,?,?,?)'
+    #                     val = (member.id,"None",0,0,0,0,1500)
 
-    #                 cur.execute(srch, val)
+    #                     cur.execute(srch, val)
+    #                     x = member.name + '\n'
+    #                     members_written.append(x)
 
-    #                 x = member.name + '\n'
 
-    #                 added_members.append(x)
 
     #     embed = disnake.Embed(
     #         color = disnake.Colour.random(),
@@ -139,7 +172,7 @@ class TaskChecks(commands.Cog):
     #         description = "The Following Members Were Added To The database"
     #     ).add_field(
     #         name = "Added Members List",
-    #         value = [''.join([name for name in added_members])]
+    #         value = [''.join([name for name in members_written])]
     #     ).set_thumbnail(
     #         url = self.bot.user.avatar
     #     )

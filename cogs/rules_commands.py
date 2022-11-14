@@ -10,13 +10,13 @@ class RulesCommands(commands.Cog):
         self.bot = bot
 
     @commands.slash_command(
-        name = "rules",
-        description = "Allows A Staff Member Of Head Admin/Owner To Create/Edit/Delete Rules Within The Database",
-        guildids = [get_guild_id(),]
+        name="rules",
+        description="Allows A Staff Member Of Head Admin/Owner To Create/Edit/Delete Rules Within The Database",
+        guildids=[get_guild_id(), ]
     )
-    @commands.has_any_role("Owners","Developers","Head Administrators")
+    @commands.has_any_role("Owners", "Developers", "Head Administrators")
     async def rules(self, inter, command: str = commands.Param(
-        choices = ["create","edit","delete"]
+        choices=["create", "edit", "delete"]
     )):
         if command == "create":
             self.create_rule()
@@ -28,7 +28,7 @@ class RulesCommands(commands.Cog):
             return await inter.reponse.send_message("That Is Not A Valid Option. Try Again!")
 
     async def create_rule(self):
-        await inter.response.send_message("Enter The Name Of The Rule",ephemeral=True)
+        await inter.response.send_message("Enter The Name Of The Rule", ephemeral=True)
         rule_name = await self.check_input((await self.bot.wait_for('message')).content)
         await inter.channel.purge(limit=1)
 
@@ -36,13 +36,14 @@ class RulesCommands(commands.Cog):
         rule_desc = await self.check_input((await self.bot.wait_for('message')).content)
         await inter.channel.purge(limit=1)
 
-        await self.update_db(self,rule_name,rule_desc)
+        await self.update_db(self, rule_name, rule_desc)
 
-    async def update_db(self,name,description):
+    async def update_db(self, name, description):
         with sql.connect('rules.db') as rules:
             cur = rules.cursor()
 
-            new_rule_num = len(cur.execute('SELECT * FROM current').fetchall()) + 1
+            new_rule_num = len(cur.execute(
+                'SELECT * FROM current').fetchall()) + 1
 
             if option == "new":
                 srch = 'INSERT INTO current(rule_number, rule_name, rule_details) VALUES (?,?,?)'

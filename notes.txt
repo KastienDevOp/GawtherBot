@@ -68,12 +68,6 @@ GENERAL NOTES
   - in the createDb.py file, the schema has changed. id's are no longer primary keys as it throws errors with the code
 
 
-
-
-
-
-
-
   ================== 10/26/2022 ====================
 
   1) we need to create a language filter json file, and use it to filter messages on each on_message event, and we need to be sure

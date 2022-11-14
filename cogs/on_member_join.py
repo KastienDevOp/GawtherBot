@@ -6,6 +6,7 @@ import random
 from disnake.ext import commands
 from helpers import get_guild_id
 
+
 class OnMemberJoin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -40,7 +41,8 @@ class OnMemberJoin(commands.Cog):
         with sql.connect('./databases/rules.db') as rulesDb:
             cur = rulesDb.cursor()
 
-            all_rules = cur.execute('SELECT name,details FROM rules').fetchall()
+            all_rules = cur.execute(
+                'SELECT name,details FROM rules').fetchall()
 
             for line in all_rules:
                 rule_name = line[0]
@@ -53,11 +55,11 @@ class OnMemberJoin(commands.Cog):
                 )
 
         embed.add_field(
-            name = "What Do I Do Now?",
-            value = "If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
+            name="What Do I Do Now?",
+            value="If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
         )
         embed.set_footer(
-            text="If you cannot access the discord after you've responded with Confirm, please contact support.",
+            text="If you cannot access the discord after you've responded with Confirm, please type `/reconfirm`.",
         ).set_thumbnail(
             url=member.guild.icon
         )
@@ -73,7 +75,8 @@ class OnMemberJoin(commands.Cog):
         with sql.connect('./databases/quotes.db') as quotesDb:
             cur = quotesDb.cursor()
 
-            all_items = cur.execute('SELECT quote, author FROM quotes').fetchall()
+            all_items = cur.execute(
+                'SELECT quote, author FROM quotes').fetchall()
 
         to_pick_from_randomly = []
 
@@ -95,7 +98,7 @@ class OnMemberJoin(commands.Cog):
 
                 if member.id not in current_members:
                     srch = 'INSERT INTO profile(id,quote,mutes,bans,warnings,kicks,dob,color,bank) VALUES (?,?,?,?,?,?,?,?,?)'
-                    val = (member.id,"None",0,0,0,0,"None","None",1500)
+                    val = (member.id, "None", 0, 0, 0, 0, "None", "None", 1500)
 
                     cur.execute(srch, val)
 
@@ -118,6 +121,11 @@ class OnMemberJoin(commands.Cog):
                 await member.guild.kick(member, "Denied Confirmation To Rules")
             else:
                 await self.on_member_join(member)
+
+    @commands.slash_command(name="reconfirm",description="ONLY USABLE IN DM'S -- allows a member to restart the on_join event for new members")
+    async def reconfirm(self,inter):
+        await self.on_member_join(inter.author)
+        return await inter.response.send_message("Check your DM's",delete_after=10)
 
 
 def setup(bot):
