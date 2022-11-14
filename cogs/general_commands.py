@@ -91,30 +91,20 @@ class GeneralCommandsRewrite(commands.Cog):
     async def server(self, inter):
         await inter.response.defer(ephemeral=True)
 
-        owners = ', '.join(
-            [m.name for m in inter.guild.members if m.top_role.name == "Owners"]) or "Applications Open"
-        bots = ', '.join(
-            [m.name for m in inter.guild.members if m.top_role.name == "Bots"]) or "Applications Open"
-        devs = ', '.join([m.name for m in inter.guild.members if m.top_role.name ==
-                         "Developers"]) or "Applications Open"
-        head_admins = ', '.join(
-            [m.name for m in inter.guild.members if m.top_role.name == "Head Administrators"]) or "Applications Open"
-        admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name ==
-                           "Administrators"]) or "Applications Open"
-        moderators = ', '.join(
-            [m.name for m in inter.guild.members if m.top_role.name == "Moderators"]) or "Applications Open"
-        comm_helpers = ', '.join(
-            [m.name for m in inter.guild.members if m.top_role.name == "Community Helpers"]) or "Applications Open"
+        owners = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Owners"]) or "Applications Open"
+        bots = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Bots"]) or "Applications Open"
+        devs = ', '.join([m.name for m in inter.guild.members if m.top_role.name =="Developers"]) or "Applications Open"
+        head_admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Head Administrators"]) or "Applications Open"
+        admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name =="Administrators"]) or "Applications Open"
+        moderators = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Moderators"]) or "Applications Open"
+        comm_helpers = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Community Helpers"]) or "Applications Open"
 
-        all_roles = ', '.join(
-            [r.name for r in inter.guild.roles if not r.managed])
+        all_roles = ', '.join([r.name for r in inter.guild.roles if not r.managed])
         member_count = len([m for m in inter.guild.members if not m.bot])
         bot_count = len([b for b in inter.guild.members if b.bot])
         category_count = len([cat for cat in inter.guild.categories])
-        text_channel_count = len(
-            [channel for channel in inter.guild.text_channels])
-        voice_channel_count = len(
-            [channel for channel in inter.guild.voice_channels])
+        text_channel_count = len([channel for channel in inter.guild.text_channels])
+        voice_channel_count = len([channel for channel in inter.guild.voice_channels])
 
         embed = disnake.Embed(
             color=disnake.Colour.random(),

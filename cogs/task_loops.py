@@ -130,7 +130,7 @@ class TaskChecks(commands.Cog):
         activities = [
             disnake.Game(name="Minecraft ⚒️"),
             disnake.Activity(type=disnake.ActivityType.listening, name="2 Ur Txts 📱"),
-            disnake.Streaming(name="Need Help?",url=""),
+            disnake.Activity(type=disnake.ActivityType.listening, name="Need Help?"),
             disnake.Game(name=" and Burble Flurpin Around 🏃")
         ]
 

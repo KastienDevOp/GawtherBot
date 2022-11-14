@@ -17,6 +17,10 @@ class OnMemberJoin(commands.Cog):
             color=disnake.Colour.random(),
             title="Welcome To Gawther!",
             description=f"Hi, {member.display_name}! Welcome to Gawther! Please Read Below To Find Out More About Us!"
+        ).add_field(
+            name = "Something To Note!",
+            value = "If you only type `@ghelp` in a text channel, IT WILL OPEN A BROWSER PAGE for you to show a list of commands available to you, what they do, etc.",
+            inline = False
         )
 
         with open('./json_files/new_member_info.json', 'r', encoding='utf-8-sig') as f:
@@ -38,7 +42,7 @@ class OnMemberJoin(commands.Cog):
                 inline=False
             )
 
-        with sql.connect('./databases/rules.db') as rulesDb:
+        with sql.connect('main.db') as rulesDb:
             cur = rulesDb.cursor()
 
             all_rules = cur.execute(
