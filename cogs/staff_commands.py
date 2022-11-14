@@ -21,6 +21,8 @@ class StaffCommands(commands.Cog):
             await self.purge(inter)
         elif operation == "manage_member":
             await self.manage_member(inter)
+        elif operation == "announcement":
+            await self.make_announcement(inter)
         else:
             return await inter.response.send_message("Error On Param Selection")
 
@@ -202,5 +204,23 @@ class StaffCommands(commands.Cog):
     async def ban_member(self,inter,member,cmd,reason):
         return await inter.edit_original_message("Banning Worked")
 
+    async def make_announcement(self,inter):
+        # embed title
+        await inter.response.send_message("Enter Title For Announcement")
+        title = (await self.bot.wait_for('message')).content
+
+        if not all(i.isprintable() for i in title):
+            return await inter.edit_original_message("The Title Must Be A Printable String!")
+
+        # embed description
+        await inter.response.send_message("Enter The Announcement")
+        announcement = (await self.bot.wait_for('message')).content
+
+        if not all(i.isprintable() for i in announcement):
+            return await inter.edit_original_message("The Introduction Must Be A Printable String!")
+
+        """Finish Later"""
+
+        
 def setup(bot):
     bot.add_cog(StaffCommands(bot))

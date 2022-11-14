@@ -15,14 +15,21 @@ class OnMessageEvents(commands.Cog):
             embed = disnake.Embed(
                 color = disnake.Colour.random(),
                 title = "Gawther's Help System",
-                description = "Please [Click Here]('https://google.com') For A Full List Of All Commands and Their Details."
+                description = "Please Download The Attached File For A Full List Of All Commands and Their Details. An Announcment Will Be Made When This File Is Updated."
             ).set_thumbnail(
                 url = self.bot.user.avatar
             ).set_footer(
                 text = "This will open a .md (a mark-down file) in your browser window."
             )
 
-            return await message.reply(embed=embed)
+            if message.author.top_role.name in ["Owners","Head Administrators","Administrators","Moderators","Community Helpers"]:
+                file = disnake.File('./support_pages/staff_commands.md')
+            elif message.author.top_role.name in ["Owners","Developers"]:
+                file = disnake.File('./support_pages/dev_commands.md')
+            else:
+                file = disnake.File('./support_pages/general_commands.md')
+
+            return await message.reply(embed=embed,file=file)
         else:
             if message.channel.id in [int(channel) for channel in get_restricted_channels()]:
                 if message.author.id != self.bot.user.id:
