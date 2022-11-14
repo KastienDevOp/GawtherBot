@@ -2,7 +2,7 @@ import disnake
 import asyncio
 
 from disnake.ext import commands
-from API.helpers import get_guild_id
+from helpers import get_guild_id
 
 
 class DeveloperCommands(commands.Cog):

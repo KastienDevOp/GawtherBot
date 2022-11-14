@@ -1,0 +1,68 @@
+﻿{
+    "rules": {
+        "1": {
+            "title": "Be Respectful",
+            "rule": "No matter what, respect is a must. It does not matter who has been what degree of rude with you, or disrespectful, do not take the situation into your own hands, but instead, report it."
+        },
+        "2": {
+            "title": "No Nudity or Pornography!",
+            "rule": "At NO given time shall any nudity be shown, or portrayed, in any of the Gawther Platforms. This is a community for ages 13+. Anyone caught sharing/displaying any types of nudity will be permenantly removed from ALL platforms immediately. This also includes being visible on camera."
+        },
+        "3": {
+            "title": "Channel Topics Exist",
+            "rule": "As the name states, channel topics exist. When you go to a text channel, look at the top of the channel. There is a description that states the purpose of the channel. The members of the community will typically relay this information to members who ask their questions in the wrong channels to keep the channels clean and organized."
+        },
+        "4": {
+            "title": "Respect All Staff Members and Their Decisions!",
+            "rule": "It does not matter if you agree or disagree with a staff member during a currently happening situation. Respect their decision on how they handled the situation. If you do NOT agree with how a situation was handled, please get in touch with staff for further assistance."
+        },
+        "5": {
+            "title": "Do Not Ping Higher-Level Staff Unless Necessary!",
+            "rule": "We are consistently working and striving to improve the community as a whole. We DO NOT get paid to do this job, thus do not rush us. Everyone's opinions and concerns that are reported are reviewed each week, one-by-one, and discussed in a private channel for further evaluation."
+        },
+        "6": {
+            "title": "Need To Speak With Upper Staff?",
+            "rule": "If you need to open a support ticket to speak with upper-level staff, then do understand that the immediate response staff team will as you questions first regarding the situation to ensure that they cannot help you without needing to ping upper-level staff."
+        },
+        "7": {
+            "title": "Doxxing Is Not Allowed!",
+            "rule": "Giving away, or selling anyones publicly, or non-publicly, identifiable information anywhere in DM's, or in any part or sub-part of any Gawther Platform is prohibited and will result in an immediate ban ith no appeal. See Federal Laws on Doxxing and Their Repercussions."
+        },
+        "8": {
+            "title": "Private Threads Are Not Allowed!",
+            "rule": "We are a community comprised of individuals of ALL ages 13+. If there is something that you need to tell someone privately, then utilize Direct Messages, but do understand that all of these rules apply even when in Direct Messages between Gawther Members."
+        },
+        "9": {
+            "title": "Do Not Create Your Own Invite Link!",
+            "rule": "The bot is setup with a command to invite your friends to the discord. Please do not create your own invite links. Use the /invite command!"
+        },
+        "10": {
+            "title": "At-least 2 Staff Members Required!",
+            "rule": "When pulling a member into a voice channel to discuss a prolem, or other details, at least 2 staff members are required to be in the channel at all times. This is for the safety of the member, and staff."
+        },
+        "11": {
+            "title": "No Gaslighting!",
+            "rule": "A member may not attempt to psychologically manipulate or attempt to sow self-doubt and confusion towards another member."
+        },
+        "12": {
+            "title": "No Spamming!",
+            "rule": "At not time is a member allowed to spam any text/voice channels. This will result in an automatic 3 Day Mute."
+        },
+        "13": {
+            "title": "No Drama!",
+            "rule": "Anyone attempting to create, or participating in, drama will be muted for 3 days immediately. Drama will not be tolerated within the Gawther Platform."
+        },
+        "14": {
+            "title": "Further More",
+            "rule": "Staff Members have access to /warn_member, /mute_member, /kick_member. These commands replace the default discord version commands. These commands are setup to allow the staff member executing them to insert their own time frames. The time frames shown in the punishment table are suggestive time frames for staff to use."
+        },
+        "15": {
+            "title": "Appealing A Decision",
+            "rule": "If at any time you are unhappy with a log on your record, then you're welcome to contact staff and discuss appealing/removing it. Only the Head Administrator and Owners have permissions to strike items from records."
+        },
+        "16": {
+            "title": "exceptions",
+            "rule": "A Member May Not Appeal An Item On Their Record If: The Item Is Older Than 6 Months.\nThe Item Is Not At Least 7 Calendar Days Old.\nThe Member APpealed The Same Item More Than 3 Times In A Given 6 Months Period."
+        }
+    }
+}

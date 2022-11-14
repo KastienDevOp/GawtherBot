@@ -126,3 +126,8 @@ GENERAL NOTES
 
   - commented out task loop for checking the database for members to ensure they're written. Is continuously writing the same members over and over. needs to be fixed.
   - offloaded dev_commands.py because it keeps telling me that the the interaction has already been responded to, and it keeps displaying an error that is no longer there.
+
+  ================= 11/13/2022 =====================
+  
+  - need to fix commented out task loop
+  - need to fix commented out code in staff_commands.py > mute_mmebers function

@@ -4,7 +4,7 @@ import json
 import random
 
 from disnake.ext import commands
-from API.helpers import get_guild_id
+from helpers import get_guild_id
 
 class OnMemberJoin(commands.Cog):
     def __init__(self, bot):

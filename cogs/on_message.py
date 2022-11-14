@@ -2,7 +2,7 @@ import disnake
 import asyncio
 
 from disnake.ext import commands
-from API.helpers import get_restricted_channels
+from helpers import get_restricted_channels
 
 
 class OnMessageEvents(commands.Cog):

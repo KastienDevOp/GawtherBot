@@ -4,7 +4,7 @@ import os
 import asyncio
 
 from disnake.ext import commands
-from API.create_databases import brain
+from create_database import create_db
 
 with open('./json_files/config.json','r',encoding='utf-8-sig') as f:
     data = json.load(f)
@@ -73,5 +73,5 @@ async def confirm(ctx):
     await msg.delete()
 
 if __name__ == '__main__':
-    brain()
+    create_db()
     bot.run(token)

@@ -2,7 +2,7 @@ import disnake
 import sqlite3 as sql
 
 from disnake.ext import commands
-from helpers.helper_methods import get_guild_id
+from helpers import get_guild_id
 
 
 class RulesCommands(commands.Cog):
@@ -11,10 +11,10 @@ class RulesCommands(commands.Cog):
 
     @commands.slash_command(
         name = "rules",
-        description = "Allows A Staff Member Of Head Administrator Or Higher To Create/Edit/Delete Rules Within The Database",
+        description = "Allows A Staff Member Of Head Admin/Owner To Create/Edit/Delete Rules Within The Database",
         guildids = [get_guild_id(),]
     )
-    @commands.has_any_roles("Owners","Developers","Head Administrators")
+    @commands.has_any_role("Owners","Developers","Head Administrators")
     async def rules(self, inter, command: str = commands.Param(
         choices = ["create","edit","delete"]
     )):

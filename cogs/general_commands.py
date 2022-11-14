@@ -8,7 +8,7 @@ from disnake.ext import commands
 from Paginator import CreatePaginator
 from typing import List
 from datetime import datetime
-from API.helpers import get_guild_id
+from helpers import get_guild_id
 
 
 class GeneralCommandsRewrite(commands.Cog):
@@ -33,15 +33,9 @@ class GeneralCommandsRewrite(commands.Cog):
         elif operation == "server":
             await self.server(inter)
         elif operation == "who_is":
-            await inter.response.send_message("Enter The Member's Id", ephemeral=True)
-            member_iden = await self.bot.wait_for('message')
-            await member_iden.delete()
-            await self.who_is(inter, member_iden.content)
+            await self.who_is(inter)
         elif operation == "fav_quote":
-            await inter.response.send_message("Please Enter Your New Quote", ephemeral=True)
-            quote = await self.bot.wait_for('message')
-            await quote.delete()
-            await self.fav_quote(inter, quote.content)
+            await self.fav_quote(inter)
         elif operation == "solved":
             if inter.channel.type is disnake.ChannelType.public_thread:
                 if inter.channel.parent.type is disnake.ChannelType.forum:
@@ -164,104 +158,97 @@ class GeneralCommandsRewrite(commands.Cog):
 
         await inter.edit_original_message(embed=embeds[0], view=CreatePaginator(embeds, author_id, timeout))
 
-    async def who_is(self, inter, member):
-        member_id = member if member is not None else inter.author.id
+    async def who_is(self, inter):
+        await inter.response.send_message("Enter The Member's Id", ephemeral=True)
+        member_iden = (await self.bot.wait_for('message')).content
+        
+        if not int(member_iden):
+            return await inter.edit_original_message("The Member's ID Must Be An Integer")
 
-        if int(member_id):
-            member = disnake.utils.get(inter.guild.members, id=int(member_id))
+        member = disnake.utils.get(inter.guild.members, id=int(member_iden))
+        await inter.channel.purge(limit=1)
 
-            user_embed = disnake.Embed(
-                color=disnake.Colour.random(),
-                title=f"Who Is. . .{member.name}",
-                description="The Information You Requested Can Be Found In The Following Pages"
-            ).set_image(url=member.avatar)
+        user_embed = disnake.Embed(
+            color=disnake.Colour.random(),
+            title=f"Who Is. . .{member.name}",
+            description="The Information You Requested Can Be Found In The Following Pages"
+        ).set_image(url=member.avatar)
 
-            user_embed2 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="General Information",
-                description=f"""__**ID:**__\n{member.id}
-                                  __**Tag:**__\n{member}
-                                  __**Name:**__\n{member.name}
-                                  __**Display Name:**__\n{member.display_name}
-                                  __**Nickname:**__\n{member.nick}
-                                  __**Created At:**__\n{member.created_at.__format__('%m/%d/%Y %H:%M:%S')}
-                                  __**Joined At:**__\n{member.joined_at.__format__('%m/%d/%Y %H:%M:%S')}
-                                  __**Premium Since:**__\n{member.premium_since}
-                                  __**Discord Rep?**__\n{member.system}"""
-            ).set_thumbnail(url=member.avatar)
+        user_embed2 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="General Information",
+            description=f"""__**ID:**__\n{member.id}
+                            __**Tag:**__\n{member}
+                            __**Name:**__\n{member.name}
+                            __**Display Name:**__\n{member.display_name}
+                            __**Nickname:**__\n{member.nick}
+                            __**Created At:**__\n{member.created_at.__format__('%m/%d/%Y %H:%M:%S')}
+                            __**Joined At:**__\n{member.joined_at.__format__('%m/%d/%Y %H:%M:%S')}
+                            __**Premium Since:**__\n{member.premium_since}
+                             __**Discord Rep?**__\n{member.system}"""
+        ).set_thumbnail(url=member.avatar)
 
-            user_embed3 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Mutual Guilds",
-                description=f"{', '.join([g.name for g in member.mutual_guilds])}"
-            ).set_thumbnail(url=member.avatar)
+        user_embed3 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="Mutual Guilds",
+            description=f"{', '.join([g.name for g in member.mutual_guilds])}"
+        ).set_thumbnail(url=member.avatar)
 
-            # all_activities = [a.BaseActivity for a in member.activities]
-            # all_activs = ""
+        user_embed4 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="Roles",
+            description=f"Top Role: {member.top_role.name}\nAll Roles: {', '.join([r.name for r in member.roles])}"
+        ).set_thumbnail(url=member.avatar)
 
-            # if 0 < len(all_activities) < 2:
-            #     ', '.join(all_activities)
-            # else:
-            #     all_activs = "None"
+        mem_voice = "True" if member.voice else "False"
 
-            # user_embed4 = disnake.Embed(
-            #     color=disnake.Colour.random(),
-            #     title="Activities",
-            #     description=f"{all_activs}"
-            # ).set_thumbnail(url=member.avatar)
+        user_embed5 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="Status'",
+            description=f"""__**Desktop Status:**__\n{member.desktop_status}
+                            __**Mobile Status:**__\n{member.mobile_status}
+                            __**Online Status:**__\n{member.status}
+                            __**Web Status:**__\n{member.web_status}
+                            __**Voice Status:**__\n{mem_voice}"""
+        ).set_thumbnail(
+            url=member.avatar
+        )
 
-            user_embed5 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Roles",
-                description=f"Top Role: {member.top_role.name}\nAll Roles: {', '.join([r.name for r in member.roles])}"
-            ).set_thumbnail(url=member.avatar)
+        user_embed6 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="Reputation Information",
+            description="Gawther's Reputations Are Currently Under Development. Please Check Back For Regular Updates."
+        ).set_thumbnail(
+            url=member.avatar
+        )
 
-            mem_voice = "True" if member.voice else "False"
+        user_embed7 = disnake.Embed(
+            color=disnake.Colour.random(),
+            title="Bank Information",
+            description="Gawther Is Currently Handling A Poll For Whether Or Not You Guys Want Your Current Bank Balance To Show On This Command."
+        ).add_field(
+            name="What To Do?",
+            value="Head over to the Support threads and look for the polls thread for Should Bank Balance Be Public? and enter your response.",
+            inline=False
+        ).set_thumbnail(
+            url=member.avatar
+        )
 
-            user_embed6 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Status'",
-                description=f"""__**Desktop Status:**__\n{member.desktop_status}
-                                  __**Mobile Status:**__\n{member.mobile_status}
-                                  __**Online Status:**__\n{member.status}
-                                  __**Web Status:**__\n{member.web_status}
-                                  __**Voice Status:**__\n{mem_voice}"""
-            ).set_thumbnail(
-                url=member.avatar
-            )
+        embeds = [
+            user_embed, user_embed2, user_embed3,
+            user_embed4, user_embed5, user_embed6,
+            user_embed7
+        ]
+        timeout = 300
+        author_id = inter.author.id
 
-            user_embed7 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Reputation Information",
-                description="Gawther's Reputations Are Currently Under Development. Please Check Back For Regular Updates."
-            ).set_thumbnail(
-                url=member.avatar
-            )
+        await inter.edit_original_message(embed=embeds[0], view=CreatePaginator(embeds, author_id, timeout))
 
-            user_embed8 = disnake.Embed(
-                color=disnake.Colour.random(),
-                title="Bank Information",
-                description="Gawther Is Currently Handling A Poll For Whether Or Not You Guys Want Your Current Bank Balance To Show On This Command."
-            ).add_field(
-                name="What To Do?",
-                value="Head over to the Support threads and look for the polls thread for Should Bank Balance Be Public? and enter your response.",
-                inline=False
-            ).set_thumbnail(
-                url=member.avatar
-            )
+    async def fav_quote(self, inter):
+        await inter.response.send_message("Please Enter Your New Quote", ephemeral=True)
+        quote = (await self.bot.wait_for('message')).content
+        await inter.channel.purge(limit=1)
 
-            embeds = [user_embed, user_embed2, user_embed3,
-                      user_embed4, user_embed5, user_embed6,
-                      user_embed7, user_embed8]
-
-            timeout = 300
-            author_id = inter.author.id
-
-            await inter.edit_original_message(embed=embeds[0], view=CreatePaginator(embeds, author_id, timeout))
-        else:
-            await inter.edit_original_message("The member_id Must Be A Number!", delete_after=10, ephemeral=True)
-
-    async def fav_quote(self, inter, quote):
         with sql.connect('main.db') as mdb:
             cur = mdb.cursor()
 
