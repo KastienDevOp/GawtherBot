@@ -1,0 +1,110 @@
+{
+  "chart": {
+    "warnings": "Typically say within 5-10 warnings depending on the severity of the action. Typical things like slurs, mistaken comments, and other minor minor things like that would result in a warning. In other words, if it feels like you would want to give someone a heads up, then pass them a warning.",
+    "mutes": "This command is typically meant for those in the voice channels. It started out as a way to mute the member without having to do all the clicking, however, this command grew to become an actual _Muted_ role within the discord server, along with Kicked and Banned. Given that these were migrated into roles, we decided to make it to where the 3 roles (Muted, Kicked, Banned) were unable to see any channels except for the ones pertaining to them being able to appeal our decisions as staff members. Mutes typically range between 5-7 before becoming Kicks for the member.",
+    "kicks": "Kicking a member doesn't necessarily have a need to _actually_ remove them from the server. In accordance with the [mute](#mutes) command, this command offers a way to get the users attention without having to physically remove them from the discord. Working on a countdown timer that you put in (the time is in seconds), it will give the member back their original roles to allow them to continue where they left off. They will not have access to any commands except for the appeal command. Once an appeal has been sent, we will be notified (Owners and Head Admins) and will address it from there.",
+    "bans": "Bans are the last resort method for moderating a member. This will remove all of their access to the discord, and delete their information from the database but there's one trick in place. Instead of the bot removing them from the guild, they're placed in a Banned role which is like the Kicked and Muted rule except that the user cannot appeal this decision. When their time is up, the member will be given the basic _Member_ role and their information in the database will be reset. We heavily encourage to not have to use this command. If you cannot find a different, better, or more efficient way to moderate the member, then reach out to the other staff members in the #staff_chat channel."
+  },
+  "general": {
+    "ping": {
+      "name": "/gawther ping",
+      "desc": "Returns the latency for the bot to the user with the option of reporting the latency to the developers. The latency must be greater than 20ms in order to report it to the developers."
+    },
+    "server": {
+      "name": "/gawther server",
+      "desc": "Returns a Paginator Embed that displays the following information: Roles, Various Counts, **More Information Will Be Added To This Command As The Server Grows**"
+    },
+    "who_is": {
+      "name": "/gawther who_is",
+      "desc": "Returns a Paginator Embed displaying information about the target user as in: Account names/ids, Creation/Joined Date, Discord Rep Status, Mutual Guilds With The Bot, Roles, Various Status, Reputations, Bank Balance, **More Information Will Be Added To This Command As The Server Grows**"
+    },
+    "fav_quote": {
+      "name": "/gawther fav_quote",
+      "desc": "Allows the user to submit a new quote, or phrase, as their favorite to be used as footer messages for when users join the discord, or any other time that there is ***not*** a system set footer text."
+    },
+    "solved": {
+      "name": "/gawther solved",
+      "desc": "Allows a user who is in the Support category threads to mark their support thread as closed once they have received adequate support for their problem."
+    },
+    "help_@ghelp": {
+      "name": "/gawther help or @ghelp",
+      "desc": "Returns an embed containing a link to this readme file displaying each command, what it does, how to use it, etc. @ghelp also gives a user a way to get the help menu's if they cant remember the help command."
+    },
+    "subscribe": {
+      "name": "/gawther subscribe",
+      "desc": "***Currently Being Setup*** This will return information useful to a Gawther Member looking to subscribe to the Gawther Platform"
+    },
+    "show_rules": {
+      "name": "/gawther rules",
+      "desc": "Returns a Paginator Embed showing each rule, and it's details, for the given guild."
+    },
+    "pay": {
+      "name": "/gawther pay",
+      "desc": "Allows a member to pay Gawther Bucks (GB) to another member for whatever reason (within reason)."
+    },
+    "request": {
+      "name": "/gawther request",
+      "desc": "Allows a member to request payment from another member for any servies rendered, or other (within reason)."
+    },
+    "show_all_requests": {
+      "name": "/gawther show_all_requests",
+      "desc": "Allows a member to pull up all un-paid request that they may have waiting to be paid."
+    },
+    "pay_open_request": {
+      "name": "/gawther pay_open_request",
+      "desc": "Allows a member to pay off an open request."
+    }
+  },
+  "staff": {
+    "purge": {
+      "name": "/staff purge",
+      "desc": "Allows a staff member with the Administrator or higher role to remove <i>n</i> number of messages from the channel the command is executed in. **THIS IT TO ONLY BE USED IN THE EVENT OF A SPAMMER, OR OTHER EMERGENT SITUATIONS**"
+    },
+    "warn": {
+      "name": "/staff manage_member warn",
+      "desc": "Allows a staff member of any ranking to privately send a warning to a member who isn't following the rules. This is the first line of defense when moderating members."
+    },
+    "mute": {
+      "name": "/staff manage_member mute",
+      "desc": "Allows a staff member of moderator, or higher, to privately mute a member due to inappropriate behaviour within a voice or text channel. This is the second line of defense when moderating members."
+    },
+    "kick": {
+      "name": "/staff manage_member kick",
+      "desc": "Allows a staff member of Administrator, or higher, to privately kick a member due to excessive inappropriate behaviour. This is the third line of defense when moderating members."
+    },
+    "ban": {
+      "name": "/staff manage_member ban",
+      "desc": "Allows a staff member of Head Administrator, or higher, to privately ban a member from the server due to extremely inappropriate behaviour within a voice or text channel. This is the last line of defense when moderating members."
+    }
+  },
+  "devs": {
+    "create_category": {
+      "name": "/devs Create Category",
+      "desc": "Allows anyone with the Developer role to create new categories within the discord server."
+    },
+    "create_channel": {
+      "name": "/devs Create Channel",
+      "desc": "Allows anyone with the Developer role to create a new channel within a specified category within the discord server."
+    },
+    "create_dev_note": {
+      "name": "/devs Create Dev Note",
+      "desc": "Allows anyone with the Developer role to create a note that is sent to a specified channel within the developers category for the developer to leave as a note to others, or a reminder to themselves."
+    },
+    "create_role": {
+      "name": "/devs Create Role",
+      "desc": "Allows anyone with the Developer role to create a new role within the discord server. This includes going through a questionnair about permissions."
+    },
+    "delete_category": {
+      "name": "/devs Delete Category",
+      "desc": "Allows anyone with the Developer role to delete a specified category within the discord channel. ***Note: THIS IS CAUSE ANY EXISTING CHANNELS IN THIS CATEGORY TO BE PLACED AT THE TOP OF THE DISCORD SERVER INSTEAD OF BEING DELETED. ENSURE YOU HAVE DEALT WITH THE CHANNELS APPROPRIATELY BEFORE DELETING THE CATEGORY!***"
+    },
+    "delete_channel": {
+      "name": "/devs Delete Channel",
+      "desc": "Allows anyone with the Developer role to delete a channel within a specified category."
+    },
+    "delete_role": {
+      "name": "/devs Delete Role",
+      "desc": "Allows anyone with the Developer role to delete a role within the discord server."
+    }
+  }
+}

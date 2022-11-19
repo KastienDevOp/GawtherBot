@@ -15,22 +15,24 @@ class DeveloperCommands(commands.Cog):
         guild_ids = [get_guild_id(),]
     )
     @commands.has_any_role("Owners","Developers")
-    async def devs(self, inter, cmd: str = commands.Param(choices=["CreateCat","CreateChan","CreateRole","CreateNote","DeleteCat","DeleteChan","DeleteRole"])):
+    async def devs(self, inter, cmd: str = commands.Param(choices=["Create Category","Create Channel","Create Role","Create Dev Note","Delete Category","Delete Channel","Delete Role","Update Database"])):
 
-        if cmd == "CreateCat":
+        if cmd == "Create Category":
             await self.create_category(inter)
-        elif cmd == "CreateChan":
+        elif cmd == "Create Channel":
             await self.create_channel(inter)
-        elif cmd == "CreateRole":
+        elif cmd == "Create Role":
             await self.create_role(inter)
-        elif cmd == "CreateNote": #finished
+        elif cmd == "Create Dev Note": #finished
             await self.send_dev_note(inter)
-        elif cmd == "DeleteCat":
+        elif cmd == "Delete Category":
             await self.delete_category(inter)
-        elif cmd == "DeleteChan":
+        elif cmd == "Delete Channel":
             await self.delete_channel(inter)
-        elif cmd == "DeleteRole":
+        elif cmd == "Delete Role":
             await self.delete_role(inter)
+        elif cmd == "Update Database":
+            await self.update_database(inter)
         else:
             pass
 
@@ -200,6 +202,10 @@ class DeveloperCommands(commands.Cog):
 
     async def delete_role(self, inter):
         return await inter.edit_original_message("This Command Needs To Be Built By Kas After The Create Role Command Has Been Built. -Mek",ephemeral=True)
+
+    async def update_database(self, inter):
+        return await inter.response.send_message("This command will need to be built by KastienDev as I cannot figure out the database logic. ~Mek", delete_after=30)
+
 
 def setup(bot):
     bot.add_cog(DeveloperCommands(bot))

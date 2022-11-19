@@ -29,13 +29,13 @@ class GeneralCommandsRewrite(commands.Cog):
             choices=["fav_quote", "help", "ping", "rules", "server", "solved", "subscribe", "who_is"])):
 
         if operation == "ping":
-            await self.ping(inter)
+            await self.ping(inter) # works
         elif operation == "server":
-            await self.server(inter)
+            await self.server(inter) # works
         elif operation == "who_is":
-            await self.who_is(inter)
+            await self.who_is(inter)    # works
         elif operation == "fav_quote":
-            await self.fav_quote(inter)
+            await self.fav_quote(inter) # works
         elif operation == "solved":
             if inter.channel.type is disnake.ChannelType.public_thread:
                 if inter.channel.parent.type is disnake.ChannelType.forum:
@@ -44,12 +44,12 @@ class GeneralCommandsRewrite(commands.Cog):
                     await inter.response.send_message("This Channel Is Not A Support Forum!\n If you find this to be an error, please use /report", delete_after=15)
             else:
                 await inter.response.send_message("This Channel Is Not In The Support Forums!\nIf you find this to be an error, please use /report", delete_after=15)
-        elif operation == "help":
-            await self.gawther_help(inter)
+        elif operation == "help": 
+            await self.gawther_help(inter) # does not work
         elif operation == "subscribe":
             await self.subscribe(inter)
-        elif operation == "rules":
-            await self.show_rules(inter)
+        elif operation == "rules":  
+            await self.show_rules(inter) # works
         else:
             await inter.response.send_message("Error On Param Selection")
 
@@ -331,104 +331,25 @@ class GeneralCommandsRewrite(commands.Cog):
     async def gawther_help(self, inter):
         await inter.response.defer(ephemeral=True)
 
-        with open('setup.json', 'r', encoding='utf-8-sig') as file:
-            data = json.load(file)
+        embed = disnake.Embed(
+            color = disnake.Colour.random(),
+            title = "Gawther's Help Menu",
+            description = "Attached is a markdown file that you open in your browser that contains all the information pertinent to your role/clearance level."
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        )
 
-            member_commands = []
-            staff_commands = []
-            dev_commands = []
+        with open('./json_files/commands.json','r',encoding='utf-8-sig') as f:
+            data = json.load(f)
 
-            member_embeds = []
-            staff_embeds = []
-            dev_embeds = []
+            if inter.author.top_role in ["Owners","Developers"]:
+                pass
+            elif inter.author.top_role in ["Head Administrators","Administrators","Moderators","Community Helpers"]:
+                pass
+            else:
+                pass
 
-            embeds = {}
-
-            print("arrays and dicts created")
-
-            # 1. Build member_commands list
-            for command in information["members"]:
-                member_commands.append(command)
-
-            print("iteration one done")
-
-            # 2. Build staff_commands list
-            for command in information["staff"]:
-                staff_commands.append(command)
-
-            print("iteration two done")
-
-            # 3. Build member_embeds list
-            for command in member_commands:
-                embed = disnake.Embed(
-                    title=command,
-                    description=information["members"][command]["desc"],
-                    color=0x00ff00
-                )
-                embed.add_field(
-                    name="Command",
-                    value=information["members"][command]["command"],
-                    inline=False
-                )
-                embed.add_field(
-                    name="Rests",
-                    value=information["members"][command]["rests"],
-                    inline=False
-                )
-                member_embeds.append(embed)
-
-            print("interation three done")
-
-            # 4. Build staff_embeds list
-            for command in staff_commands:
-                embed = disnake.Embed(
-                    title=command,
-                    description=information["staff"][command]["desc"],
-                    color=0x00ff00
-                )
-                embed.add_field(
-                    name="Command",
-                    value=information["staff"][command]["command"],
-                    inline=False
-                )
-                embed.add_field(
-                    name="Rests",
-                    value=information["staff"][command]["rests"],
-                    inline=False
-                )
-                staff_embeds.append(embed)
-
-            print("iteration four done")
-
-            # 5. Build embeds dictionary
-            embeds["member"] = member_embeds
-            embeds["staff"] = staff_embeds
-
-            print(member_embeds)
-            print(staff_embeds)
-
-        leading_embed = disnake.Embed(
-            color=disnake.Colour.random(),
-            title=information["intro"]["title"],
-            description=information["intro"]["desc"]
-        ).set_thumbnail(url=self.bot.user.avatar)
-
-        if inter.author.top_role.name in ["Owners", "Head Administrators", "Administrators", "Moderators", "Community Helpers"]:
-            list_of_embeds = embeds["member"] + embeds["staff"]
-            list_of_embeds.insert(0, leading_embed)
-            print(list_of_embeds)
-        elif inter.author.top_role.name in ["Owners", "Developers"]:
-            list_of_embeds = embeds["member"] + embeds["staff"] + embeds["developers"]
-            list_of_embeds.insert(0, leading_embed)
-        else:
-            list_of_embeds = embeds["member"]
-            list_of_embeds.insert(0, leading_embed)
-            print(list_of_embeds)
-
-        author = inter.author
-        timeout = 300
-        await asyncio.sleep(5)
-        await inter.edit_original_message(embed=list_of_embeds[0], view=CreatePaginator(list_of_embeds, author, timeout))
+            
 
     async def subscribe(self, inter):
         await inter.response.send_message("Gawther's Subscription Options Are Still In The Workings. Please Check Back Frequently For Updates!", delete_after=15)
@@ -459,32 +380,19 @@ class GeneralCommandsRewrite(commands.Cog):
         all_rule_embeds = []
         all_rule_embeds.insert(0, embed)
 
-        with open('rules.json', 'r', encoding='utf-8-sig') as g:
-            data = json.load(g)
+        with sql.connect('main.db') as mdb:
+            cur = mdb.cursor()
 
-            for i in data["rules"]:
-                rule_num = i
-                rule_name = data["rules"][i]["name"]
-                rule_desc = data["rules"][i]["desc"]
+            all_rules = cur.execute('SELECT * FROM rules').fetchall()
 
-                all_rule_embeds.append(await self.build_embed(rule_num, rule_name, rule_desc))
+            for line in all_rules:
+                rule_num = line[0]
+                rule_name = line[1]
+                rule_details = line[2]
 
-        all_punish_embeds = []
-        all_punish_embeds.insert(0, embed2)
+                all_rule_embeds.append(await self.build_embed(rule_num, rule_name, rule_details))
 
-        with open('rules.json','r',encoding='utf-8-sig') as h:
-            data = json.load(h)
-
-            for j in data["punishmentTable"]:
-                table_num = j
-                table_name = data["punishmentTable"][table_num]["name"]
-                table_desc = data["punishmentTable"][table_num]["desc"]
-
-                all_punish_embeds.append(await self.build_embed(table_num, table_name, table_desc))
-
-        all_embeds = all_rule_embeds + all_punish_embeds
-
-        await inter.edit_original_message(embed=all_embeds[0], view=CreatePaginator(all_embeds, inter.author.id, 300))
+        await inter.edit_original_message(embed=all_rule_embeds[0], view=CreatePaginator(all_rule_embeds, inter.author.id, 300))
 
     async def build_embed(self, a, b, c):
         embed = disnake.Embed(

@@ -1,6 +1,5 @@
 import disnake
 import json
-import sqlite3 as sql
 import random
 
 from disnake.ext import commands
@@ -23,7 +22,6 @@ class TaskChecks(commands.Cog):
         self.bot = bot
         self.check_pending.start()
         self.change_presence.start()
-        # self.update_db.start()
 
     @tasks.loop(hours=24)
     async def check_pending(self):
@@ -123,7 +121,7 @@ class TaskChecks(commands.Cog):
     await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.watching, name="a movie"))
     """
 
-    @tasks.loop(seconds=15)
+    @tasks.loop(seconds=90)
     async def change_presence(self):
         await self.bot.wait_until_ready()
 
@@ -138,46 +136,6 @@ class TaskChecks(commands.Cog):
             status = disnake.Status.online,
             activity = random.choice(activities)
         )
-
-    # @tasks.loop(hours=12)
-    # @tasks.loop(seconds=15)
-    # async def update_db(self):
-    #     await self.bot.wait_until_ready()
-
-    #     guild = self.bot.get_guild(get_guild_id())
-    #     noti_chan = disnake.utils.get(guild.text_channels, name="db_notifications")
-
-    #     with sql.connect('main.db') as mdb:
-    #         cur = mdb.cursor()
-
-    #         all_member_ids = cur.execute('SELECT id FROM members').fetchall()
-    #         check = 0
-    #         members_written = []
-
-    #         for member in guild.members:
-    #             for iden in all_member_ids:
-    #                 if member.id != all_member_ids[all_member_ids.index(iden)][0]:
-    #                     srch = 'INSERT INTO members(id,quote,mutes,bans,warnings,kicks,bank) VALUES (?,?,?,?,?,?,?)'
-    #                     val = (member.id,"None",0,0,0,0,1500)
-
-    #                     cur.execute(srch, val)
-    #                     x = member.name + '\n'
-    #                     members_written.append(x)
-
-
-
-    #     embed = disnake.Embed(
-    #         color = disnake.Colour.random(),
-    #         title = "Gawther Database Notification System",
-    #         description = "The Following Members Were Added To The database"
-    #     ).add_field(
-    #         name = "Added Members List",
-    #         value = [''.join([name for name in members_written])]
-    #     ).set_thumbnail(
-    #         url = self.bot.user.avatar
-    #     )
-
-    #     await noti_chan.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(TaskChecks(bot))
