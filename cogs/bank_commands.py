@@ -25,15 +25,15 @@ class BankCommands(commands.Cog):
     )
     async def bank(self, inter, cmd: str = commands.Param(choices=["Pay", "Request", "Show All Request", "Pay Open Request"])):
         if cmd == "Pay":
-            pass
+            self.pay(inter)
         elif cmd == "Request":
-            pass
+            self.request(inter)
         elif cmd == "Show All Request":
-            pass
+            self.show_all(inter)
         elif cmd == "Pay Open Request":
-            pass
+            self.pay_open(inter)
         else:
-            pass
+            return await inter.response.send_message("Invalid Operation: Contact Developers")
 
     async def pay(self, inter):
         await asyncio.sleep(1)
@@ -67,6 +67,14 @@ class BankCommands(commands.Cog):
 
         await inter.edit_original_message("Your Payment Has Been Successful.")
 
+    async def request(self, inter):
+        pass
+
+    async def show_all(self, inter):
+        pass
+
+    async def pay_open(self, inter):
+        pass
 
 def setup(bot):
     bot.add_cog(BankCommands(bot))

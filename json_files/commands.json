@@ -105,6 +105,10 @@
     "delete_role": {
       "name": "/devs Delete Role",
       "desc": "Allows anyone with the Developer role to delete a role within the discord server."
+    },
+    "update_database": {
+      "name": "/devs update_database",
+      "desc": "Allows anyone with the Developer role to update the database with members who weren't added when they joined the server with a fresh profile"
     }
   }
 }
