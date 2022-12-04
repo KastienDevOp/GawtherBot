@@ -1,4 +1,4 @@
-botenv/
+env/
 test.py
 __pycache__/
 /cogs_to_rewrite/__pycache__/
