@@ -62,10 +62,59 @@ class BankCommands(commands.Cog):
         if not all(i.isprintable() for i in reason):
             return await inter.edit_original_message("The Reason Must Be A Printable Screen!")
 
-        """INSERT DATABASE WORKING HERE"""
-        """SEND NOTIFICATION TO PAYER, PAYEE, AND TEXT CHANNEL HERE"""
+        with sql.connect('main.db') as mdb:
+            cur = mdb.cursor()
 
-        await inter.edit_original_message("Your Payment Has Been Successful.")
+            srch = 'SELECT balance FROM members WHERE id=?'
+            val = (inter.author.id, )
+
+            srch2 = 'SELECT balance FROM members WHERE id=?'
+            val2 = (member.id, )
+
+            payer_bal = cur.execute(srch, val).fetchone()[0]
+            payee_bal = cur.execute(srch2, val2).fetchone()[0]
+
+            if payer_bal >= amount:
+                payer_new_bal = payer_bal - amount
+                payee_new_bal = payee_bal + amount
+
+                srch3 = 'UPDATE members SET balance=? WHERE id=?'
+                val3 = (payer_new_bal, inter.author.id, )
+                val4 = (payee_new_bal, member.id, )
+
+                cur.execute(srch3, val3)
+                cur.execute(srch3, val4)
+            else:
+                return await inter.edit_original_message("You do not have enough in your bank balance to cover this transaction. Please try again later.")
+
+        payer = inter.author
+        payee = member
+
+        await payer.send(await self.send_confirmation(payer, payee, amount, reason))
+        await payee.send(await self.send_confirmation(payer, payee, amount, reason))
+
+        await inter.edit_original_message("You Have Successfully Sent The Payment. Please See Your DM's For Your Receipt")
+
+    async def send_confirmation(self, payer, payee, amount, reason):
+        embed = disnake.Embed(
+            color = disnake.Colour.random(),
+            title = "Gawther's Bank Notification System",
+            description = "Please find your details below"
+        ).add_field(
+            name = 'Your Account Has Been Updated!',
+            value = f"{payer.name} has paid {payee.name} ${amount} GB",
+            inline = False
+        ).add_field(
+            name = "Reason",
+            value = reason,
+            inline = False
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        ).set_footer(
+            text = "If you find this to be in error, please contact support."
+        )
+
+        return embed
 
     async def request(self, inter):
         pass
