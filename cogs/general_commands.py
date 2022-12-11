@@ -29,13 +29,13 @@ class GeneralCommands(commands.Cog):
             choices=["fav_quote", "help", "ping", "rules", "server", "solved", "subscribe", "who_is"])):
 
         if operation == "ping":
-            await self.ping(inter)  # works
+            await self.ping(inter)
         elif operation == "server":
-            await self.server(inter)  # works
+            await self.server(inter)
         elif operation == "who_is":
-            await self.who_is(inter)    # works
+            await self.who_is(inter)
         elif operation == "fav_quote":
-            await self.fav_quote(inter)  # works
+            await self.fav_quote(inter)
         elif operation == "solved":
             if inter.channel.type is disnake.ChannelType.public_thread:
                 if inter.channel.parent.type is disnake.ChannelType.forum:
@@ -45,11 +45,11 @@ class GeneralCommands(commands.Cog):
             else:
                 await inter.response.send_message("This Channel Is Not In The Support Forums!\nIf you find this to be an error, please use /report", delete_after=15)
         elif operation == "help":
-            await self.gawther_help(inter)  # does not work
+            await self.gawther_help(inter)
         elif operation == "subscribe":
             await self.subscribe(inter)
         elif operation == "rules":
-            await self.show_rules(inter)  # works
+            await self.show_rules(inter)
         else:
             await inter.response.send_message("Error On Param Selection")
 
