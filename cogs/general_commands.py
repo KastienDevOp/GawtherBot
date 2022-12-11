@@ -11,7 +11,7 @@ from datetime import datetime
 from helpers import get_guild_id
 
 
-class GeneralCommandsRewrite(commands.Cog):
+class GeneralCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -29,13 +29,13 @@ class GeneralCommandsRewrite(commands.Cog):
             choices=["fav_quote", "help", "ping", "rules", "server", "solved", "subscribe", "who_is"])):
 
         if operation == "ping":
-            await self.ping(inter) # works
+            await self.ping(inter)  # works
         elif operation == "server":
-            await self.server(inter) # works
+            await self.server(inter)  # works
         elif operation == "who_is":
             await self.who_is(inter)    # works
         elif operation == "fav_quote":
-            await self.fav_quote(inter) # works
+            await self.fav_quote(inter)  # works
         elif operation == "solved":
             if inter.channel.type is disnake.ChannelType.public_thread:
                 if inter.channel.parent.type is disnake.ChannelType.forum:
@@ -44,12 +44,12 @@ class GeneralCommandsRewrite(commands.Cog):
                     await inter.response.send_message("This Channel Is Not A Support Forum!\n If you find this to be an error, please use /report", delete_after=15)
             else:
                 await inter.response.send_message("This Channel Is Not In The Support Forums!\nIf you find this to be an error, please use /report", delete_after=15)
-        elif operation == "help": 
-            await self.gawther_help(inter) # does not work
+        elif operation == "help":
+            await self.gawther_help(inter)  # does not work
         elif operation == "subscribe":
             await self.subscribe(inter)
-        elif operation == "rules":  
-            await self.show_rules(inter) # works
+        elif operation == "rules":
+            await self.show_rules(inter)  # works
         else:
             await inter.response.send_message("Error On Param Selection")
 
@@ -87,36 +87,68 @@ class GeneralCommandsRewrite(commands.Cog):
                 await inter.edit_original_message(embed=embed)
             else:
                 await inter.edit_original_message("The Latency Is Not High Enough To Report!", embed=None)
+        else:
+            return await inter.edit_original_message("You Selected No. Report Cancelled. . . ", embed=None)
 
     async def server(self, inter):
+        """
+        await asyncio.sleep(1)
+        has been placed in 3 spots to make sure that the
+        await inter.response.defer(ephemeral=True)
+        doesn't time out.
+        """
         await inter.response.defer(ephemeral=True)
 
-        owners = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Owners"]) or "Applications Open"
-        bots = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Bots"]) or "Applications Open"
-        devs = ', '.join([m.name for m in inter.guild.members if m.top_role.name =="Developers"]) or "Applications Open"
-        head_admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Head Administrators"]) or "Applications Open"
-        admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name =="Administrators"]) or "Applications Open"
-        moderators = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Moderators"]) or "Applications Open"
-        comm_helpers = ', '.join([m.name for m in inter.guild.members if m.top_role.name == "Community Helpers"]) or "Applications Open"
+        # get a list of each member separated by their member.top_role
+        owners = ', '.join(
+            [m.name for m in inter.guild.members if m.top_role.name == "Owners"]) or "Applications Open"
+        bots = ', '.join(
+            [m.name for m in inter.guild.members if m.top_role.name == "Bots"]) or "Applications Open"
+        devs = ', '.join([m.name for m in inter.guild.members if m.top_role.name ==
+                         "Developers"]) or "Applications Open"
+        head_admins = ', '.join(
+            [m.name for m in inter.guild.members if m.top_role.name == "Head Administrators"]) or "Applications Open"
+        admins = ', '.join([m.name for m in inter.guild.members if m.top_role.name ==
+                           "Administrators"]) or "Applications Open"
+        moderators = ', '.join(
+            [m.name for m in inter.guild.members if m.top_role.name == "Moderators"]) or "Applications Open"
+        comm_helpers = ', '.join(
+            [m.name for m in inter.guild.members if m.top_role.name == "Community Helpers"]) or "Applications Open"
 
-        all_roles = ', '.join([r.name for r in inter.guild.roles if not r.managed])
+        await asyncio.sleep(1)
+
+        # get a count of each type of count in the channel
+        all_roles = len([r.name for r in inter.guild.roles if not r.managed])
         member_count = len([m for m in inter.guild.members if not m.bot])
         bot_count = len([b for b in inter.guild.members if b.bot])
         category_count = len([cat for cat in inter.guild.categories])
-        text_channel_count = len([channel for channel in inter.guild.text_channels])
-        voice_channel_count = len([channel for channel in inter.guild.voice_channels])
+        text_channel_count = len(
+            [channel for channel in inter.guild.text_channels])
+        voice_channel_count = len(
+            [channel for channel in inter.guild.voice_channels])
 
+        await asyncio.sleep(1)
+
+        # create first embed
         embed = disnake.Embed(
             color=disnake.Colour.random(),
             title=f"{inter.guild.name}s' Server Information",
             description=f"Below you will find all the relative information belonging to {inter.guild.name}"
-        ).set_thumbnail(url=inter.guild.icon)
+        ).set_thumbnail(
+            url=inter.guild.icon
+        ).set_footer(
+            text="If you'd like to apply for staff, then please use /gawther application"
+        )
 
+        # create a list of titles and a second list of the variables
+        # holding the counts
         list1 = ["Owners", "Bots", "Developers", "Head Administrators",
                  "Administrators", "Moderators", "Community Helpers"]
         list2 = [owners, bots, devs, head_admins,
                  admins, moderators, comm_helpers]
 
+        # iterate through the title list, and use the index
+        # to pull the count from list2
         for index, value in enumerate(list1):
             embed.add_field(
                 name=value,
@@ -124,10 +156,13 @@ class GeneralCommandsRewrite(commands.Cog):
                 inline=False
             )
 
+        await asyncio.sleep(1)
+
+        # repeate the same thing here
         list3 = ["Members", "Bots", "Roles", "Categories",
                  "Text Channels", "Voice Channels"]
-        list4 = [member_count, bot_count, len(
-            all_roles), category_count, text_channel_count, voice_channel_count]
+        list4 = [member_count, bot_count, all_roles,
+                 category_count, text_channel_count, voice_channel_count]
 
         embed2 = disnake.Embed(
             color=disnake.Colour.random(),
@@ -142,16 +177,20 @@ class GeneralCommandsRewrite(commands.Cog):
                 inline=False
             )
 
+        await asyncio.sleep(1)
+
+        # bring both embeds together, set the author and timeout
         embeds = [embed, embed2]
         author_id = inter.author.id
         timeout = 300
 
+        # send it bro
         await inter.edit_original_message(embed=embeds[0], view=CreatePaginator(embeds, author_id, timeout))
 
     async def who_is(self, inter):
         await inter.response.send_message("Enter The Member's Id", ephemeral=True)
         member_iden = (await self.bot.wait_for('message')).content
-        
+
         if not int(member_iden):
             return await inter.edit_original_message("The Member's ID Must Be An Integer")
 
@@ -292,9 +331,9 @@ class GeneralCommandsRewrite(commands.Cog):
         await inter.edit_original_message(":eyeglasses: Reading and :pen_fountain: Writing Message To A :notebook: Text File For You. . . :warning: Please Wait :warning: . . .")
         await asyncio.sleep(1.5)
 
-        purged = await inter.channel.purge(limit=None)
+        thread_messages = await inter.channel.purge(limit=None)
 
-        _file = self.delete_messages_log(purged)
+        _file = self.delete_messages_log(thread_messages)
 
         embed = disnake.Embed(
             color=disnake.Colour.random(),
@@ -307,8 +346,6 @@ class GeneralCommandsRewrite(commands.Cog):
         await asyncio.sleep(2)
         await inter.channel.edit(locked=True, archived=True)
         await inter.channel.delete()
-
-    """Does Not Need To Be Asyncronous Function"""
 
     def delete_messages_log(self, messages: List[disnake.Message]) -> disnake.File:
         '''Converts the list of deleted messages to a log.txt and returns the File object ready to be sent'''
@@ -329,27 +366,114 @@ class GeneralCommandsRewrite(commands.Cog):
         return disnake.File(_file, filename=f"Deleted_{datetime.now()}.txt")
 
     async def gawther_help(self, inter):
-        await inter.response.defer(ephemeral=True)
+        if inter.type == disnake.InteractionType.application_command:
+            await inter.response.defer(ephemeral=True)
+        else:
+            await asyncio.sleep(3)
+
+        async def send_message(inter,embeds):
+            if inter.type == disnake.InteractionType.application_command:
+                return await inter.edit_original_message(embed=embeds[0], view=CreatePaginator(embeds,inter.author.id,600))
+            else:
+                await inter.reply(embed=embeds[0], view=CreatePaginator(embeds,inter.author.id,600))
+                await asyncio.sleep(600)
+                return await inter.channel.purge(limit=2)
 
         embed = disnake.Embed(
-            color = disnake.Colour.random(),
-            title = "Gawther's Help Menu",
-            description = "Attached is a markdown file that you open in your browser that contains all the information pertinent to your role/clearance level."
+            color=disnake.Colour.random(),
+            title="Gawther's Help Menu",
+            description="In the next one, or few, pages are a list of commands available\
+                to you based of your highest ranking role."
         ).set_thumbnail(
-            url = self.bot.user.avatar
+            url=self.bot.user.avatar
+        ).set_footer(
+            text = "If there is a command missing, or a typo, please contact support"
         )
 
-        with open('./json_files/commands.json','r',encoding='utf-8-sig') as f:
+        embed2 = disnake.Embed(
+            color = disnake.Colour.random(),
+            title = "General Commands",
+            description = "Below Is A List Of All **___General Commands___**"
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        ).set_footer(
+            text = "If there is a command missing, or a typo, please contact support"
+        )
+
+        embed3 = disnake.Embed(
+            color = disnake.Colour.random(),
+            title = "Staff Commands",
+            description = "Below Is A List Of All **___Staff Commands___**"
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        ).set_footer(
+            text = "If there is a command missing, or a typo, please contact support"
+        )
+
+        embed4 = disnake.Embed(
+            color = disnake.Colour.random(),
+            title = "Developer Commands",
+            description = "Below Is A List Of All **___Developer Commands___**"
+        ).set_thumbnail(
+            url = self.bot.user.avatar
+        ).set_footer(
+            text = "If there is a command missing, or a typo, please contact support"
+        )
+
+        with open('./json_files/commands.json', 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
 
-            if inter.author.top_role in ["Owners","Developers"]:
-                pass
-            elif inter.author.top_role in ["Head Administrators","Administrators","Moderators","Community Helpers"]:
-                pass
-            else:
-                pass
+            def build_embed(value,title,deets):
+                if value == "general":
+                    embed2.add_field(name = title,value = deets,inline = False)
+                elif value == "staff":
+                    embed3.add_field(name = title,value = deets,inline = False)
+                else:
+                    embed4.add_field(name = title,value = deets,inline = False)
 
-            
+            if inter.author.top_role.name in ["Owners", "Developers"]:
+                list = ["general","staff","devs"]
+
+                for index, value in enumerate(list):
+                    list2 = data[value]
+
+                    for index2, value2 in enumerate(list2):
+                        title = data[value][value2]["name"]
+                        deets = data[value][value2]["desc"]
+
+                        build_embed(value,title,deets)
+
+                embeds = [embed,embed2,embed3,embed4]
+                await send_message(inter,embeds)
+
+            elif inter.author.top_role.name in ["Head Administrators","Administrators","Moderators","Community Helpers"]:
+                list = ["general","staff"]
+
+                for index, value in enumerate(list):
+                    list2 = data[value]
+
+                    for index2, value2 in enumerate(list2):
+                        title = data[value][value2]["name"]
+                        deets = data[value][value2]["desc"]
+
+                        build_embed(value,title,deets)
+
+                embeds = [embed,embed2,embed3]
+                await send_message(inter,embeds)
+            else:
+                list = ["general"]
+
+                for index, value in enumerate(list):
+                    list2 = data[value]
+
+                    for index2, value2 in enumerate(list2):
+                        title = data[value][value2]["name"]
+                        deets = data[value][value2]["desc"]
+
+                        build_embed(value,title,deets)
+
+                embeds = [embed,embed2]
+                await send_message(inter,embeds)
 
     async def subscribe(self, inter):
         await inter.response.send_message("Gawther's Subscription Options Are Still In The Workings. Please Check Back Frequently For Updates!", delete_after=15)
@@ -367,48 +491,20 @@ class GeneralCommandsRewrite(commands.Cog):
             text="If you would like to see a new rule, edit to a current rule, or appeal an existing rule, please use /rules"
         )
 
-        embed2 = disnake.Embed(
-            color = disnake.Colour.random(),
-            title = "Gawther's Punishment Table",
-            description = "In The Following Pages Are The Punishment Table Tiers For The Gawther Platform As A Whole."
-        ).set_thumbnail(
-            url = self.bot.user.avatar
-        ).set_footer(
-            text = "If you would like to see a new table item, edit to a current table item, or appeal an existing table item, please use /table"
-        )
+        all_embeds = []
+        all_embeds.insert(0,embed)
 
-        all_rule_embeds = []
-        all_rule_embeds.insert(0, embed)
+        with open('./json_files/rules.json','r',encoding='utf-8-sig') as f:
+            data = json.load(f)
 
-        with sql.connect('main.db') as mdb:
-            cur = mdb.cursor()
+            for line in data["rules"]:
+                title = data["rules"][line]["title"]
+                rule = data["rules"][line]["rule"]
 
-            all_rules = cur.execute('SELECT * FROM rules').fetchall()
+                all_embeds.append(disnake.Embed(color=disnake.Colour.random(),title=title,description=rule).set_thumbnail(url=self.bot.user.avatar))
 
-            for line in all_rules:
-                rule_num = line[0]
-                rule_name = line[1]
-                rule_details = line[2]
-
-                all_rule_embeds.append(await self.build_embed(rule_num, rule_name, rule_details))
-
-        await inter.edit_original_message(embed=all_rule_embeds[0], view=CreatePaginator(all_rule_embeds, inter.author.id, 300))
-
-    async def build_embed(self, a, b, c):
-        embed = disnake.Embed(
-            color=disnake.Colour.random(),
-            title=f"__{a}__",
-            description=f"**{b}**"
-        ).add_field(
-            name="\u200b",
-            value=c,
-            inline=False
-        ).set_thumbnail(
-            url=self.bot.user.avatar
-        )
-
-        return embed
+        await inter.edit_original_message(embed=all_embeds[0],view=CreatePaginator(all_embeds,inter.author.id,600))
 
 
 def setup(bot):
-    bot.add_cog(GeneralCommandsRewrite(bot))
+    bot.add_cog(GeneralCommands(bot))

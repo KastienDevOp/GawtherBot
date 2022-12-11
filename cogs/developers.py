@@ -1,5 +1,6 @@
 import disnake
 import asyncio
+import sqlite3 as sql
 
 from disnake.ext import commands
 from helpers import get_guild_id
@@ -15,7 +16,21 @@ class DeveloperCommands(commands.Cog):
         guild_ids = [get_guild_id(),]
     )
     @commands.has_any_role("Owners","Developers")
-    async def devs(self, inter, cmd: str = commands.Param(choices=["Create Category","Create Channel","Create Role","Create Dev Note","Delete Category","Delete Channel","Delete Role","Update Database"])):
+    async def devs(
+        self, 
+        inter, 
+        cmd: str = commands.Param(
+            choices=[
+                "Create Category",
+                "Create Channel",
+                "Create Role",
+                "Create Dev Note",
+                "Delete Category",
+                "Delete Channel",
+                "Delete Role",
+                "Update Database"
+            ]
+        )):
 
         if cmd == "Create Category":
             await self.create_category(inter)
@@ -204,7 +219,33 @@ class DeveloperCommands(commands.Cog):
         return await inter.edit_original_message("This Command Needs To Be Built By Kas After The Create Role Command Has Been Built. -Mek",ephemeral=True)
 
     async def update_database(self, inter):
-        return await inter.response.send_message("This command will need to be built by KastienDev as I cannot figure out the database logic. ~Mek", delete_after=30)
+        await inter.response.send_message("Updating Database. . .Please Wait. . .", ephemeral=True)
+
+        list_of_member_ids = [member.id for member in inter.guild.members if not member.bot]
+
+        with sql.connect('main.db') as mdb:
+            cur = mdb.cursor()
+
+            all_members = cur.execute('SELECT id FROM members').fetchall()[0]
+
+            for mem_id in list_of_member_ids:
+                if mem_id in all_members:
+                    print("Member Exists. Moving On. . .")
+                else:
+                    print("Member Not Found: Creating Entry")
+
+                    srch = 'INSERT INTO members(id,quote,mutes,bans,warnings,kicks,bank) VALUES (?,?,?,?,?,?,?)'
+                    val = (mem_id,None,0,0,0,0,1500)
+
+                    try: 
+                        cur.execute(srch, val)
+                        print("Entry Created. . .")
+                    except Exception as e:
+                        print("="*20)
+                        print(e)
+                        print("="*20)
+
+        await inter.edit_original_message("Database Has Been Updated.")
 
 
 def setup(bot):

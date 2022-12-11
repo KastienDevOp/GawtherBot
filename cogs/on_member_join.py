@@ -4,6 +4,7 @@ import json
 import random
 
 from disnake.ext import commands
+from Paginator import CreatePaginator
 from helpers import get_guild_id
 
 
@@ -17,11 +18,12 @@ class OnMemberJoin(commands.Cog):
             color=disnake.Colour.random(),
             title="Welcome To Gawther!",
             description=f"Hi, {member.display_name}! Welcome to Gawther! Please Read Below To Find Out More About Us!"
-        ).add_field(
-            name = "Something To Note!",
-            value = "If you only type `@ghelp` in a text channel, IT WILL OPEN A BROWSER PAGE for you to show a list of commands available to you, what they do, etc.",
-            inline = False
+        ).set_thumbnail(
+            url = self.bot.user.avatar
         )
+
+        all_embeds = []
+        all_embeds.insert(0,embed)
 
         with open('./json_files/new_member_info.json', 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
@@ -30,45 +32,42 @@ class OnMemberJoin(commands.Cog):
                 item_name = data["information"][i]["name"]
                 item_value = data["information"][i]["value"]
 
-                embed.add_field(
-                    name=item_name,
-                    value=item_value,
-                    inline=False
-                )
+                all_embeds.append(disnake.Embed(color=disnake.Colour.random(),title=item_name,description=item_value).set_thumbnail(url=self.bot.user.avatar))
 
-            embed.add_field(
-                name="In Addition. . .",
-                value="In Addition to those values above, we also would like to go over some rules for the community with you",
-                inline=False
+            all_embeds.insert(
+                len(all_embeds)+1, 
+                disnake.Embed(
+                    color = disnake.Colour.random(),
+                    title="In Addition. . .",
+                    description="In Addition to those values above, we also would like to go over some rules for the community with you",
+                ).set_thumbnail(
+                    url = self.bot.user.avatar
+                )
             )
 
-        with sql.connect('main.db') as rulesDb:
-            cur = rulesDb.cursor()
+        with open('./json_files/rules.json','r',encoding='utf-8-sig') as f:
+            data = json.load(f)
 
-            all_rules = cur.execute(
-                'SELECT name,details FROM rules').fetchall()
+            for line in data["rules"]:
+                title = data["rules"][line]["title"]
+                rule = data["rules"][line]["rule"]
 
-            for line in all_rules:
-                rule_name = line[0]
-                rule_desc = line[1]
+                all_embeds.append(disnake.Embed(color=disnake.Colour.random(),title=title,description=rule).set_thumbnail(url=self.bot.user.avatar))
 
-                embed.add_field(
-                    name=rule_name,
-                    value=rule_desc,
-                    inline=False
-                )
-
-        embed.add_field(
-            name="What Do I Do Now?",
-            value="If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
-        )
-        embed.set_footer(
-            text="If you cannot access the discord after you've responded with Confirm, please type `/reconfirm`.",
-        ).set_thumbnail(
-            url=member.guild.icon
+        all_embeds.insert(
+            len(all_embeds)+1, 
+            disnake.Embed(
+                color = disnake.Colour.random(),
+                title="What Do I Do Now?",
+                description="If you agree to the rules, then please respond with Confirm. Otherwise, respond with Deny"
+            ).set_thumbnail(
+                url = self.bot.user.avatar
+            ).set_footer(
+                text="If you cannot access the discord after you've responded with Confirm, please type `/reconfirm`."
+            )
         )
 
-        await member.send(embed=embed)
+        await member.send(embed=all_embeds[0],view=CreatePaginator(all_embeds,member.id,None))
         choice = await self.bot.wait_for('message')
 
         welcome_channel = disnake.utils.get(
@@ -82,12 +81,10 @@ class OnMemberJoin(commands.Cog):
             all_items = cur.execute(
                 'SELECT quote, author FROM quotes').fetchall()
 
-        to_pick_from_randomly = []
-
         for line in all_items:
-            to_pick_from_randomly.append(f"{line[0]} --{line[1]}")
+            all_quotes.append(f"{line[0]} --{line[1]}")
 
-        quote = random.choice(to_pick_from_randomly)
+        quote = random.choice(all_quotes) if all_quotes else "Welcome Aboard! We're Happy To Have You!"
 
         if choice.content.lower() == "confirm":
             member_role = disnake.utils.get(

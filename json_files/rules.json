@@ -63,6 +63,10 @@
         "16": {
             "title": "exceptions",
             "rule": "A Member May Not Appeal An Item On Their Record If: The Item Is Older Than 6 Months.\nThe Item Is Not At Least 7 Calendar Days Old.\nThe Member APpealed The Same Item More Than 3 Times In A Given 6 Months Period."
+        },
+        "17": {
+            "title": "Testing",
+            "rule": "tesitng"
         }
     }
 }

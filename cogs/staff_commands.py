@@ -31,14 +31,20 @@ class StaffCommands(commands.Cog):
         CREDITS TO THE ASSISTANCE IN MAKING THIS COMMAND GOES TO DLCHAMP#6450 ON DISCORD
         """
         await inter.response.send_message("Please Enter The Number Of Messages To Purge", ephemeral=True)
-        num = (await self.bot.wait_for('message')).content
+        num = int((await self.bot.wait_for('message')).content)
 
         await inter.edit_original_message("Please Enter The Reason For The Purge")
         reason = (await self.bot.wait_for('message')).content
 
         await inter.edit_original_message(f"Removing {num} Messages From {inter.channel.name}. . .Please Wait. . .")
 
-        purged = await inter.channel.purge(limit=int(num))
+        if num >= 500:
+            await inter.edit_original_message("That Is Too Many Messages! Insert Pass Phrase To Override. . .")
+            pass_phrase = (await self.bot.wait_for('message',timeout=30)).content
+
+            # create a pass phrase
+            if pass_phrase == "admin":
+                purged = await inter.channel.purge(limit=num)
 
         _file = delete_messages_log(purged, reason)
 
@@ -135,91 +141,16 @@ class StaffCommands(commands.Cog):
         return await inter.edit_original_message(f"You Have Successfully Warned, {member.name}")
 
     async def mute_member(self,inter,member,cmd,reason):
-        await inter.edit_original_message("Enter The Length Of Time For The Mute In Seconds")
-        time_of_sentence = (await self.bot.wait_for('message')).content
-
-        if not int(time_of_sentence):
-            return await inter.edit_original_message("The Length Of Time Must Be In Seconds and As A Whole Number")
-
-        with sql.connect('main.db') as mdb:
-            cur = mdb.cursor()
-
-            srch = 'SELECT mutes FROM members WHERE id=?'
-            val = (member.id,)
-
-            current_mutes = cur.execute(srch, val).fetchone()[0]
-            new_count = current_mutes + 1
-
-            srch2 = 'UPDATE members SET mutes=? WHERE id=?'
-            val2 = (new_count, member.id, )
-
-            cur.execute(srch2, val2)
-
-        # mute_role = disnake.utils.get(inter.guild.roles, name="Muted")
-
-        # await member.remove_roles(member.roles,reason=reason)
-        # await member.add_roles([mute_role,],reason=reason)
-
-        embed = disnake.Embed(
-            color = disnake.Colour.dark_orange(),
-            title = "Gawther's Moderations System Notification",
-            description = f"{inter.author.name} Has Muted {member.name}."
-        ).add_field(
-            name = "Reason",
-            value = reason,
-            inline = False
-        ).add_field(
-            name = "Counts",
-            value = f"Previous Mutes: {current_mutes}\nNew Mutes: {new_count}",
-            inline = False
-        ).set_thumbnail(
-            url = self.bot.user.avatar
-        )
-
-        noti_chan = disnake.utils.get(inter.guild.text_channels, name="moderation_notifications")
-
-        await member.send(embed=embed)
-        await noti_chan.send(embed=embed)
-        
-        await inter.edit_original_message(f"You Have Successfully Muted, {member.name}")
-
-        # await asyncio.sleep(int(time_of_sentence))
-
-        # await member.remove_roles([mute_role,],reason="sentence finished")
-        # await member.add_roles(member.roles, reason="sentence finished")
-
-        # embed2 = disnake.Embed(
-        #     color = disnake.Colour.green(),
-        #     title = "Gawther's Moderation System Notification",
-        #     description = "Your Mute Has Been Lifted. Please Reflect On What Has Happened, and Let's Enjoy Ourselves!"
-        # ).set_thumbnail(
-        #     url = self.bot.user.avatar
-        # )
-
-        # await member.send(embed=embed2)
+        pass
 
     async def kick_member(self,inter,member,cmd,reason):
-        return await inter.edit_original_message("Kicking Worked")
+        pass
 
     async def ban_member(self,inter,member,cmd,reason):
-        return await inter.edit_original_message("Banning Worked")
+        pass
 
     async def make_announcement(self,inter):
-        # embed title
-        await inter.response.send_message("Enter Title For Announcement")
-        title = (await self.bot.wait_for('message')).content
-
-        if not all(i.isprintable() for i in title):
-            return await inter.edit_original_message("The Title Must Be A Printable String!")
-
-        # embed description
-        await inter.response.send_message("Enter The Announcement")
-        announcement = (await self.bot.wait_for('message')).content
-
-        if not all(i.isprintable() for i in announcement):
-            return await inter.edit_original_message("The Introduction Must Be A Printable String!")
-
-        """Finish Later"""
+        pass
 
         
 def setup(bot):

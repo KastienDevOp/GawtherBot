@@ -14,12 +14,6 @@ def create_db():
             bank INTEGER
         )''')
 
-        cur.execute('''CREATE TABLE IF NOT EXISTS rules(
-            id INTEGER,
-            name TEXT,
-            details TEXT
-        )''')
-
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions(
             id INTEGER,
             payer INTEGER,
